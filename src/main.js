@@ -2,5 +2,9 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import VueSidebarMenu from 'vue-sidebar-menu'
+import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(VueSidebarMenu)
+app.mount("#app")
