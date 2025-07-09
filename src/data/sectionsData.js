@@ -1,17 +1,43 @@
 // data/portfolio.js
 export const sectionsData = {
-  GAMES: {
-    PC: [
+  games: {
+    pc: [
       {
         id: 'kh-tears',
         name: 'Kingdom Hearts Tears',
-        description: 'Un juego épico inspirado en la saga Kingdom Hearts con mecánicas únicas.',
+        description: 'Un juego épico inspirado en la saga Kingdom Hearts con mecánicas únicas y una historia original que expande el universo.',
         downloadUrl: 'https://example.com/download/kh-tears',
         images: [
           '/images/games/kh_tears.jpg'
         ],
-        youtubeVideos: [
-          'dQw4w9WgXcQ' // ID del video de YouTube
+        youtubeVideos: [],
+        features: [
+          'Historia original de 15+ horas',
+          'Sistema de combate mejorado',
+          'Múltiples mundos explorables',
+          'Gráficos en alta definición'
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '4.2 GB',
+          requirements: 'Windows 10, DirectX 11, 8GB RAM',
+          installation: [
+            'Descarga el instalador',
+            'Ejecuta como administrador',
+            'Sigue las instrucciones de instalación',
+            'Instala Visual C++ Redistributable si es necesario'
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2024-01-20',
+            changes: [
+              'Lanzamiento oficial',
+              'Historia completa disponible',
+              'Todos los mundos implementados'
+            ]
+          }
         ]
       },
       {
@@ -19,8 +45,11 @@ export const sectionsData = {
         name: 'Corruption',
         description: 'Un thriller psicológico con elementos de supervivencia.',
         downloadUrl: 'https://example.com/download/corruption',
-        images: [],
-        youtubeVideos: []
+        images: [
+          '/images/games/corruption-1.jpg',
+          '/images/games/corruption-2.jpg'
+        ],
+        youtubeVideos: ['p95O5zlnE7U']
       },
       {
         id: 'flamboyant',
@@ -28,7 +57,7 @@ export const sectionsData = {
         description: 'Juego de acción con estilo visual único y colorido.',
         downloadUrl: 'https://example.com/download/flamboyant',
         images: [],
-        youtubeVideos: ['dQw4w9WgXcQ']
+        youtubeVideos: []
       },
       {
         id: 'contra2d',
@@ -52,7 +81,7 @@ export const sectionsData = {
         description: 'Juego de horror psicológico que desafía la percepción de la realidad.',
         downloadUrl: 'https://example.com/download/delusion',
         images: ['/images/games/delusion-1.jpg'],
-        youtubeVideos: []
+        youtubeVideos: ['A2iSPnM1gHs']
       },
       {
         id: 'sanic',
@@ -60,10 +89,10 @@ export const sectionsData = {
         description: 'Juego de zombies desarrollado con motor gráfico 2D personalizado.',
         downloadUrl: 'https://example.com/download/sanic',
         images: ['/images/games/sanic-1.jpg', '/images/games/sanic-2.jpg'],
-        youtubeVideos: ['dQw4w9WgXcQ']
+        youtubeVideos: []
       }
     ],
-    NDS: [
+    nds: [
       {
         id: 'chesscount',
         name: 'ChessCount',
@@ -82,7 +111,7 @@ export const sectionsData = {
       }
     ]
   },
-  COLLABORATIONS: [
+  collaborations: [
     {
       id: 'remorse-betatest',
       name: 'Betatested Remorse: The List + Clueless Crew',
@@ -90,16 +119,52 @@ export const sectionsData = {
       downloadUrl: 'https://example.com/download/remorse',
       images: ['/images/collab/remorse-1.jpg'],
       youtubeVideos: []
+    },
+    {
+      id: 'brainrot-royale',
+      name: 'Betatested Brainrot Royale',
+      description: 'Optimización para monitores ultrawide y Steam Deck, mejoras de compatibilidad y rendimiento.',
+      downloadUrl: 'https://example.com/download/remorse',
+      images: [''],
+      youtubeVideos: ['z1-tFbFqXwo']
     }
   ],
-  TRANSLATIONS: [
+  translations: [
     {
       id: 'bbsfm',
-      name: 'BBSFM',
-      description: 'Traducción completa al español de Birth by Sleep Final Mix.',
+      name: 'Kingdom Hearts Birth By Sleep Final Mix (PSP) - Traducción al Español',
+      description: 'Traducción completa al español de Birth by Sleep Final Mix, incluyendo menús, diálogos y textos del juego.',
       downloadUrl: 'https://example.com/download/bbsfm-translation',
       images: ['/images/translations/bbsfm-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: ['9zZ1bo90yYI'],
+      features: [
+        'Traducción completa de todos los diálogos',
+        'Menús y interfaces traducidos',
+        'Subtítulos sincronizados',
+        'Compatibilidad con todas las versiones'
+      ],
+      downloadInfo: {
+        version: '1.2.0',
+        size: '45 MB',
+        requirements: 'Kingdom Hearts Birth by Sleep Final Mix',
+        installation: [
+          'Descarga el archivo de traducción',
+          'Extrae el contenido en la carpeta del juego',
+          'Ejecuta el parche de instalación',
+          'Reinicia el juego'
+        ]
+      },
+      changelog: [
+        {
+          version: '1.2.0',
+          date: '2024-01-15',
+          changes: [
+            'Corregidos errores de traducción en el mundo de Disney',
+            'Mejorada la sincronización de subtítulos',
+            'Añadidas traducciones faltantes en menús'
+          ]
+        }
+      ]
     },
     {
       id: 'drakengard3',
@@ -107,10 +172,10 @@ export const sectionsData = {
       description: 'Traducción al español del aclamado JRPG Drakengard 3.',
       downloadUrl: 'https://example.com/download/drakengard3-translation',
       images: [],
-      youtubeVideos: ['dQw4w9WgXcQ']
+      youtubeVideos: []
     }
   ],
-  MODS: [
+  mods: [
     {
       id: 'kh2-spanish-mix',
       name: 'KINGDOM HEARTS 2: Spanish Mix - Voices in Castillian',
@@ -133,7 +198,7 @@ export const sectionsData = {
       description: 'Añade diálogos eliminados de Xemnas al juego original.',
       downloadUrl: 'https://example.com/download/kh2-xemnas',
       images: [],
-      youtubeVideos: []
+      youtubeVideos: ['cBhjAdvNwUg']
     },
     {
       id: 'crisis-core-voices',
@@ -152,14 +217,14 @@ export const sectionsData = {
       youtubeVideos: []
     }
   ],
-  TOOLS: [
+  tools: [
     {
       id: 'realms-engine',
       name: 'Realms Engine',
       description: 'Motor de juego personalizado desarrollado desde cero.',
       downloadUrl: 'https://example.com/download/realms-engine',
       images: ['/images/tools/realms-1.jpg'],
-      youtubeVideos: ['dQw4w9WgXcQ']
+      youtubeVideos: []
     },
     {
       id: 'hcareplace',
@@ -170,7 +235,7 @@ export const sectionsData = {
       youtubeVideos: []
     }
   ],
-  ABOUT: [
+  about: [
     {
       id: 'degree',
       name: 'Degree',
@@ -212,4 +277,90 @@ export const sectionsData = {
       youtubeVideos: []
     }
   ]
+};
+
+
+export const individualPages = {
+  'translations/drakengard3': {
+    title: 'Drakengard 3 - Traducción al Español',
+    category: 'TRANSLATIONS',
+    item: 'drakengard3',
+    content: {
+      description: 'Traducción completa al español del aclamado JRPG Drakengard 3, manteniendo el tono original de la obra.',
+      features: [
+        'Traducción fiel al texto original japonés',
+        'Localización cultural apropiada',
+        'Revisión exhaustiva de terminología',
+        'Soporte para diferentes regiones'
+      ],
+      screenshots: [
+        '/images/translations/drakengard3-1.jpg',
+        '/images/translations/drakengard3-2.jpg'
+      ],
+      videos: [''],
+      downloadInfo: {
+        version: '2.0.1',
+        size: '120 MB',
+        requirements: 'Drakengard 3 (PS3)',
+        installation: [
+          'Requiere PS3 con CFW',
+          'Instala el archivo PKG',
+          'Aplica el parche de traducción',
+          'Reinicia la consola'
+        ]
+      },
+      changelog: [
+        {
+          version: '2.0.1',
+          date: '2024-02-01',
+          changes: [
+            'Corrección de errores menores',
+            'Mejorada compatibilidad con diferentes firmwares',
+            'Optimización de rendimiento'
+          ]
+        }
+      ]
+    }
+  },
+  'mods/kh2-spanish-mix': {
+    title: 'Kingdom Hearts 2: Spanish Mix',
+    category: 'MODS',
+    item: 'kh2-spanish-mix',
+    content: {
+      description: 'Mod completo que añade voces en castellano a Kingdom Hearts 2, con doblaje profesional y sincronización perfecta.',
+      features: [
+        'Doblaje completo en castellano',
+        'Sincronización labial mejorada',
+        'Calidad de audio profesional',
+        'Compatible con todas las versiones'
+      ],
+      screenshots: [
+        '/images/mods/kh2-spanish-1.jpg',
+        '/images/mods/kh2-spanish-2.jpg'
+      ],
+      videos: ['q1P7gPPuFH0'],
+      downloadInfo: {
+        version: '3.1.0',
+        size: '2.8 GB',
+        requirements: 'Kingdom Hearts 2 Final Mix',
+        installation: [
+          'Descarga todos los archivos de audio',
+          'Usa OpenKH Mod Manager',
+          'Instala el mod siguiendo las instrucciones',
+          'Configura el audio en el juego'
+        ]
+      },
+      changelog: [
+        {
+          version: '3.1.0',
+          date: '2024-03-10',
+          changes: [
+            'Añadidas voces faltantes de personajes secundarios',
+            'Mejorada calidad de audio en escenas cinemáticas',
+            'Corregidos problemas de sincronización'
+          ]
+        }
+      ]
+    }
+  }
 };

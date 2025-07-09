@@ -42,7 +42,9 @@ const goToItem = (index) => {
 }
 
 const handleImageError = (event) => {
-  event.target.src = '/images/placeholder.jpg' // Imagen de placeholder
+  const placeholder = '/images/placeholder.jpg' // Imagen de placeholder
+  if (event.target.src.includes(placeholder)) return // Evita bucle infinito
+  event.target.src = placeholder
   console.warn(`Error cargando imagen: ${event.target.src}`)
 }
 

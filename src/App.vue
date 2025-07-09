@@ -1,25 +1,24 @@
-<script setup>
-import Portfolio from './components/Portfolio.vue'
-</script>
-
 <script>
   export default {
     data() {
       return {
         menu: [
           {
-            href: '/games',
             title: 'GAMES',
             icon: 'fa fa-user',
             child: [
               {
-                href: '/games/pc',
                 title: 'PC',
                 icon: 'fa fa-user',
                 child: [
                   {
-                    href: '/games/pc/khtears',
-                    title: 'Kingdom Hearts Tears',
+                    href: '/games/pc/bizarreskies',
+                    title: 'Bizarre Skies',
+                    icon: 'fa fa-user'
+                  },
+                  {
+                    href: '/games/pc/contra2d',
+                    title: 'Contra 2D',
                     icon: 'fa fa-user'
                   },
                   {
@@ -33,15 +32,10 @@ import Portfolio from './components/Portfolio.vue'
                     icon: 'fa fa-user'
                   },
                   {
-                    href: '/games/pc/contra2d',
-                    title: 'Contra 2D',
+                    href: '/games/pc/kh-tears',
+                    title: 'Kingdom Hearts Tears',
                     icon: 'fa fa-user'
-                  },
-                  {
-                    href: '/games/pc/bizarreskies',
-                    title: 'Bizarre Skies',
-                    icon: 'fa fa-user'
-                  },
+                  },                  
                   {
                     href: '/games/pc/sanic',
                     title: 'Sanic: The Zombie Game',
@@ -50,47 +44,132 @@ import Portfolio from './components/Portfolio.vue'
                 ]
               },
               {
-                href: '/games/gba',
-                title: 'Game Boy Advance',
+                title: 'GAME BOY ADVANCE',
                 icon: 'fa fa-user',
                 child: [
                   {
                     href: '/games/gba/magicalpopn',
                     title: "Magical Pop'n",
-                    icon: 'fa fa-user',
+                    icon: 'fa fa-user'
                   }
                 ]
               },
               {
-                href: '/games/ds',
-                title: 'Nintendo DS',
+                title: 'NINTENDO DS',
                 icon: 'fa fa-user',
                 child: [
                   {
-                    href: '/games/nds/chesscoint',
-                    title: 'Kingdom Hearts Tears',
-                    icon: 'fa fa-user',
+                    href: '/games/nds/avalancheds',
+                    title: 'Avalanche DS',
+                    icon: 'fa fa-user'
+                  },
+                  {
+                    href: '/games/nds/chesscount',
+                    title: 'ChessCount',
+                    icon: 'fa fa-user'
                   }
                 ]
               }
             ]
           },
           {
-            href: '/translations',
-            title: 'Translations',
+            title: 'TRANSLATIONS',
             icon: 'fa fa-chart-area',
             child: [
               {
                 href: '/translations/bbsfm',
                 title: 'Birth By Sleep Final Mix',
-                icon: 'fa fa-user',
+                icon: 'fa fa-user'
               },
               {
                 href: '/translations/drakengard3',
                 title: 'Drakengard 3',
-                icon: 'fa fa-user',
+                icon: 'fa fa-user'
               }
             ]
+          },
+          {
+            title: 'MODS',
+            icon: 'fa fa-chart-area',
+            child: [
+              {
+                href: '/mods/bbsfmcameraemu',
+                title: 'BBSFM: Camera Stick (Emu)',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/mods/crisiscorereunionogdub',
+                title: 'Crisis Core Reunion: Og Dub',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/mods/kh2sephirothas',
+                title: "KH2: Replayable Sephiroth",
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/mods/kh2spanishmix',
+                title: 'KH2: Spanish Mix',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/mods/kh2xemnasdeletedquotes',
+                title: 'KH2: Xemnas Deleted Quotes',
+                icon: 'fa fa-user'
+              }
+            ]
+          },
+          {
+            title: 'COLLABORATIONS',
+            icon: 'fa fa-chart-area',
+            child: [
+              {
+                href: '/collaborations/brainrotroyale',
+                title: 'Brainrot Royale (Beta Testing)',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/collaborations/cluelesscrew',
+                title: 'Clueless Crew (Beta Testing)',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/collaborations/kh2rando',
+                title: 'KH2: Randomizer (Bug Fixing)',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/collaborations/remorse',
+                title: 'Remorse: The List (Beta Testing)',
+                icon: 'fa fa-user'
+              }              
+            ]
+          },
+          {
+            title: 'TOOLS',
+            icon: 'fa fa-chart-area',
+            child: [
+              {
+                href: '/tools/hcareplace',
+                title: 'HCAReplace',
+                icon: 'fa fa-user'
+              },
+              {
+                href: '/tools/realmsengine',
+                title: 'Realms Engine',
+                icon: 'fa fa-user'
+              }              
+            ]
+          },
+          {
+            title: 'ABOUT ME',
+            href: '/aboutme',
+            icon: 'fa fa-chart-area'
+          },
+          {
+            title: 'CONTACT',
+            href: '/contact',
+            icon: 'fa fa-chart-area'
           }
         ]
       }
@@ -103,15 +182,15 @@ import Portfolio from './components/Portfolio.vue'
     <header class="app-header">
       <nav class="navbar">
         <div class="nav-brand">
-          <h1>Mi Portfolio</h1>
+          <router-link :to="'/'"><h1>Svenchu</h1></router-link>
         </div>
         <div class="nav-links">
-          <a href="#games">Games</a>
-          <a href="#collaborations">Collaborations</a>
-          <a href="#translations">Translations</a>
-          <a href="#mods">Mods</a>
-          <a href="#tools">Tools</a>
-          <a href="#about">About</a>
+          <router-link to="/games">Games</router-link>
+          <router-link to="/collaborations">Collaborations</router-link>
+          <router-link to="/translations">Translations</router-link>
+          <router-link to="/mods">Mods</router-link>
+          <router-link to="/tools">Tools</router-link>
+          <router-link to="/about">About</router-link>
         </div>
       </nav>
     </header>
@@ -119,11 +198,11 @@ import Portfolio from './components/Portfolio.vue'
     <sidebar-menu :menu="menu" />
 
     <main class="main-content">
-      <Portfolio />
+      <router-view />
     </main>
 
     <footer class="app-footer">
-      <p>&copy; 2024 - Mi Portfolio de Desarrollo</p>
+      <p>&copy; 2025 - Svenchu</p>
     </footer>
   </div>
 </template>
@@ -140,7 +219,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
-  background: linear-gradient(135deg, #eaba66 0%, #a2a24b 100%);
+  background: linear-gradient(135deg, #eaba66 0%, #eaba663d 100%);
   min-height: 100vh;
 }
 

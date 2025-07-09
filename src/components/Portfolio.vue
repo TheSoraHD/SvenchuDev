@@ -2,9 +2,31 @@
 import { ref, onMounted } from 'vue'
 import MediaCarousel from './MediaCarousel.vue'
 import { sectionsData } from '../data/sectionsData.js'
+//import { useNavigation } from '../composables/useNavigation.js'
+import { useRouter } from 'vue-router'
+
 
 // Datos reactivos
 const portfolio = ref(sectionsData)
+//const { navigateTo, generatePageLink } = useNavigation()
+const router = useRouter()
+
+// Versión vieja
+//const navigateToItem = (category, subcategory, itemId) => {
+//  const pagePath = generatePageLink(category, subcategory, itemId)
+//  navigateTo(pagePath)
+//}
+
+// Nueva versión con router
+// Esta función construye la ruta y navega a la página del ítem
+const navigateToItem = (category, subcategory, itemId) => {
+  let path = `/${category}`
+  if (subcategory) path += `/${subcategory}`
+  path += `/${itemId}`
+  router.push(path)
+  // Si necesitas usar navigateTo en lugar de router.push, descomenta la siguiente línea
+  // const pagePath = generatePageLink(category, subcategory, itemId)
+}
 
 onMounted(() => {
   console.log('Portfolio cargado:', portfolio.value)
@@ -31,16 +53,25 @@ onMounted(() => {
                 :youtube-videos="item.youtubeVideos"
                 :item-id="item.id"
               />
+
+              <div class="item-actions">
+                <button 
+                  @click="navigateToItem(sectionName, subsectionName, item.id)"
+                  class="details-button"
+                >
+                  Ver Detalles
+                </button>
               
-              <a 
-                v-if="item.downloadUrl && item.downloadUrl !== '#'" 
-                :href="item.downloadUrl" 
-                class="download-button"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Descargar
-              </a>
+                <a 
+                  v-if="item.downloadUrl && item.downloadUrl !== '#'" 
+                  :href="item.downloadUrl" 
+                  class="download-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Descargar
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -58,16 +89,25 @@ onMounted(() => {
             :youtube-videos="item.youtubeVideos"
             :item-id="item.id"
           />
+
+          <div class="item-actions">
+            <button 
+              @click="navigateToItem(sectionName, null, item.id)"
+              class="details-button"
+            >
+              Ver Detalles
+            </button>
           
-          <a 
-            v-if="item.downloadUrl && item.downloadUrl !== '#'" 
-            :href="item.downloadUrl" 
-            class="download-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Descargar
-          </a>
+            <a 
+              v-if="item.downloadUrl && item.downloadUrl !== '#'" 
+              :href="item.downloadUrl" 
+              class="download-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Descargar
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -148,6 +188,26 @@ onMounted(() => {
   line-height: 1.6;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
+}
+
+.details-button {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.details-button:hover {
+  background: linear-gradient(135deg, #8e44ad, #7d3c98);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
 }
 
 .download-button {
