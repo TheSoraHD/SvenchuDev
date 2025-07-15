@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import MediaCarousel from './MediaCarousel.vue'
-import { sectionsData, individualPages } from '../data/sectionsData.js'
+import { sectionsData } from '../data/sectionsData.js'
 
 const route = useRoute()
 const category = computed(() => route.params.category)

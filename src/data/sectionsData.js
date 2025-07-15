@@ -168,11 +168,42 @@ export const sectionsData = {
     },
     {
       id: 'drakengard3',
-      name: 'Drakengard 3',
-      description: 'Traducción al español del aclamado JRPG Drakengard 3.',
+      name: 'Drakengard 3 - Traducción al Español',
+      description: 'Traducción completa al español del aclamado JRPG Drakengard 3, manteniendo el tono original de la obra.',
       downloadUrl: 'https://example.com/download/drakengard3-translation',
-      images: [],
-      youtubeVideos: []
+      images: [
+        '/images/translations/drakengard3-1.jpg',
+        '/images/translations/drakengard3-2.jpg'
+      ],
+      youtubeVideos: [],
+      features: [
+        'Traducción fiel al texto original japonés',
+        'Localización cultural apropiada',
+        'Revisión exhaustiva de terminología',
+        'Soporte para diferentes regiones'
+      ],
+      downloadInfo: {
+        version: '2.0.1',
+        size: '120 MB',
+        requirements: 'Drakengard 3 (PS3)',
+        installation: [
+          'Requiere PS3 con CFW',
+          'Instala el archivo PKG',
+          'Aplica el parche de traducción',
+          'Reinicia la consola'
+        ]
+      },
+      changelog: [
+        {
+          version: '2.0.1',
+          date: '2024-02-01',
+          changes: [
+            'Corrección de errores menores',
+            'Mejorada compatibilidad con diferentes firmwares',
+            'Optimización de rendimiento'
+          ]
+        }
+      ]
     }
   ],
   mods: [
@@ -182,7 +213,39 @@ export const sectionsData = {
       description: 'Mod que incluye voces en castellano para Kingdom Hearts 2.',
       downloadUrl: 'https://example.com/download/kh2-spanish',
       images: ['/images/mods/kh2-spanish-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: ['q1P7gPPuFH0'],
+      features: [
+        'Doblaje completo en castellano',
+        'Sincronización labial mejorada',
+        'Calidad de audio profesional',
+        'Compatible con todas las versiones'
+      ],
+      screenshots: [
+        '/images/mods/kh2-spanish-1.jpg',
+        '/images/mods/kh2-spanish-2.jpg'
+      ],
+      downloadInfo: {
+        version: '3.1.0',
+        size: '2.8 GB',
+        requirements: 'Kingdom Hearts 2 Final Mix',
+        installation: [
+          'Descarga todos los archivos de audio',
+          'Usa OpenKH Mod Manager',
+          'Instala el mod siguiendo las instrucciones',
+          'Configura el audio en el juego'
+        ]
+      },
+      changelog: [
+        {
+          version: '3.1.0',
+          date: '2024-03-10',
+          changes: [
+            'Añadidas voces faltantes de personajes secundarios',
+            'Mejorada calidad de audio en escenas cinemáticas',
+            'Corregidos problemas de sincronización'
+          ]
+        }
+      ]
     },
     {
       id: 'kh2-sephiroth',
@@ -277,90 +340,4 @@ export const sectionsData = {
       youtubeVideos: []
     }
   ]
-};
-
-
-export const individualPages = {
-  'translations/drakengard3': {
-    title: 'Drakengard 3 - Traducción al Español',
-    category: 'TRANSLATIONS',
-    item: 'drakengard3',
-    content: {
-      description: 'Traducción completa al español del aclamado JRPG Drakengard 3, manteniendo el tono original de la obra.',
-      features: [
-        'Traducción fiel al texto original japonés',
-        'Localización cultural apropiada',
-        'Revisión exhaustiva de terminología',
-        'Soporte para diferentes regiones'
-      ],
-      screenshots: [
-        '/images/translations/drakengard3-1.jpg',
-        '/images/translations/drakengard3-2.jpg'
-      ],
-      videos: [''],
-      downloadInfo: {
-        version: '2.0.1',
-        size: '120 MB',
-        requirements: 'Drakengard 3 (PS3)',
-        installation: [
-          'Requiere PS3 con CFW',
-          'Instala el archivo PKG',
-          'Aplica el parche de traducción',
-          'Reinicia la consola'
-        ]
-      },
-      changelog: [
-        {
-          version: '2.0.1',
-          date: '2024-02-01',
-          changes: [
-            'Corrección de errores menores',
-            'Mejorada compatibilidad con diferentes firmwares',
-            'Optimización de rendimiento'
-          ]
-        }
-      ]
-    }
-  },
-  'mods/kh2-spanish-mix': {
-    title: 'Kingdom Hearts 2: Spanish Mix',
-    category: 'MODS',
-    item: 'kh2-spanish-mix',
-    content: {
-      description: 'Mod completo que añade voces en castellano a Kingdom Hearts 2, con doblaje profesional y sincronización perfecta.',
-      features: [
-        'Doblaje completo en castellano',
-        'Sincronización labial mejorada',
-        'Calidad de audio profesional',
-        'Compatible con todas las versiones'
-      ],
-      screenshots: [
-        '/images/mods/kh2-spanish-1.jpg',
-        '/images/mods/kh2-spanish-2.jpg'
-      ],
-      videos: ['q1P7gPPuFH0'],
-      downloadInfo: {
-        version: '3.1.0',
-        size: '2.8 GB',
-        requirements: 'Kingdom Hearts 2 Final Mix',
-        installation: [
-          'Descarga todos los archivos de audio',
-          'Usa OpenKH Mod Manager',
-          'Instala el mod siguiendo las instrucciones',
-          'Configura el audio en el juego'
-        ]
-      },
-      changelog: [
-        {
-          version: '3.1.0',
-          date: '2024-03-10',
-          changes: [
-            'Añadidas voces faltantes de personajes secundarios',
-            'Mejorada calidad de audio en escenas cinemáticas',
-            'Corregidos problemas de sincronización'
-          ]
-        }
-      ]
-    }
-  }
 };
