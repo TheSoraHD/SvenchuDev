@@ -5,37 +5,31 @@ export const sectionsData = {
       {
         id: 'kh-tears',
         name: 'Kingdom Hearts Tears',
-        description: 'Un juego épico inspirado en la saga Kingdom Hearts con mecánicas únicas y una historia original que expande el universo.',
-        downloadUrl: 'https://example.com/download/kh-tears',
+        description: 'Reimaginación del día 357 de Kingdom Hearts 358/2 Days, en Unreal Engine 5.',
+        downloadUrl: 'TO-DO',
         images: [
           '/images/games/kh_tears.jpg'
         ],
         youtubeVideos: [],
         features: [
-          'Historia original de 15+ horas',
-          'Sistema de combate mejorado',
-          'Múltiples mundos explorables',
+          '10 horas de contenido original',
+          'Sistema de combate reimaginado',
           'Gráficos en alta definición'
         ],
         downloadInfo: {
           version: '1.0.0',
-          size: '4.2 GB',
-          requirements: 'Windows 10, DirectX 11, 8GB RAM',
+          size: '6.9 GB',
+          requirements: 'TO-DO',
           installation: [
-            'Descarga el instalador',
-            'Ejecuta como administrador',
-            'Sigue las instrucciones de instalación',
-            'Instala Visual C++ Redistributable si es necesario'
+            'Extrae el archivo comprimido del juego',
           ]
         },
         changelog: [
           {
             version: '1.0.0',
-            date: '2024-01-20',
+            date: '2026-05-30',
             changes: [
               'Lanzamiento oficial',
-              'Historia completa disponible',
-              'Todos los mundos implementados'
             ]
           }
         ]
@@ -43,21 +37,61 @@ export const sectionsData = {
       {
         id: 'corruption',
         name: 'Corruption',
-        description: 'Un thriller psicológico con elementos de supervivencia.',
-        downloadUrl: 'https://example.com/download/corruption',
+        description: 'Juego de terror estilo "Slender", donde tienes que purificar una ciudad de la oscuridad que se cierne sobre ella. Participó en la Z-Jam 2021.',
+        downloadUrl: 'https://drive.google.com/file/d/1SLsC0G-UL--kHGKr6StUJARP0A5jTNk2/view',
         images: [
           '/images/games/corruption-1.jpg',
           '/images/games/corruption-2.jpg'
         ],
-        youtubeVideos: ['p95O5zlnE7U']
+        youtubeVideos: ['p95O5zlnE7U'],
+        features: [
+          '10 horas de contenido original',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '1.6 GB',
+          requirements: 'Unreal Engine 4',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2026-05-30',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
       },
       {
         id: 'flamboyant',
         name: 'Flamboyant',
-        description: 'Juego de acción con estilo visual único y colorido.',
+        description: 'Minijuego creado en el motor Unity tipo "bullet hell" con estética vibrante y mecánicas de disparo únicas.',
         downloadUrl: 'https://example.com/download/flamboyant',
         images: [],
-        youtubeVideos: []
+        youtubeVideos: [],
+        features: [
+          'TO-DO',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: 'TO-DO',
+          requirements: 'TO-DO',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: 'TO-DO',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
       },
       {
         id: 'contra2d',
@@ -65,7 +99,27 @@ export const sectionsData = {
         description: 'Reimaginación 2D del clásico juego de acción Contra.',
         downloadUrl: 'https://example.com/download/contra2d',
         images: [],
-        youtubeVideos: []
+        youtubeVideos: [],
+        features: [
+          '10 horas de contenido original',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '1.6 GB',
+          requirements: 'Unreal Engine 4',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2026-05-30',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
       },
       {
         id: 'bizarreskies3d',
@@ -73,7 +127,27 @@ export const sectionsData = {
         description: 'Aventura aérea en 3D con mecánicas de vuelo innovadoras.',
         downloadUrl: 'https://example.com/download/bizarreskies3d',
         images: [],
-        youtubeVideos: []
+        youtubeVideos: [],
+        features: [
+          '10 horas de contenido original',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '1.6 GB',
+          requirements: 'Unreal Engine 4',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2026-05-30',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
       },
       {
         id: 'delusion',
@@ -81,7 +155,27 @@ export const sectionsData = {
         description: 'Juego de horror psicológico que desafía la percepción de la realidad.',
         downloadUrl: 'https://example.com/download/delusion',
         images: ['/images/games/delusion-1.jpg'],
-        youtubeVideos: ['A2iSPnM1gHs']
+        youtubeVideos: ['A2iSPnM1gHs'],
+        features: [
+          '10 horas de contenido original',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '1.6 GB',
+          requirements: 'Unreal Engine 4',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2026-05-30',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
       },
       {
         id: 'sanic',
@@ -104,7 +198,7 @@ export const sectionsData = {
       {
         id: 'avalancheds',
         name: 'AvalancheDS',
-        description: 'Juego de puzzle y acción para Nintendo DS con mecánicas de avalancha.',
+        description: 'Port del juego flash Avalanche para Nintendo DS.',
         downloadUrl: 'https://example.com/download/avalancheds',
         images: [],
         youtubeVideos: []
@@ -118,7 +212,27 @@ export const sectionsData = {
       description: 'Optimización para monitores ultrawide y Steam Deck, mejoras de compatibilidad y rendimiento.',
       downloadUrl: 'https://example.com/download/remorse',
       images: ['/images/collab/remorse-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: [],
+      features: [
+          '10 horas de contenido original',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '1.6 GB',
+          requirements: 'Unreal Engine 4',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2026-05-30',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
     },
     {
       id: 'brainrot-royale',
@@ -126,7 +240,27 @@ export const sectionsData = {
       description: 'Optimización para monitores ultrawide y Steam Deck, mejoras de compatibilidad y rendimiento.',
       downloadUrl: 'https://example.com/download/remorse',
       images: [''],
-      youtubeVideos: ['z1-tFbFqXwo']
+      youtubeVideos: ['z1-tFbFqXwo'],
+      features: [
+          '10 horas de contenido original',
+        ],
+        downloadInfo: {
+          version: '1.0.0',
+          size: '1.6 GB',
+          requirements: 'Unreal Engine 4',
+          installation: [
+            'Extrae el archivo comprimido del juego',
+          ]
+        },
+        changelog: [
+          {
+            version: '1.0.0',
+            date: '2026-05-30',
+            changes: [
+              'Lanzamiento oficial',
+            ]
+          }
+        ]
     }
   ],
   translations: [
