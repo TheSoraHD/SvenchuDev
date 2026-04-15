@@ -1,393 +1,437 @@
 <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import MediaCarousel from './MediaCarousel.vue'
 import { sectionsData } from '../data/sectionsData.js'
 
-const route = useRoute()
-const category = computed(() => route.params.category)
+const route  = useRoute()
+const router = useRouter()
+
+const category    = computed(() => route.params.category)
 const subcategory = computed(() => route.params.subcategory)
-const itemId = computed(() => route.params.itemId)
+const itemId      = computed(() => route.params.itemId)
 
 const pageData = computed(() => {
   const section = sectionsData[category.value]
-  if (!section) return {}
-
+  if (!section) return null
   let item
   if (subcategory.value && section[subcategory.value]) {
     item = section[subcategory.value].find(i => String(i.id) === String(itemId.value))
   } else if (Array.isArray(section)) {
     item = section.find(i => String(i.id) === String(itemId.value))
   }
-  if (!item) return {}
-
-  // Devuelve el item tal cual, o adapta si necesitas props extra
-  return item
+  return item || null
 })
+
+const hasDownloadInfo = computed(() => !!pageData.value?.downloadInfo)
+
+function goBack() { router.back() }
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
-  return date.toLocaleDateString('es-ES', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 </script>
 
 <template>
   <div class="individual-page">
-    
-    
 
-    <!-- Botón de volver -->
-    <button @click="goBack" class="back-button">
-      ← Volver
-    </button>
+    <!-- 404 -->
+    <div v-if="!pageData" class="not-found">
+      <h1>404</h1>
+      <p>Page not found.</p>
+      <button class="btn-back" @click="goBack">← Volver</button>
+    </div>
 
-    <!-- Contenido principal -->
-    <div class="page-content">
-      <header class="page-header">
-        <h1 class="page-title">{{ pageData.name }}</h1>
+    <template v-else>
+      <!-- Breadcrumb / back -->
+      <nav class="breadcrumb">
+        <button class="breadcrumb-back" @click="goBack">←</button>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-cat">{{ category }}</span>
+        <span v-if="subcategory" class="breadcrumb-sep">/</span>
+        <span v-if="subcategory" class="breadcrumb-cat">{{ subcategory }}</span>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">{{ pageData.name }}</span>
+      </nav>
+
+      <!-- Hero title -->
+      <header class="hero">
+        <h1 class="hero-title">{{ pageData.name }}</h1>
+        <p class="hero-desc">{{ pageData.description }}</p>
       </header>
 
+      <!-- Grid principal -->
       <div class="content-grid">
-        <!-- Columna principal -->
-        <div class="main-content">
-          <div class="description-section">
-            <h2>Descripción</h2>
-            {{ pageData.description }}
-          </div>
 
-          <div v-if="pageData.features" class="features-section">
-            <h2>Características</h2>
-            <ul class="features-list">
-              <li v-for="feature in pageData.features" :key="feature">
-                {{ feature }}
-              </li>
-            </ul>
-          </div>
+        <!-- Columna izquierda -->
+        <div class="col-main">
 
-          <!-- Carrusel de medios -->
-          <div class="media-section">
-            <h2>Galería</h2>
-            <MediaCarousel 
+          <!-- Galería -->
+          <section class="content-block">
+            <h2 class="block-title">Gallery</h2>
+            <MediaCarousel
               :images="pageData.images || []"
               :youtube-videos="pageData.youtubeVideos || []"
-              :item-id="pageData.item"
+              :item-id="pageData.id"
             />
-          </div>
+            <p v-if="!pageData.images?.length && !pageData.youtubeVideos?.length" class="empty-state">
+              Sin media disponible.
+            </p>
+          </section>
+
+          <!-- Features -->
+          <section v-if="pageData.features?.length" class="content-block">
+            <h2 class="block-title">Features</h2>
+            <ul class="features-list">
+              <li v-for="feat in pageData.features" :key="feat">
+                <span class="feat-check">✓</span>{{ feat }}
+              </li>
+            </ul>
+          </section>
 
           <!-- Changelog -->
-          <div v-if="pageData.changelog" class="changelog-section">
-            <h2>Historial de Cambios</h2>
-            <div class="changelog-list">
-              <div v-for="version in pageData.changelog" :key="version.version" class="changelog-item">
+          <section v-if="pageData.changelog?.length" class="content-block">
+            <h2 class="block-title">Change Log</h2>
+            <div class="changelog">
+              <div v-for="v in pageData.changelog" :key="v.version" class="changelog-item">
                 <div class="changelog-header">
-                  <span class="version-number">v{{ version.version }}</span>
-                  <span class="version-date">{{ formatDate(version.date) }}</span>
+                  <span class="version-tag">v{{ v.version }}</span>
+                  <span class="version-date">{{ formatDate(v.date) }}</span>
                 </div>
                 <ul class="changelog-changes">
-                  <li v-for="change in version.changes" :key="change">
-                    {{ change }}
-                  </li>
+                  <li v-for="c in v.changes" :key="c">{{ c }}</li>
                 </ul>
               </div>
             </div>
-          </div>
+          </section>
         </div>
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-          <div class="download-card">
-            <h3>Descargar</h3>
-            <div class="download-info">
-              <div class="info-item">
-                <strong>Versión:</strong> {{ pageData.downloadInfo.version }}
+        <!-- Sidebar derecho -->
+        <aside class="col-sidebar">
+          <div class="sidebar-card">
+            <h3 class="sidebar-card-title">Download</h3>
+
+            <template v-if="hasDownloadInfo">
+              <div class="download-meta">
+                <div class="meta-row">
+                  <span class="meta-label">Version</span>
+                  <span class="meta-value">{{ pageData.downloadInfo.version }}</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Size</span>
+                  <span class="meta-value">{{ pageData.downloadInfo.size }}</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Requirements</span>
+                  <span class="meta-value">{{ pageData.downloadInfo.requirements }}</span>
+                </div>
               </div>
-              <div class="info-item">
-                <strong>Tamaño:</strong> {{ pageData.downloadInfo.size }}
-              </div>
-              <div class="info-item">
-                <strong>Requisitos:</strong> {{ pageData.downloadInfo.requirements }}
-              </div>
-            </div>
-            <button class="download-button-main">
-              Descargar Ahora
-            </button>
+            </template>
+
+            <a
+              v-if="pageData.downloadUrl && pageData.downloadUrl !== 'TO-DO'"
+              :href="pageData.downloadUrl"
+              target="_blank"
+              rel="noopener"
+              class="btn-download"
+            >
+              Download Now
+            </a>
+            <p v-else class="download-pending">Coming Soon</p>
           </div>
 
-          <div class="installation-card">
-            <h3>Instalación</h3>
-            <ol class="installation-steps">
-              <li v-for="step in pageData.downloadInfo.installation" :key="step">
-                {{ step }}
-              </li>
+          <div v-if="hasDownloadInfo && pageData.downloadInfo.installation?.length" class="sidebar-card">
+            <h3 class="sidebar-card-title">Installation</h3>
+            <ol class="install-steps">
+              <li v-for="step in pageData.downloadInfo.installation" :key="step">{{ step }}</li>
             </ol>
           </div>
-        </div>
+        </aside>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <style scoped>
 .individual-page {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2.5rem 6rem;
 }
 
+/* ─── 404 ─── */
+.not-found {
+  text-align: center;
+  padding: 8rem 0;
+  color: var(--muted);
+}
+.not-found h1 {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--border);
+  line-height: 1;
+}
+
+/* ─── BREADCRUMB ─── */
 .breadcrumb {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
-
-.breadcrumb-item {
-  background: none;
-  border: none;
-  color: #666;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
+.breadcrumb-back {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 32px;
+  height: 32px;
   border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.breadcrumb-item:hover:not(.active) {
-  background: #f0f0f0;
-  color: #3498db;
-}
-
-.breadcrumb-item.active {
-  color: #2c3e50;
-  font-weight: 500;
-  cursor: default;
-}
-
-.breadcrumb-separator {
-  margin: 0 0.5rem;
-  color: #999;
-}
-
-.back-button {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #495057;
-  transition: all 0.2s ease;
-  margin-bottom: 2rem;
-}
-
-.back-button:hover {
-  background: #e9ecef;
-  border-color: #adb5bd;
-}
-
-.page-content {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 2rem;
-}
-
-.page-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.page-meta {
+  font-size: 1rem;
+  transition: background 0.2s;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.breadcrumb-back:hover { background: var(--surface2); }
+.breadcrumb-sep { color: var(--border); }
+.breadcrumb-cat { color: var(--muted); }
+.breadcrumb-current { color: var(--accent); }
+
+/* ─── HERO ─── */
+.hero { margin-bottom: 3rem; }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+.hero-desc {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 65ch;
+  line-height: 1.7;
 }
 
-.category-tag, .subcategory-tag {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
+/* ─── LAYOUT ─── */
 .content-grid {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 280px;
   gap: 2rem;
-  padding: 2rem;
+  align-items: start;
 }
 
-.main-content {
+.col-main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-.description-section h2,
-.features-section h2,
-.media-section h2,
-.changelog-section h2 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: 600;
+/* ─── CONTENT BLOCKS ─── */
+.content-block {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.75rem;
+  background: var(--surface);
 }
 
-.description-section p {
-  color: #666;
-  line-height: 1.6;
-  font-size: 1.1rem;
+.block-title {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
 }
 
+.empty-state {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* ─── FEATURES ─── */
 .features-list {
   list-style: none;
-  padding: 0;
-}
-
-.features-list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #f0f0f0;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.features-list li:before {
-  content: "✓";
-  color: #27ae60;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-}
-
-.changelog-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.6rem;
+}
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.feat-check {
+  color: var(--accent);
+  font-size: 0.75rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
 }
 
+/* ─── CHANGELOG ─── */
+.changelog {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 .changelog-item {
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 1rem;
+  border-left: 2px solid var(--border);
+  padding-left: 1.25rem;
+}
+.changelog-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.version-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+.version-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.changelog-changes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.changelog-changes li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  position: relative;
+  padding-left: 1rem;
+}
+.changelog-changes li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--border);
 }
 
-.changelog-header {
+/* ─── SIDEBAR ─── */
+.col-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 84px;
+}
+
+.sidebar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+.sidebar-card-title {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.download-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+.meta-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+.meta-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.meta-value {
+  font-size: 0.78rem;
+  color: var(--text);
+  text-align: right;
 }
 
-.version-number {
-  font-weight: 600;
-  color: #3498db;
+.btn-download {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.btn-download:hover { background: #fff; }
+
+.download-pending {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
 }
 
-.version-date {
-  color: #666;
-  font-size: 0.9rem;
+.btn-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
+.btn-back:hover { background: var(--surface2); }
 
-.changelog-changes {
-  list-style: disc;
-  padding-left: 1.5rem;
-}
-
-.changelog-changes li {
-  margin-bottom: 0.25rem;
-  color: #666;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.download-card, .installation-card {
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  border: 1px solid #e9ecef;
-}
-
-.download-card h3, .installation-card h3 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-
-.download-info {
+.install-steps {
+  padding-left: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+}
+.install-steps li {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
-.info-item {
-  font-size: 0.9rem;
-  color: #666;
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .col-sidebar { position: static; }
 }
-
-.download-button-main {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-}
-
-.download-button-main:hover {
-  background: linear-gradient(135deg, #2980b9, #1f5f8b);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-}
-
-.installation-steps {
-  padding-left: 1.2rem;
-}
-
-.installation-steps li {
-  margin-bottom: 0.5rem;
-  color: #666;
-  line-height: 1.4;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .individual-page {
-    padding: 1rem;
-  }
-  
-  .content-grid {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-  
-  .page-title {
-    font-size: 2rem;
-  }
-  
-  .page-header {
-    padding: 1.5rem;
-  }
-  
-  .breadcrumb {
-    flex-wrap: wrap;
-  }
+@media (max-width: 600px) {
+  .individual-page { padding: 2rem 1.25rem 4rem; }
+  .hero-title { font-size: 1.8rem; }
 }
 </style>

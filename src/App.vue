@@ -1,321 +1,209 @@
 <script>
-  export default {
-    data() {
-      return {
-        menu: [
-          {
-            title: 'GAMES',
-            icon: 'fa fa-user',
-            child: [
-              {
-                title: 'PC',
-                icon: 'fa fa-user',
-                child: [
-                  {
-                    href: '/games/pc/bizarreskies',
-                    title: 'Bizarre Skies',
-                    icon: 'fa fa-user'
-                  },
-                  {
-                    href: '/games/pc/contra2d',
-                    title: 'Contra 2D',
-                    icon: 'fa fa-user'
-                  },
-                  {
-                    href: '/games/pc/corruption',
-                    title: 'Corruption',
-                    icon: 'fa fa-user'
-                  },
-                  {
-                    href: '/games/pc/flamboyant',
-                    title: 'Flamboyant',
-                    icon: 'fa fa-user'
-                  },
-                  {
-                    href: '/games/pc/kh-tears',
-                    title: 'Kingdom Hearts Tears',
-                    icon: 'fa fa-user'
-                  },                  
-                  {
-                    href: '/games/pc/sanic',
-                    title: 'Sanic: The Zombie Game',
-                    icon: 'fa fa-user'
-                  }
-                ]
-              },
-              {
-                title: 'GAME BOY ADVANCE',
-                icon: 'fa fa-user',
-                child: [
-                  {
-                    href: '/games/gba/magicalpopn',
-                    title: "Magical Pop'n",
-                    icon: 'fa fa-user'
-                  }
-                ]
-              },
-              {
-                title: 'NINTENDO DS',
-                icon: 'fa fa-user',
-                child: [
-                  {
-                    href: '/games/nds/avalancheds',
-                    title: 'Avalanche DS',
-                    icon: 'fa fa-user'
-                  },
-                  {
-                    href: '/games/nds/chesscount',
-                    title: 'ChessCount',
-                    icon: 'fa fa-user'
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            title: 'TRANSLATIONS',
-            icon: 'fa fa-chart-area',
-            child: [
-              {
-                href: '/translations/bbsfm',
-                title: 'Birth By Sleep Final Mix',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/translations/drakengard3',
-                title: 'Drakengard 3',
-                icon: 'fa fa-user'
-              }
-            ]
-          },
-          {
-            title: 'MODS',
-            icon: 'fa fa-chart-area',
-            child: [
-              {
-                href: '/mods/bbsfmcameraemu',
-                title: 'BBSFM: Camera Stick (Emu)',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/mods/crisiscorereunionogdub',
-                title: 'Crisis Core Reunion: Og Dub',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/mods/kh2sephirothas',
-                title: "KH2: Replayable Sephiroth",
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/mods/kh2spanishmix',
-                title: 'KH2: Spanish Mix',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/mods/kh2xemnasdeletedquotes',
-                title: 'KH2: Xemnas Deleted Quotes',
-                icon: 'fa fa-user'
-              }
-            ]
-          },
-          {
-            title: 'COLLABORATIONS',
-            icon: 'fa fa-chart-area',
-            child: [
-              {
-                href: '/collaborations/brainrotroyale',
-                title: 'Brainrot Royale (Beta Testing)',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/collaborations/cluelesscrew',
-                title: 'Clueless Crew (Beta Testing)',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/collaborations/kh2rando',
-                title: 'KH2: Randomizer (Bug Fixing)',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/collaborations/remorse',
-                title: 'Remorse: The List (Beta Testing)',
-                icon: 'fa fa-user'
-              }              
-            ]
-          },
-          {
-            title: 'TOOLS',
-            icon: 'fa fa-chart-area',
-            child: [
-              {
-                href: '/tools/hcareplace',
-                title: 'HCAReplace',
-                icon: 'fa fa-user'
-              },
-              {
-                href: '/tools/realmsengine',
-                title: 'Realms Engine',
-                icon: 'fa fa-user'
-              }              
-            ]
-          },
-          {
-            title: 'ABOUT ME',
-            href: '/aboutme',
-            icon: 'fa fa-chart-area'
-          },
-          {
-            title: 'CONTACT',
-            href: '/contact',
-            icon: 'fa fa-chart-area'
-          }
-        ]
-      }
-    }
+export default {
+  data() {
+    return { menuOpen: false }
   }
+}
 </script>
 
 <template>
   <div id="app">
     <header class="app-header">
       <nav class="navbar">
-        <div class="nav-brand">
-          <router-link :to="'/'"><h1>Svenchu</h1></router-link>
-        </div>
-        <div class="nav-links">
-          <router-link to="/games">Games</router-link>
-          <router-link to="/collaborations">Collaborations</router-link>
-          <router-link to="/translations">Translations</router-link>
-          <router-link to="/mods">Mods</router-link>
-          <router-link to="/tools">Tools</router-link>
-          <router-link to="/about">About</router-link>
-        </div>
+        <router-link to="/" class="nav-logo">SVEN<span>CHU</span></router-link>
+        <ul class="nav-links">
+          <li><router-link to="/games">Games</router-link></li>
+          <li><router-link to="/translations">Translations</router-link></li>
+          <li><router-link to="/mods">Mods</router-link></li>
+          <li><router-link to="/collaborations">Collaborations</router-link></li>
+          <li><router-link to="/tools">Tools</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
+          <li><router-link to="/contact">Contact</router-link></li>
+        </ul>
       </nav>
     </header>
-
-    <sidebar-menu :menu="menu" />
 
     <main class="main-content">
       <router-view />
     </main>
 
     <footer class="app-footer">
-      <p>&copy; 2025 - Svenchu</p>
+      <p>&copy; 2026 — Svenchu</p>
     </footer>
   </div>
 </template>
 
 <style>
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ─── TOKENS ─── */
+:root {
+  --bg:       #0a0a0f;
+  --surface:  #111118;
+  --surface2: #16161f;
+  --border:   rgba(255,255,255,0.07);
+  --accent:   #ffae00;
+  --text:     #f0f0f8;
+  --muted:    rgba(240,240,248,0.45);
+  --font-display: 'Orbitron', monospace;
+  --font-body:    'DM Sans', sans-serif;
 }
 
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-body);
+  font-size: 15px;
   line-height: 1.6;
-  color: #333;
-  background: linear-gradient(135deg, #eaba66 0%, #eaba663d 100%);
+  color: var(--text);
+  background: var(--bg);
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Cuadrícula de fondo sutil */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
+/* ─── NAVBAR ─── */
 .app-header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
+  background: rgba(10,10,15,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
 }
 
 .navbar {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0 2.5rem;
+  height: 64px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.nav-brand h1 {
-  color: #2c3e50;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.nav-links {
-  display: flex;
+  justify-content: space-between;
   gap: 2rem;
 }
 
-.nav-links a {
-  color: #2c3e50;
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--text);
   text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0.15rem;
+}
+
+.nav-links a {
+  display: block;
+  padding: 0.4rem 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.75rem;
   font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-links a.router-link-active { color: var(--accent); }
+
+/* Hamburger — oculto en desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
 }
 
-.nav-links a:hover {
-  background: rgba(52, 152, 219, 0.1);
-  color: #3498db;
-  transform: translateY(-2px);
+/* Menú móvil */
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--border);
+  gap: 0.25rem;
 }
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  padding: 0.6rem 0.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+.nav-mobile a:hover, .nav-mobile a.router-link-active { color: var(--accent); }
 
+/* ─── CONTENIDO ─── */
 .main-content {
   flex: 1;
-  background: rgba(255, 255, 255, 0.9);
-  margin: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
 }
 
+/* ─── FOOTER ─── */
 .app-footer {
-  background: rgba(44, 62, 80, 0.9);
-  color: white;
+  position: relative;
+  z-index: 1;
   text-align: center;
-  padding: 1.5rem;
-  margin-top: 2rem;
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--border);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  
-  .main-content {
-    margin: 1rem;
-    border-radius: 15px;
-  }
-  
-  .nav-brand h1 {
-    font-size: 1.5rem;
-  }
+@media (max-width: 600px) {
+  .navbar { padding: 0 1.25rem; }
 }
 </style>

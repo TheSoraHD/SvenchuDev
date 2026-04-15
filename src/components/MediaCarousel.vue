@@ -1,195 +1,94 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
-// Props
 const props = defineProps({
-  images: {
-    type: Array,
-    default: () => []
-  },
-  youtubeVideos: {
-    type: Array,
-    default: () => []
-  },
-  itemId: {
-    type: String,
-    required: true
-  }
+  images:        { type: Array, default: () => [] },
+  youtubeVideos: { type: Array, default: () => [] },
+  itemId:        { type: String, required: true }
 })
 
-// Estado reactivo
 const currentIndex = ref(0)
+const totalItems   = computed(() => props.images.length + props.youtubeVideos.length)
+const hasMedia     = computed(() => totalItems.value > 0)
 
-// Computed properties
-const totalItems = computed(() => props.images.length + props.youtubeVideos.length)
-const hasMedia = computed(() => totalItems.value > 0)
+const next = () => { if (currentIndex.value < totalItems.value - 1) currentIndex.value++ }
+const prev = () => { if (currentIndex.value > 0) currentIndex.value-- }
+const goTo = (i) => { currentIndex.value = i }
 
-// Métodos
-const nextItem = () => {
-  if (currentIndex.value < totalItems.value - 1) {
-    currentIndex.value++
-  }
+const handleImageError = (e) => {
+  if (!e.target.src.includes('placeholder')) e.target.src = '/images/placeholder.jpg'
 }
 
-const prevItem = () => {
-  if (currentIndex.value > 0) {
-    currentIndex.value--
-  }
+const handleKeydown = (e) => {
+  if (e.key === 'ArrowLeft') prev()
+  else if (e.key === 'ArrowRight') next()
 }
 
-const goToItem = (index) => {
-  currentIndex.value = index
-}
-
-const handleImageError = (event) => {
-  const placeholder = '/images/placeholder.jpg' // Imagen de placeholder
-  if (event.target.src.includes(placeholder)) return // Evita bucle infinito
-  event.target.src = placeholder
-  console.warn(`Error cargando imagen: ${event.target.src}`)
-}
-
-// Auto-play opcional (comentado por defecto)
-let autoplayInterval = null
-
-const startAutoplay = () => {
-  if (totalItems.value > 1) {
-    autoplayInterval = setInterval(() => {
-      if (currentIndex.value === totalItems.value - 1) {
-        currentIndex.value = 0
-      } else {
-        nextItem()
-      }
-    }, 5000) // Cambia cada 5 segundos
-  }
-}
-
-const stopAutoplay = () => {
-  if (autoplayInterval) {
-    clearInterval(autoplayInterval)
-    autoplayInterval = null
-  }
-}
-
-// Lifecycle hooks
-onMounted(() => {
-  // Descomenta la siguiente línea si quieres autoplay
-  // startAutoplay()
-})
-
-onUnmounted(() => {
-  stopAutoplay()
-})
-
-// Control de teclado
-const handleKeydown = (event) => {
-  if (event.key === 'ArrowLeft') {
-    prevItem()
-  } else if (event.key === 'ArrowRight') {
-    nextItem()
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('keydown', handleKeydown)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('keydown', handleKeydown)
-})
+onMounted(()  => document.addEventListener('keydown', handleKeydown))
+onUnmounted(() => document.removeEventListener('keydown', handleKeydown))
 </script>
 
 <template>
-  <div v-if="hasMedia" class="media-carousel">
-    <div class="carousel-container">
-      <div class="carousel-wrapper" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-        <!-- Imágenes -->
-        <div 
-          v-for="(image, index) in images" 
-          :key="`img-${index}`"
-          class="carousel-item"
-        >
-          <img 
-            :src="image" 
-            :alt="`${itemId} imagen ${index + 1}`"
-            class="carousel-image"
-            @error="handleImageError"
-          />
+  <div v-if="hasMedia" class="carousel">
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+        <div v-for="(img, i) in images" :key="`img-${i}`" class="carousel-slide">
+          <img :src="img" :alt="`${itemId} imagen ${i + 1}`" class="slide-img" @error="handleImageError" />
         </div>
-        
-        <!-- Videos de YouTube -->
-        <div 
-          v-for="(videoId, index) in youtubeVideos" 
-          :key="`video-${index}`"
-          class="carousel-item"
-        >
-          <div class="video-container">
-            <iframe
-              :src="`https://www.youtube.com/embed/${videoId}`"
-              :title="`${itemId} video ${index + 1}`"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              class="carousel-video"
-            ></iframe>
-          </div>
+        <div v-for="(vid, i) in youtubeVideos" :key="`vid-${i}`" class="carousel-slide">
+          <iframe
+            :src="`https://www.youtube.com/embed/${vid}`"
+            :title="`${itemId} video ${i + 1}`"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="slide-video"
+          ></iframe>
         </div>
       </div>
-      
-      <!-- Controles de navegación -->
+
+      <!-- Controles -->
       <div v-if="totalItems > 1" class="carousel-controls">
-        <button 
-          @click="prevItem" 
-          class="carousel-button carousel-button-prev"
-          :disabled="currentIndex === 0"
-        >
-          &#8249;
-        </button>
-        <button 
-          @click="nextItem" 
-          class="carousel-button carousel-button-next"
-          :disabled="currentIndex === totalItems - 1"
-        >
-          &#8250;
-        </button>
+        <button class="ctrl-btn" :disabled="currentIndex === 0" @click="prev">&#8249;</button>
+        <button class="ctrl-btn" :disabled="currentIndex === totalItems - 1" @click="next">&#8250;</button>
       </div>
-      
-      <!-- Indicadores -->
-      <div v-if="totalItems > 1" class="carousel-indicators">
-        <button
-          v-for="(_, index) in totalItems"
-          :key="index"
-          @click="goToItem(index)"
-          :class="['indicator', { active: currentIndex === index }]"
-        ></button>
-      </div>
+    </div>
+
+    <!-- Indicadores -->
+    <div v-if="totalItems > 1" class="carousel-dots">
+      <button
+        v-for="(_, i) in totalItems"
+        :key="i"
+        class="dot"
+        :class="{ active: currentIndex === i }"
+        @click="goTo(i)"
+      ></button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.media-carousel {
-  margin: 1rem 0;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f8f9fa;
+.carousel {
+  width: 100%;
 }
 
-.carousel-container {
+.carousel-track-wrap {
   position: relative;
   width: 100%;
-  height: 250px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 2px;
+  background: var(--surface2, #16161f);
 }
 
-.carousel-wrapper {
+.carousel-track {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.carousel-item {
+.carousel-slide {
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
@@ -198,105 +97,71 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-.carousel-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 4px;
-}
-
-.video-container {
+.slide-img {
   width: 100%;
   height: 100%;
-  position: relative;
+  object-fit: cover;
+  display: block;
 }
 
-.carousel-video {
+.slide-video {
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border: none;
+  display: block;
 }
 
+/* Controles */
 .carousel-controls {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
+  inset: 0;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
-  transform: translateY(-50%);
+  padding: 0 0.75rem;
   pointer-events: none;
 }
 
-.carousel-button {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.ctrl-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+  background: rgba(10,10,15,0.75);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text, #f0f0f8);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
   pointer-events: all;
+  transition: background 0.2s;
 }
+.ctrl-btn:hover:not(:disabled) { background: rgba(0,229,255,0.15); color: var(--accent, #00e5ff); }
+.ctrl-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
-.carousel-button:hover:not(:disabled) {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-.carousel-button:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.carousel-indicators {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+/* Dots */
+.carousel-dots {
   display: flex;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.75rem;
 }
 
-.indicator {
-  width: 12px;
-  height: 12px;
+.dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255,255,255,0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
 }
-
-.indicator.active {
-  background: rgba(255, 255, 255, 0.9);
-  transform: scale(1.2);
+.dot.active {
+  background: var(--accent, #00e5ff);
+  transform: scale(1.3);
 }
-
-.indicator:hover {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .carousel-container {
-    height: 200px;
-  }
-  
-  .carousel-button {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
-  
-  .carousel-controls {
-    padding: 0 0.5rem;
-  }
-}
+.dot:hover { background: rgba(255,255,255,0.5); }
 </style>
