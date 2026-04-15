@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Portfolio     from '@/components/Portfolio.vue'
+import Portfolio      from '@/components/Portfolio.vue'
 import IndividualPage from '@/components/IndividualPage.vue'
+import About          from '@/components/About.vue'
+import Contact        from '@/components/Contact.vue'
 
 const routes = [
   // Home
@@ -9,9 +11,20 @@ const routes = [
     name: 'Home',
     component: Portfolio
   },
+  // Páginas estáticas
+  {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
+  },
   // Listados de sección: /games, /mods, /translations, etc.
   {
-    path: '/:section(games|translations|mods|collaborations|tools|about)',
+    path: '/:section(games|translations|mods|collaborations|tools)',
     name: 'Section',
     component: Portfolio,
     props: true
