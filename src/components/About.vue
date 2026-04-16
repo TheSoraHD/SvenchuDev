@@ -1,22 +1,19 @@
 <script setup>
 // About.vue
-// Sustituye /public/images/about/photo.jpg por tu foto real.
-// Los datos de texto están inline aquí — edítalos directamente.
+// Replace /public/images/about/photo.jpg with your actual photo.
+// Text data is inline here — edit it directly.
 </script>
 
 <template>
   <div class="about-page">
-
-    <!-- ─── HERO ─── -->
     <section class="about-hero">
       <div class="hero-photo-wrap">
         <img
           src="/images/about/photo.jpg"
-          alt="Foto de Svenchu"
+          alt="Svenchu's Photo"
           class="hero-photo"
-          @error="(e) => e.target.style.display = 'none'"
+          @error="(e) => (e.target.style.display = 'none')"
         />
-        <!-- Placeholder si no hay foto -->
         <div class="hero-photo-fallback" aria-hidden="true">
           <span>S</span>
         </div>
@@ -25,21 +22,18 @@
       <div class="hero-text">
         <span class="eyebrow">About me</span>
         <h1 class="hero-name">SVENCHU</h1>
-        <p class="hero-tagline">
-          Game Developer · Modder · Translator
-        </p>
+        <p class="hero-tagline">Game Developer · Modder · Translator</p>
         <p class="hero-bio">
-          Llevo años desarrollando videojuegos, mods y traducciones por pura pasión.
-          Me especializo en Unreal Engine 5 y Unity, con experiencia sólida en el
-          sector IT y un ojo puesto siempre en la narrativa y el diseño de sistemas.
-          Cuando no estoy programando, lo más probable es que esté jugando al ajedrez.
+          I have spent years developing video games, mods, and translations out of pure passion. I
+          specialize in Unreal Engine 5 and Unity, with solid experience in the IT sector and a
+          constant focus on narrative and systems design. When I'm not programming, I'm most likely
+          playing chess.
         </p>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- ─── SKILLS ─── -->
     <section class="about-section">
       <h2 class="section-title">Skills</h2>
       <div class="skills-grid">
@@ -55,9 +49,8 @@
 
     <div class="divider"></div>
 
-    <!-- ─── TIMELINE ─── -->
     <section class="about-section">
-      <h2 class="section-title">Trayectoria</h2>
+      <h2 class="section-title">Timeline</h2>
       <ol class="timeline">
         <li v-for="(event, i) in timeline" :key="i" class="timeline-item">
           <span class="timeline-year">{{ event.year }}</span>
@@ -71,14 +64,12 @@
 
     <div class="divider"></div>
 
-    <!-- ─── STATS ─── -->
     <section class="about-section stats-row">
       <div v-for="stat in stats" :key="stat.label" class="stat-card">
         <span class="stat-value">{{ stat.value }}</span>
         <span class="stat-label">{{ stat.label }}</span>
       </div>
     </section>
-
   </div>
 </template>
 
@@ -87,40 +78,64 @@ export default {
   data() {
     return {
       skills: [
-        { icon: '🎮', label: 'Game Dev',      desc: 'Unreal Engine 5 · Unity · C++ · C#' },
-        { icon: '🌍', label: 'Traducción',     desc: 'Localización JP→ES · Edición de ROM' },
-        { icon: '🔧', label: 'Modding',        desc: 'OpenKH · Herramientas propias' },
-        { icon: '💻', label: 'IT',             desc: 'Experiencia profesional en el sector' },
-        { icon: '🎲', label: '3D',             desc: '3DS Max · Aprendiendo Blender' },
-        { icon: '♟',  label: 'Ajedrez',        desc: 'Jugador activo online y OTB' },
+        { icon: '🎮', label: 'Game Dev', desc: 'Unreal Engine 5 · Unity · C++ · C#' },
+        { icon: '🌍', label: 'Translation', desc: 'JP→EN/ES Localization · ROM Editing' },
+        { icon: '🔧', label: 'Modding', desc: 'OpenKH · Custom Tools' },
+        { icon: '💻', label: 'IT', desc: 'Professional experience in the sector' },
+        { icon: '🎲', label: '3D', desc: '3DS Max · Learning Blender' },
+        { icon: '♟', label: 'Chess', desc: 'Active Online and OTB player' },
       ],
       timeline: [
-        { year: '2021', title: 'Z-Jam 2021 — Corruption',         desc: 'Primer juego publicado: terror estilo Slender en Unreal Engine.' },
-        { year: '2022', title: 'KH2 Spanish Mix',                  desc: 'Doblaje en castellano para Kingdom Hearts 2 Final Mix.' },
-        { year: '2023', title: 'Birth By Sleep Final Mix ES',      desc: 'Traducción completa al español de BBSFM para PSP.' },
-        { year: '2024', title: 'Crisis Core Reunion: OG Dub',      desc: 'Restauración del doblaje original de PSP en Reunion.' },
-        { year: '2025', title: 'HCAReplace + Realms Engine',       desc: 'Desarrollo de herramientas propias para la comunidad.' },
-        { year: '2026', title: 'Kingdom Hearts Tears',             desc: 'Proyecto fan en Unreal Engine 5 — en desarrollo activo.' },
+        {
+          year: '2021',
+          title: 'Z-Jam 2021 — Corruption',
+          desc: 'First published game: Slender-style horror in Unreal Engine.',
+        },
+        {
+          year: '2022',
+          title: 'KH2 Spanish Mix',
+          desc: 'Castilian Spanish dubbing for Kingdom Hearts 2 Final Mix.',
+        },
+        {
+          year: '2023',
+          title: 'Birth By Sleep Final Mix ES',
+          desc: 'Full Spanish translation of BBSFM for PSP.',
+        },
+        {
+          year: '2024',
+          title: 'Crisis Core Reunion: OG Dub',
+          desc: 'Restoration of the original PSP dub in Reunion.',
+        },
+        {
+          year: '2025',
+          title: 'HCAReplace + Realms Engine',
+          desc: 'Development of custom tools for the community.',
+        },
+        {
+          year: '2026',
+          title: 'Kingdom Hearts Tears',
+          desc: 'Fan project in Unreal Engine 5 — actively in development.',
+        },
       ],
       stats: [
-        { value: '10+', label: 'Proyectos publicados' },
-        { value: '5+',  label: 'Años de experiencia' },
-        { value: '2',   label: 'Traducciones completas' },
-        { value: '1',   label: 'Motor propio' },
-      ]
+        { value: '10+', label: 'Published Projects' },
+        { value: '5+', label: 'Years of Experience' },
+        { value: '2', label: 'Full Translations' },
+        { value: '1', label: 'Custom Engine' },
+      ],
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
+/* Styles remain unchanged as they contain no language-specific text */
 .about-page {
   max-width: 1100px;
   margin: 0 auto;
   padding: 4rem 2.5rem 6rem;
 }
 
-/* ─── HERO ─── */
 .about-hero {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -146,7 +161,6 @@ export default {
   display: block;
 }
 
-/* Si la foto falla, se oculta y se muestra el fallback */
 .hero-photo-fallback {
   position: absolute;
   inset: 0;
@@ -160,8 +174,10 @@ export default {
   color: var(--accent);
   z-index: -1;
 }
-/* Cuando la imagen carga bien, el fallback queda oculto bajo ella */
-.hero-photo:not([style*="display: none"]) ~ .hero-photo-fallback { z-index: -1; }
+
+.hero-photo:not([style*='display: none']) ~ .hero-photo-fallback {
+  z-index: -1;
+}
 
 .eyebrow {
   display: inline-block;
@@ -182,7 +198,9 @@ export default {
   color: var(--text);
   margin-bottom: 0.5rem;
 }
-.dim { color: rgba(240,240,248,0.15); }
+.dim {
+  color: rgba(240, 240, 248, 0.15);
+}
 
 .hero-tagline {
   font-size: 0.78rem;
@@ -200,7 +218,6 @@ export default {
   max-width: 55ch;
 }
 
-/* ─── DIVIDER ─── */
 .divider {
   width: 100%;
   height: 1px;
@@ -208,8 +225,9 @@ export default {
   margin: 3rem 0;
 }
 
-/* ─── SECCIONES ─── */
-.about-section { margin-bottom: 0; }
+.about-section {
+  margin-bottom: 0;
+}
 
 .section-title {
   font-size: 0.68rem;
@@ -220,7 +238,6 @@ export default {
   margin-bottom: 2rem;
 }
 
-/* ─── SKILLS ─── */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -237,7 +254,9 @@ export default {
   border-right: 1px solid var(--border);
   transition: background 0.2s;
 }
-.skill-card:hover { background: var(--surface2); }
+.skill-card:hover {
+  background: var(--surface2);
+}
 
 .skill-icon {
   font-size: 1.3rem;
@@ -257,7 +276,6 @@ export default {
   color: var(--muted);
 }
 
-/* ─── TIMELINE ─── */
 .timeline {
   list-style: none;
   display: flex;
@@ -276,9 +294,10 @@ export default {
   position: relative;
   border-bottom: 1px solid var(--border);
 }
-.timeline-item:last-child { border-bottom: none; }
+.timeline-item:last-child {
+  border-bottom: none;
+}
 
-/* Punto en la línea */
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -313,7 +332,6 @@ export default {
   line-height: 1.6;
 }
 
-/* ─── STATS ─── */
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -345,21 +363,33 @@ export default {
   color: var(--muted);
 }
 
-/* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .about-page { padding: 2.5rem 1.25rem 4rem; }
+  .about-page {
+    padding: 2.5rem 1.25rem 4rem;
+  }
   .about-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
     justify-items: center;
     text-align: center;
   }
-  .hero-bio { max-width: none; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .timeline { margin-left: 1rem; }
-  .timeline-item { grid-template-columns: 55px 1fr; gap: 1rem; }
+  .hero-bio {
+    max-width: none;
+  }
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .timeline {
+    margin-left: 1rem;
+  }
+  .timeline-item {
+    grid-template-columns: 55px 1fr;
+    gap: 1rem;
+  }
 }
 @media (max-width: 480px) {
-  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>

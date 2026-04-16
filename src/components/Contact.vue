@@ -1,34 +1,27 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="contact-page">
-
     <header class="page-header">
-
       <h1 class="page-title">CONTACT</h1>
       <div class="section-divider"></div>
     </header>
 
     <div class="contact-grid">
-
-      <!-- ─── COLUMNA PRINCIPAL ─── -->
       <div class="col-main">
         <p class="contact-intro">
-          ¿Tienes una idea, una colaboración o simplemente quieres decir hola?
-          Escríbeme directamente al correo. Suelo responder en menos de 48&nbsp;horas.
+          Do you have an idea, a collaboration, or just want to say hi? Write to me directly via
+          email. I usually respond in less than 48 hours.
         </p>
 
-        <!-- Email principal -->
         <a href="mailto:contact@about.me" class="email-block">
           <span class="email-label">Email</span>
           <span class="email-address">contact@about.me</span>
           <span class="email-arrow">→</span>
         </a>
 
-        <!-- Redes sociales -->
         <div class="socials">
-          <h2 class="socials-title">También puedes encontrarme en</h2>
+          <h2 class="socials-title">You can also find me on</h2>
           <div class="socials-grid">
             <a
               v-for="social in socials"
@@ -49,10 +42,9 @@
         </div>
       </div>
 
-      <!-- ─── SIDEBAR ─── -->
       <aside class="col-sidebar">
         <div class="info-card">
-          <h3 class="info-card-title">Qué tipo de proyectos</h3>
+          <h3 class="info-card-title">Types of Projects</h3>
           <ul class="info-list">
             <li v-for="item in projectTypes" :key="item">
               <span class="list-dot"></span>{{ item }}
@@ -61,8 +53,10 @@
         </div>
 
         <div class="info-card">
-          <h3 class="info-card-title">Tiempo de respuesta</h3>
-          <p class="info-text">Generalmente respondo en <strong>24–48 horas</strong> en días laborables.</p>
+          <h3 class="info-card-title">Response Time</h3>
+          <p class="info-text">
+            I generally respond within <strong>24–48 hours</strong> on business days.
+          </p>
         </div>
       </aside>
     </div>
@@ -74,34 +68,36 @@ export default {
   data() {
     return {
       socials: [
-        // Rellena los href con tus URLs reales. Elimina las que no uses.
-        { label: 'GitHub',   icon: '🐙', handle: '@svenchu',  url: 'https://github.com/' },
-        { label: 'YouTube',  icon: '▶',  handle: '@svenchu',  url: 'https://youtube.com/' },
-        { label: 'Twitter/X',icon: '✦',  handle: '@svenchu',  url: 'https://x.com/' },
-        { label: 'Discord',  icon: '💬', handle: 'svenchu',   url: 'https://discord.com/' },
+        // Fill the hrefs with your real URLs. Remove the ones you don't use.
+        { label: 'GitHub', icon: '🐙', handle: '@svenchu', url: 'https://github.com/' },
+        { label: 'YouTube', icon: '▶', handle: '@svenchu', url: 'https://youtube.com/' },
+        { label: 'Twitter/X', icon: '✦', handle: '@svenchu', url: 'https://x.com/' },
+        { label: 'Discord', icon: '💬', handle: 'svenchu', url: 'https://discord.com/' },
       ],
       projectTypes: [
-        'Colaboraciones en juegos indie',
-        'Beta testing y feedback',
-        'Consultoría de modding',
-        'Localización y traducción',
-        'Proyectos fan de videojuegos',
-        'Desarrollo de herramientas',
-      ]
+        'Indie game collaborations',
+        'Beta testing and feedback',
+        'Modding consultancy',
+        'Localization and translation',
+        'Video game fan projects',
+        'Tool development',
+      ],
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
+/* Styles remain unchanged as they contain no language-specific text */
 .contact-page {
   max-width: 1100px;
   margin: 0 auto;
   padding: 4rem 2.5rem 6rem;
 }
 
-/* ─── HEADER ─── */
-.page-header { margin-bottom: 4rem; }
+.page-header {
+  margin-bottom: 4rem;
+}
 
 .eyebrow {
   display: inline-block;
@@ -121,7 +117,6 @@ export default {
   line-height: 1;
   color: var(--text);
 }
-.dim { color: rgba(240,240,248,0.15); }
 
 .section-divider {
   width: 100%;
@@ -131,7 +126,6 @@ export default {
   opacity: 0.4;
 }
 
-/* ─── GRID ─── */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 260px;
@@ -139,7 +133,6 @@ export default {
   align-items: start;
 }
 
-/* ─── COLUMNA PRINCIPAL ─── */
 .contact-intro {
   color: var(--muted);
   font-size: 1rem;
@@ -148,7 +141,6 @@ export default {
   margin-bottom: 2.5rem;
 }
 
-/* Bloque de email */
 .email-block {
   display: flex;
   align-items: center;
@@ -159,13 +151,16 @@ export default {
   border-radius: 4px;
   text-decoration: none;
   margin-bottom: 3rem;
-  transition: background 0.2s, border-color 0.2s;
-  group: true;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
+
 .email-block:hover {
   background: var(--surface2);
   border-color: var(--accent);
 }
+
 .email-block:hover .email-arrow {
   color: var(--accent);
   transform: translateX(4px);
@@ -193,10 +188,11 @@ export default {
 .email-arrow {
   font-size: 1.2rem;
   color: var(--muted);
-  transition: color 0.2s, transform 0.2s;
+  transition:
+    color 0.2s,
+    transform 0.2s;
 }
 
-/* ─── SOCIALS ─── */
 .socials-title {
   font-size: 0.65rem;
   font-weight: 500;
@@ -223,8 +219,13 @@ export default {
   text-decoration: none;
   transition: background 0.2s;
 }
-.social-card:hover { background: var(--surface2); }
-.social-card:hover .social-arrow { color: var(--accent); }
+
+.social-card:hover {
+  background: var(--surface2);
+}
+.social-card:hover .social-arrow {
+  color: var(--accent);
+}
 
 .social-icon {
   font-size: 1.1rem;
@@ -239,11 +240,13 @@ export default {
   gap: 0.1rem;
   flex: 1;
 }
+
 .social-platform {
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--text);
 }
+
 .social-handle {
   font-size: 0.72rem;
   color: var(--muted);
@@ -255,7 +258,6 @@ export default {
   transition: color 0.2s;
 }
 
-/* ─── SIDEBAR ─── */
 .col-sidebar {
   display: flex;
   flex-direction: column;
@@ -288,6 +290,7 @@ export default {
   flex-direction: column;
   gap: 0.55rem;
 }
+
 .info-list li {
   display: flex;
   align-items: flex-start;
@@ -295,6 +298,7 @@ export default {
   font-size: 0.82rem;
   color: var(--muted);
 }
+
 .list-dot {
   width: 4px;
   height: 4px;
@@ -309,17 +313,28 @@ export default {
   color: var(--muted);
   line-height: 1.65;
 }
+
 .info-text strong {
   color: var(--text);
   font-weight: 500;
 }
 
-/* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .contact-page { padding: 2.5rem 1.25rem 4rem; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .col-sidebar { position: static; }
-  .email-block { padding: 1.25rem; gap: 1rem; }
-  .email-address { font-size: 0.95rem; }
+  .contact-page {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .col-sidebar {
+    position: static;
+  }
+  .email-block {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  .email-address {
+    font-size: 0.95rem;
+  }
 }
 </style>

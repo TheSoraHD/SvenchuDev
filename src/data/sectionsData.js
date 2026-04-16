@@ -5,473 +5,424 @@ export const sectionsData = {
       {
         id: 'kh-tears',
         name: 'Kingdom Hearts Tears',
-        description: 'Reimaginación del día 357 de Kingdom Hearts 358/2 Days, en Unreal Engine 5.',
+        description:
+          'A reimagining of Day 357 from Kingdom Hearts 358/2 Days, built in Unreal Engine 5.',
         downloadUrl: 'TO-DO',
-        images: [
-          '/images/games/kh_tears.jpg'
-        ],
+        images: ['/images/games/kh_tears.jpg'],
         youtubeVideos: [],
         features: [
-          '10 horas de contenido original',
-          'Sistema de combate reimaginado',
-          'Gráficos en alta definición'
+          '10 hours of original content',
+          'Reimagined combat system',
+          'High-definition graphics',
         ],
         downloadInfo: {
           version: '1.0.0',
           size: '6.9 GB',
           requirements: 'TO-DO',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          installation: ['Extract the compressed game file'],
         },
         changelog: [
           {
             version: '1.0.0',
             date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+            changes: ['Official release'],
+          },
+        ],
       },
       {
         id: 'corruption',
         name: 'Corruption',
-        description: 'Juego de terror estilo "Slender", donde tienes que purificar una ciudad de la oscuridad que se cierne sobre ella. Participó en la Z-Jam 2021.',
+        description:
+          'A "Slender-style" horror game where you must purify a city from the looming darkness. Participant in the Z-Jam 2021.',
         downloadUrl: 'https://drive.google.com/file/d/1SLsC0G-UL--kHGKr6StUJARP0A5jTNk2/view',
-        images: [
-          '/images/games/corruption-1.jpg',
-          '/images/games/corruption-2.jpg'
-        ],
+        images: ['/images/games/corruption-1.jpg', '/images/games/corruption-2.jpg'],
         youtubeVideos: ['p95O5zlnE7U'],
-        features: [
-          '10 horas de contenido original',
-        ],
+        features: ['10 hours of original content'],
         downloadInfo: {
           version: '1.0.0',
           size: '1.6 GB',
           requirements: 'Unreal Engine 4',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          installation: ['Extract the compressed game file'],
         },
         changelog: [
           {
             version: '1.0.0',
             date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+            changes: ['Official release'],
+          },
+        ],
       },
       {
         id: 'flamboyant',
         name: 'Flamboyant',
-        description: 'Minijuego creado en el motor Unity tipo "bullet hell" con estética vibrante y mecánicas de disparo únicas.',
+        description:
+          'A "bullet hell" style minigame created in the Unity engine featuring a vibrant aesthetic and unique shooting mechanics.',
         downloadUrl: 'https://example.com/download/flamboyant',
         images: [],
         youtubeVideos: [],
-        features: [
-          'TO-DO',
-        ],
+        features: ['TO-DO'],
         downloadInfo: {
           version: '1.0.0',
           size: 'TO-DO',
           requirements: 'TO-DO',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          installation: ['Extract the compressed game file'],
         },
         changelog: [
           {
             version: '1.0.0',
             date: 'TO-DO',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+            changes: ['Official release'],
+          },
+        ],
       },
       {
         id: 'contra2d',
         name: 'Contra2D',
-        description: 'Reimaginación 2D del clásico juego de acción Contra.',
+        description: 'A 2D reimagining of the classic action game Contra.',
         downloadUrl: 'https://example.com/download/contra2d',
         images: [],
         youtubeVideos: [],
-        features: [
-          '10 horas de contenido original',
-        ],
+        features: ['10 hours of original content'],
         downloadInfo: {
           version: '1.0.0',
           size: '1.6 GB',
           requirements: 'Unreal Engine 4',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          installation: ['Extract the compressed game file'],
         },
         changelog: [
           {
             version: '1.0.0',
             date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+            changes: ['Official release'],
+          },
+        ],
       },
       {
         id: 'bizarreskies3d',
         name: 'BizarreSkies3D',
-        description: 'Aventura aérea en 3D con mecánicas de vuelo innovadoras.',
+        description: 'A 3D aerial adventure featuring innovative flight mechanics.',
         downloadUrl: 'https://example.com/download/bizarreskies3d',
         images: [],
         youtubeVideos: [],
-        features: [
-          '10 horas de contenido original',
-        ],
+        features: ['10 hours of original content'],
         downloadInfo: {
           version: '1.0.0',
           size: '1.6 GB',
           requirements: 'Unreal Engine 4',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          installation: ['Extract the compressed game file'],
         },
         changelog: [
           {
             version: '1.0.0',
             date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+            changes: ['Official release'],
+          },
+        ],
       },
       {
         id: 'delusion',
         name: 'Delusion',
-        description: 'Juego de horror psicológico que desafía la percepción de la realidad.',
+        description: 'A psychological horror game that challenges the perception of reality.',
         downloadUrl: 'https://example.com/download/delusion',
         images: ['/images/games/delusion-1.jpg'],
         youtubeVideos: ['A2iSPnM1gHs'],
-        features: [
-          '10 horas de contenido original',
-        ],
+        features: ['10 hours of original content'],
         downloadInfo: {
           version: '1.0.0',
           size: '1.6 GB',
           requirements: 'Unreal Engine 4',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          installation: ['Extract the compressed game file'],
         },
         changelog: [
           {
             version: '1.0.0',
             date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+            changes: ['Official release'],
+          },
+        ],
       },
       {
         id: 'sanic',
-        name: 'Sanic Juego Zombies con motor gráfico 2D propio',
-        description: 'Juego de zombies desarrollado con motor gráfico 2D personalizado.',
+        name: 'Sanic Zombie Game with custom 2D graphics engine',
+        description: 'A zombie game developed using a custom-made 2D graphics engine.',
         downloadUrl: 'https://example.com/download/sanic',
         images: ['/images/games/sanic-1.jpg', '/images/games/sanic-2.jpg'],
-        youtubeVideos: []
-      }
+        youtubeVideos: [],
+      },
     ],
     nds: [
       {
         id: 'chesscount',
         name: 'ChessCount',
-        description: 'Juego de ajedrez optimizado para Nintendo DS con contador de movimientos.',
+        description: 'A chess game optimized for Nintendo DS featuring a move counter.',
         downloadUrl: 'https://example.com/download/chesscount',
         images: ['/images/games/chesscount-1.jpg'],
-        youtubeVideos: []
+        youtubeVideos: [],
       },
       {
         id: 'avalancheds',
         name: 'AvalancheDS',
-        description: 'Port del juego flash Avalanche para Nintendo DS.',
+        description: 'A port of the flash game Avalanche for the Nintendo DS.',
         downloadUrl: 'https://example.com/download/avalancheds',
         images: [],
-        youtubeVideos: []
-      }
-    ]
+        youtubeVideos: [],
+      },
+    ],
   },
   collaborations: [
     {
       id: 'remorse-betatest',
       name: 'Betatested Remorse: The List + Clueless Crew',
-      description: 'Optimización para monitores ultrawide y Steam Deck, mejoras de compatibilidad y rendimiento.',
+      description:
+        'Optimization for ultrawide monitors and Steam Deck, including compatibility and performance improvements.',
       downloadUrl: 'https://example.com/download/remorse',
       images: ['/images/collab/remorse-1.jpg'],
       youtubeVideos: [],
-      features: [
-          '10 horas de contenido original',
-        ],
-        downloadInfo: {
+      features: ['10 hours of original content'],
+      downloadInfo: {
+        version: '1.0.0',
+        size: '1.6 GB',
+        requirements: 'Unreal Engine 4',
+        installation: ['Extract the compressed game file'],
+      },
+      changelog: [
+        {
           version: '1.0.0',
-          size: '1.6 GB',
-          requirements: 'Unreal Engine 4',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          date: '2026-05-30',
+          changes: ['Official release'],
         },
-        changelog: [
-          {
-            version: '1.0.0',
-            date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
+      ],
     },
     {
       id: 'brainrot-royale',
       name: 'Betatested Brainrot Royale',
-      description: 'Optimización para monitores ultrawide y Steam Deck, mejoras de compatibilidad y rendimiento.',
+      description:
+        'Optimization for ultrawide monitors and Steam Deck, including compatibility and performance improvements.',
       downloadUrl: 'https://example.com/download/remorse',
       images: [''],
       youtubeVideos: ['z1-tFbFqXwo'],
-      features: [
-          '10 horas de contenido original',
-        ],
-        downloadInfo: {
+      features: ['10 hours of original content'],
+      downloadInfo: {
+        version: '1.0.0',
+        size: '1.6 GB',
+        requirements: 'Unreal Engine 4',
+        installation: ['Extract the compressed game file'],
+      },
+      changelog: [
+        {
           version: '1.0.0',
-          size: '1.6 GB',
-          requirements: 'Unreal Engine 4',
-          installation: [
-            'Extrae el archivo comprimido del juego',
-          ]
+          date: '2026-05-30',
+          changes: ['Official release'],
         },
-        changelog: [
-          {
-            version: '1.0.0',
-            date: '2026-05-30',
-            changes: [
-              'Lanzamiento oficial',
-            ]
-          }
-        ]
-    }
+      ],
+    },
   ],
   translations: [
     {
       id: 'bbsfm',
-      name: 'Kingdom Hearts Birth By Sleep Final Mix (PSP) - Traducción al Español',
-      description: 'Traducción completa al español de Birth by Sleep Final Mix, incluyendo menús, diálogos y textos del juego.',
+      name: 'Kingdom Hearts Birth By Sleep Final Mix (PSP) - Spanish Translation',
+      description:
+        'Full Spanish translation for Birth by Sleep Final Mix, including menus, dialogues, and in-game text.',
       downloadUrl: 'https://example.com/download/bbsfm-translation',
       images: ['/images/translations/bbsfm-1.jpg'],
       youtubeVideos: ['9zZ1bo90yYI'],
       features: [
-        'Traducción completa de todos los diálogos',
-        'Menús y interfaces traducidos',
-        'Subtítulos sincronizados',
-        'Compatibilidad con todas las versiones'
+        'Full translation of all dialogues',
+        'Translated menus and interfaces',
+        'Synchronized subtitles',
+        'Compatible with all versions',
       ],
       downloadInfo: {
         version: '1.2.0',
         size: '45 MB',
         requirements: 'Kingdom Hearts Birth by Sleep Final Mix',
         installation: [
-          'Descarga el archivo de traducción',
-          'Extrae el contenido en la carpeta del juego',
-          'Ejecuta el parche de instalación',
-          'Reinicia el juego'
-        ]
+          'Download the translation file',
+          'Extract the content into the game folder',
+          'Run the installation patch',
+          'Restart the game',
+        ],
       },
       changelog: [
         {
           version: '1.2.0',
           date: '2024-01-15',
           changes: [
-            'Corregidos errores de traducción en el mundo de Disney',
-            'Mejorada la sincronización de subtítulos',
-            'Añadidas traducciones faltantes en menús'
-          ]
-        }
-      ]
+            'Fixed translation errors in the Disney world',
+            'Improved subtitle synchronization',
+            'Added missing translations in menus',
+          ],
+        },
+      ],
     },
     {
       id: 'drakengard3',
-      name: 'Drakengard 3 - Traducción al Español',
-      description: 'Traducción completa al español del aclamado JRPG Drakengard 3, manteniendo el tono original de la obra.',
+      name: 'Drakengard 3 - Spanish Translation',
+      description:
+        'Full Spanish translation of the acclaimed JRPG Drakengard 3, maintaining the original tone of the work.',
       downloadUrl: 'https://example.com/download/drakengard3-translation',
-      images: [
-        '/images/translations/drakengard3-1.jpg',
-        '/images/translations/drakengard3-2.jpg'
-      ],
+      images: ['/images/translations/drakengard3-1.jpg', '/images/translations/drakengard3-2.jpg'],
       youtubeVideos: [],
       features: [
-        'Traducción fiel al texto original japonés',
-        'Localización cultural apropiada',
-        'Revisión exhaustiva de terminología',
-        'Soporte para diferentes regiones'
+        'Translation faithful to the original Japanese text',
+        'Appropriate cultural localization',
+        'Exhaustive review of terminology',
+        'Support for different regions',
       ],
       downloadInfo: {
         version: '2.0.1',
         size: '120 MB',
         requirements: 'Drakengard 3 (PS3)',
         installation: [
-          'Requiere PS3 con CFW',
-          'Instala el archivo PKG',
-          'Aplica el parche de traducción',
-          'Reinicia la consola'
-        ]
+          'Requires PS3 with CFW',
+          'Install the PKG file',
+          'Apply the translation patch',
+          'Restart the console',
+        ],
       },
       changelog: [
         {
           version: '2.0.1',
           date: '2024-02-01',
           changes: [
-            'Corrección de errores menores',
-            'Mejorada compatibilidad con diferentes firmwares',
-            'Optimización de rendimiento'
-          ]
-        }
-      ]
-    }
+            'Minor bug fixes',
+            'Improved compatibility with different firmwares',
+            'Performance optimization',
+          ],
+        },
+      ],
+    },
   ],
   mods: [
     {
       id: 'kh2-spanish-mix',
-      name: 'KINGDOM HEARTS 2: Spanish Mix - Voices in Castillian',
-      description: 'Mod que incluye voces en castellano para Kingdom Hearts 2.',
+      name: 'KINGDOM HEARTS 2: Spanish Mix - Voices in Castilian',
+      description: 'Mod that includes Castilian Spanish voices for Kingdom Hearts 2.',
       downloadUrl: 'https://example.com/download/kh2-spanish',
       images: ['/images/mods/kh2-spanish-1.jpg'],
       youtubeVideos: ['q1P7gPPuFH0'],
       features: [
-        'Doblaje completo en castellano',
-        'Sincronización labial mejorada',
-        'Calidad de audio profesional',
-        'Compatible con todas las versiones'
+        'Full dubbing in Castilian Spanish',
+        'Improved lip-sync',
+        'Professional audio quality',
+        'Compatible with all versions',
       ],
-      screenshots: [
-        '/images/mods/kh2-spanish-1.jpg',
-        '/images/mods/kh2-spanish-2.jpg'
-      ],
+      screenshots: ['/images/mods/kh2-spanish-1.jpg', '/images/mods/kh2-spanish-2.jpg'],
       downloadInfo: {
         version: '3.1.0',
         size: '2.8 GB',
         requirements: 'Kingdom Hearts 2 Final Mix',
         installation: [
-          'Descarga todos los archivos de audio',
-          'Usa OpenKH Mod Manager',
-          'Instala el mod siguiendo las instrucciones',
-          'Configura el audio en el juego'
-        ]
+          'Download all audio files',
+          'Use OpenKH Mod Manager',
+          'Install the mod following the instructions',
+          'Configure the audio in-game',
+        ],
       },
       changelog: [
         {
           version: '3.1.0',
           date: '2024-03-10',
           changes: [
-            'Añadidas voces faltantes de personajes secundarios',
-            'Mejorada calidad de audio en escenas cinemáticas',
-            'Corregidos problemas de sincronización'
-          ]
-        }
-      ]
+            'Added missing voices for side characters',
+            'Improved audio quality in cinematic cutscenes',
+            'Fixed synchronization issues',
+          ],
+        },
+      ],
     },
     {
       id: 'kh2-sephiroth',
-      name: 'KINGDOM HEARTS 2: Sephiroth\'s Absent Silhouette',
-      description: 'Restaura contenido eliminado de Sephiroth en Kingdom Hearts 2.',
+      name: "KINGDOM HEARTS 2: Sephiroth's Absent Silhouette",
+      description: 'Restores deleted Sephiroth content in Kingdom Hearts 2.',
       downloadUrl: 'https://example.com/download/kh2-sephiroth',
       images: [],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: 'kh2-xemnas',
       name: 'KINGDOM HEARTS 2: Xemnas Deleted Quotes',
-      description: 'Añade diálogos eliminados de Xemnas al juego original.',
+      description: 'Adds deleted Xemnas dialogues to the original game.',
       downloadUrl: 'https://example.com/download/kh2-xemnas',
       images: [],
-      youtubeVideos: ['cBhjAdvNwUg']
+      youtubeVideos: ['cBhjAdvNwUg'],
     },
     {
       id: 'crisis-core-voices',
-      name: 'Restore Crisis Core\'s PSP Original Voices',
-      description: 'Restaura las voces originales de PSP en Crisis Core Reunion.',
+      name: "Restore Crisis Core's PSP Original Voices",
+      description: 'Restores the original PSP voices in Crisis Core Reunion.',
       downloadUrl: 'https://example.com/download/crisis-core-voices',
       images: ['/images/mods/crisis-core-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: 'bbsfm-analog',
       name: 'Second Analog Stick for Birth By Sleep Final Mix (Emulator Version)',
-      description: 'Añade soporte para segundo stick analógico en emuladores.',
+      description: 'Adds support for a second analog stick in emulators.',
       downloadUrl: 'https://example.com/download/bbsfm-analog',
       images: [],
-      youtubeVideos: []
-    }
+      youtubeVideos: [],
+    },
   ],
   tools: [
     {
       id: 'realms-engine',
       name: 'Realms Engine',
-      description: 'Motor de juego personalizado desarrollado desde cero.',
+      description: 'Custom game engine developed from scratch.',
       downloadUrl: 'https://example.com/download/realms-engine',
       images: ['/images/tools/realms-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: 'hcareplace',
       name: 'HCAreplace',
-      description: 'Herramienta para reemplazar audios HCA dentro de archivos .awb/.uasset. Creada para restaurar el doblaje inglés original de Crisis Core Reunion.',
+      description:
+        'Tool to replace HCA audio within .awb/.uasset files. Created to restore the original English dub in Crisis Core Reunion.',
       downloadUrl: 'https://example.com/download/hcareplace',
       images: [],
-      youtubeVideos: []
-    }
+      youtubeVideos: [],
+    },
   ],
   about: [
     {
       id: 'degree',
       name: 'Degree',
-      description: 'Información sobre mi formación académica y certificaciones.',
+      description: 'Information about my academic background and certifications.',
       downloadUrl: '#',
       images: ['/images/about/degree-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: 'youtube',
       name: 'YouTube Channel',
-      description: 'Canal de YouTube con contenido sobre desarrollo de juegos y programación.',
-      downloadUrl: 'https://youtube.com/@tu-canal',
+      description: 'YouTube channel featuring content about game development and programming.',
+      downloadUrl: 'https://youtube.com/@your-channel',
       images: [],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: 'it-work',
-      name: 'Working in the IT',
-      description: 'Experiencia profesional en el sector de tecnologías de la información.',
+      name: 'Working in IT',
+      description: 'Professional experience in the information technology sector.',
       downloadUrl: '#',
       images: [],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: 'chess',
       name: 'Love Playing Chess',
-      description: 'Pasión por el ajedrez y participación en torneos online.',
+      description: 'Passion for chess and participation in online tournaments.',
       downloadUrl: '#',
       images: ['/images/about/chess-1.jpg'],
-      youtubeVideos: []
+      youtubeVideos: [],
     },
     {
       id: '3d-skills',
       name: 'Proficient with 3DS Max, Learning Blender',
-      description: 'Habilidades en modelado 3D y creación de assets para videojuegos.',
+      description: 'Skills in 3D modeling and creation of assets for video games.',
       downloadUrl: '#',
       images: ['/images/about/3d-work-1.jpg'],
-      youtubeVideos: []
-    }
-  ]
-};
+      youtubeVideos: [],
+    },
+  ],
+}
