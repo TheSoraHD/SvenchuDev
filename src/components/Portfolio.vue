@@ -130,8 +130,7 @@ const navSections = [
             :style="item.images?.[0] ? `background-image: url('${item.images[0]}')` : ''"
             :class="!item.images?.[0] ? `thumb-fallback-${i % 9}` : ''"
           ></div>
-          <div class="game-card__tint" :style="{ background: tintColors[i % tintColors.length] }"></div>
-          <div class="game-card__gradient"></div>
+
           <div class="game-card__content">
             <span class="game-card__tag">{{ item._section }}</span>
             <h3 class="game-card__title">{{ item.name }}</h3>
@@ -334,7 +333,7 @@ const navSections = [
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.55) saturate(0.7);
+  filter: brightness(0.75) saturate(0.8);
   transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), filter 0.55s ease;
 }
 .game-card:hover .game-card__thumb {

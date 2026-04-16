@@ -58,7 +58,7 @@ const formatDate = (dateString) => {
       <!-- Hero title -->
       <header class="hero">
         <h1 class="hero-title">{{ pageData.name }}</h1>
-        <p class="hero-desc">{{ pageData.description }}</p>
+        <p class="hero-desc" v-html="pageData.description"></p>
       </header>
 
       <!-- Grid principal -->
@@ -219,6 +219,16 @@ const formatDate = (dateString) => {
   font-size: 1rem;
   max-width: 65ch;
   line-height: 1.7;
+  white-space: pre-line;
+}
+.hero-desc :deep(a) {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+.hero-desc :deep(a:hover) {
+  opacity: 0.75;
 }
 
 /* ─── LAYOUT ─── */

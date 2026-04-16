@@ -21,13 +21,17 @@
 
       <div class="hero-text">
         <span class="eyebrow">About me</span>
-        <h1 class="hero-name">SVENCHU</h1>
-        <p class="hero-tagline">Game Developer · Modder · Translator</p>
+        <h1 class="hero-name">SVEN WALLIN</h1>
+        <p class="hero-tagline">Game Developer · Modder · Translator · Video Editor</p>
         <p class="hero-bio">
-          I have spent years developing video games, mods, and translations out of pure passion. I
-          specialize in Unreal Engine 5 and Unity, with solid experience in the IT sector and a
-          constant focus on narrative and systems design. When I'm not programming, I'm most likely
-          playing chess.
+          Bachelor's Degree in Computer Engineering with a specialisation in Computing (FIB UPC - 2024).<br><br>
+          Ever since I was a child, I have wondered how video games could work using only 0s and 1s.
+          This simple question inspired me to spend years learning how to code and then start developing
+          video games, mods and translations out of pure passion. I also shared my knowledge and passion
+          on YouTube. I specialise in Unreal Engine 5 and have solid experience in the IT sector, having
+          managed teams of university scholars.<br><br>
+          Outside of work, I enjoy playing video games of all genres and eras, playing chess and spending
+          time with my wife and our dog, Roxas.
         </p>
       </div>
     </section>
@@ -78,28 +82,43 @@ export default {
   data() {
     return {
       skills: [
-        { icon: '🎮', label: 'Game Dev', desc: 'Unreal Engine 5 · Unity · C++ · C#' },
-        { icon: '🌍', label: 'Translation', desc: 'JP→EN/ES Localization · ROM Editing' },
+        { icon: '🎮', label: 'Game Dev', desc: 'Unreal Engine 5 · Unity · C/C++ · OpenGL · Learning Vulkan · Console homebrew enthusiastic' },
+        { icon: '🌍', label: 'Translation', desc: 'EN -> ES Localization · ROM Editing · Learning Japanese ' },
         { icon: '🔧', label: 'Modding', desc: 'OpenKH · Custom Tools' },
-        { icon: '💻', label: 'IT', desc: 'Professional experience in the sector' },
-        { icon: '🎲', label: '3D', desc: '3DS Max · Learning Blender' },
-        { icon: '♟', label: 'Chess', desc: 'Active Online and OTB player' },
+        { icon: '💻', label: 'IT', desc: '10 Years of Professional Experience in the Sector' },
+        { icon: '🎲', label: '3D', desc: '3DS Max · Blender · Photoshop · Substance Painter' },
+        { icon: '🎬', label: 'Youtube', desc: 'Sony Vegas · Davince Resolve · Focused mainly on Kingdom Hearts content, with humorous skits' },
       ],
       timeline: [
         {
+          year: '2014',
+          title: 'Delusion',
+          desc: 'Original horror Tech demo in UDK (Unreal Engine 3).',
+        },
+        {
+          year: '2019',
+          title: 'Contra2D',
+          desc: 'Classic action game Contra remade in C++/OpenGL.',
+        },
+        {
+          year: '2019',
+          title: 'Bizarre Skies',
+          desc: 'TO-DO in UE4.',
+        },
+        {
           year: '2021',
-          title: 'Z-Jam 2021 — Corruption',
-          desc: 'First published game: Slender-style horror in Unreal Engine.',
+          title: 'Corruption (Z-Jam 2021)',
+          desc: 'Slender-style horror in Unreal Engine.',
         },
         {
           year: '2022',
-          title: 'KH2 Spanish Mix',
-          desc: 'Castilian Spanish dubbing for Kingdom Hearts 2 Final Mix.',
+          title: 'Kingdom Hearts 2: Spanish Mix',
+          desc: 'Restored Castilian Spanish dubbing for Kingdom Hearts 2 Final Mix (PC).',
         },
         {
           year: '2023',
-          title: 'Birth By Sleep Final Mix ES',
-          desc: 'Full Spanish translation of BBSFM for PSP.',
+          title: 'Flamboyant',
+          desc: 'Bullet hell 3D minigame in Unity.',
         },
         {
           year: '2024',
@@ -113,13 +132,13 @@ export default {
         },
         {
           year: '2026',
-          title: 'Kingdom Hearts Tears',
-          desc: 'Fan project in Unreal Engine 5 — actively in development.',
+          title: 'Kingdom Hearts: Tears',
+          desc: 'Fan project in Unreal Engine 5.',
         },
       ],
       stats: [
         { value: '10+', label: 'Published Projects' },
-        { value: '5+', label: 'Years of Experience' },
+        { value: '10+', label: 'Years of Experience' },
         { value: '2', label: 'Full Translations' },
         { value: '1', label: 'Custom Engine' },
       ],
@@ -216,6 +235,7 @@ export default {
   font-size: 0.95rem;
   line-height: 1.75;
   max-width: 55ch;
+  white-space: pre-line;
 }
 
 .divider {
