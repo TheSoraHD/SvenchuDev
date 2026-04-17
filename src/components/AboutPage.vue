@@ -1,5 +1,5 @@
 <script setup>
-// About.vue
+// AboutPage.vue
 // Replace /public/images/about/photo.jpg with your actual photo.
 // Text data is inline here — edit it directly.
 </script>
@@ -24,14 +24,15 @@
         <h1 class="hero-name">SVEN WALLIN</h1>
         <p class="hero-tagline">Game Developer · Modder · Translator · Video Editor</p>
         <p class="hero-bio">
-          Bachelor's Degree in Computer Engineering with a specialisation in Computing (FIB UPC - 2024).<br><br>
+          Bachelor's Degree in Computer Engineering with a specialisation in Computing (FIB UPC -
+          2024).<br /><br />
           Ever since I was a child, I have wondered how video games could work using only 0s and 1s.
-          This simple question inspired me to spend years learning how to code and then start developing
-          video games, mods and translations out of pure passion. I also shared my knowledge and passion
-          on YouTube. I specialise in Unreal Engine 5 and have solid experience in the IT sector, having
-          managed teams of university scholars.<br><br>
-          Outside of work, I enjoy playing video games of all genres and eras, playing chess and spending
-          time with my wife and our dog, Roxas.
+          This simple question inspired me to spend years learning how to code and then start
+          developing video games, mods and translations out of pure passion. I also shared my
+          knowledge and passion on YouTube. I specialise in Unreal Engine 5 and have solid
+          experience in the IT sector, having managed teams of university scholars.<br /><br />
+          Outside of work, I enjoy playing video games of all genres and eras, playing chess and
+          spending time with my wife and our dog, Roxas.
         </p>
       </div>
     </section>
@@ -59,8 +60,8 @@
         <li v-for="(event, i) in timeline" :key="i" class="timeline-item">
           <span class="timeline-year">{{ event.year }}</span>
           <div class="timeline-body">
-            <p class="timeline-title">{{ event.title }}</p>
-            <p class="timeline-desc">{{ event.desc }}</p>
+            <p class="timeline-title" v-html="event.title"></p>
+            <p class="timeline-desc" v-html="event.desc"></p>
           </div>
         </li>
       </ol>
@@ -82,38 +83,66 @@ export default {
   data() {
     return {
       skills: [
-        { icon: '🎮', label: 'Game Dev', desc: 'Unreal Engine 5 · Unity · C/C++ · OpenGL · Learning Vulkan · Console homebrew enthusiastic' },
-        { icon: '🌍', label: 'Translation', desc: 'EN -> ES Localization · ROM Editing · Learning Japanese ' },
+        {
+          icon: '🎮',
+          label: 'Game Dev',
+          desc: 'Unreal Engine 5 · Unity · C/C++ · OpenGL · Learning Vulkan · Console homebrew enthusiastic',
+        },
+        {
+          icon: '🌍',
+          label: 'Translation',
+          desc: 'EN -> ES Localization · ROM Editing · Learning Japanese ',
+        },
         { icon: '🔧', label: 'Modding', desc: 'OpenKH · Custom Tools' },
         { icon: '💻', label: 'IT', desc: '10 Years of Professional Experience in the Sector' },
         { icon: '🎲', label: '3D', desc: '3DS Max · Blender · Photoshop · Substance Painter' },
-        { icon: '🎬', label: 'Youtube', desc: 'Sony Vegas · Davince Resolve · Focused mainly on Kingdom Hearts content, with humorous skits' },
+        {
+          icon: '🎬',
+          label: 'Youtube',
+          desc: 'Sony Vegas · Davince Resolve · Focused mainly on Kingdom Hearts content, with humorous skits',
+        },
       ],
       timeline: [
+        {
+          year: '2011',
+          title: 'AvalancheDS ~ PongDS',
+          desc: 'A port of the flash game Avalanche for the Nintendo DS.<br>TO-DO',
+        },
+        {
+          year: '2012',
+          title: 'ChessCount',
+          desc: 'A chess clock homebrew made for the Nintendo DS.',
+        },
         {
           year: '2014',
           title: 'Delusion',
           desc: 'Original horror Tech demo in UDK (Unreal Engine 3).',
         },
         {
-          year: '2019',
-          title: 'Contra2D',
-          desc: 'Classic action game Contra remade in C++/OpenGL.',
+          year: '2016',
+          title: 'Kingdom Hearts Birth By Sleep Final Mix (PSP) - Spanish Translation',
+          desc: 'Spanish translation for KH:BBSFM, including menus, dialogues, and in-game text.',
+        },
+        {
+          year: '2017',
+          title: "Magical Pop'n GBA",
+          desc: 'TO-DO',
         },
         {
           year: '2019',
-          title: 'Bizarre Skies',
-          desc: 'TO-DO in UE4.',
+          title: 'Contra2D ~ Bizarre Skies',
+          desc: "Classic action game Contra remade in C++/OpenGL. <br> Rolling Sky clone game, with JoJo's Bizarre Adventures theme.",
         },
         {
           year: '2021',
-          title: 'Corruption (Z-Jam 2021)',
-          desc: 'Slender-style horror in Unreal Engine.',
+          title: 'Kingdom Hearts 2: Spanish Mix ~ Corruption (Z-Jam 2021)',
+          desc: 'Restored Castilian Spanish dubbing for Kingdom Hearts 2 Final Mix (PC).<br>Slender-style horror in Unreal Engine.',
         },
         {
           year: '2022',
-          title: 'Kingdom Hearts 2: Spanish Mix',
-          desc: 'Restored Castilian Spanish dubbing for Kingdom Hearts 2 Final Mix (PC).',
+          title:
+            "Xemnas Deleted Quotes ~ Sephiroth's Absent Silhouette<br>HCAReplace ~ Crisis Core Reunion: OG Dub",
+          desc: "Cool community Kingdom Hearts 2 Final Mix PS2 mods ported to the PC version.<br>Restoration of the original Crisis Core's PSP dub in Reunion's version.",
         },
         {
           year: '2023',
@@ -121,13 +150,8 @@ export default {
           desc: 'Bullet hell 3D minigame in Unity.',
         },
         {
-          year: '2024',
-          title: 'Crisis Core Reunion: OG Dub',
-          desc: 'Restoration of the original PSP dub in Reunion.',
-        },
-        {
           year: '2025',
-          title: 'HCAReplace + Realms Engine',
+          title: 'Realms Engine',
           desc: 'Development of custom tools for the community.',
         },
         {
@@ -350,6 +374,7 @@ export default {
   font-size: 0.82rem;
   color: var(--muted);
   line-height: 1.6;
+  white-space: pre-line;
 }
 
 .stats-row {

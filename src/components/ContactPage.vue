@@ -14,9 +14,9 @@
           email. I usually respond in less than 48 hours.
         </p>
 
-        <a href="mailto:contact@about.me" class="email-block">
+        <a href="mailto:contact@svenchu.dev" class="email-block">
           <span class="email-label">Email</span>
-          <span class="email-address">contact@about.me</span>
+          <span class="email-address">contact@svenchu.dev</span>
           <span class="email-arrow">→</span>
         </a>
 

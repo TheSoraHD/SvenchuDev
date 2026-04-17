@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { sectionsData } from '../data/sectionsData.js'
 
-const route  = useRoute()
+const route = useRoute()
 const router = useRouter()
 
 // La ruta raíz / muestra una home; rutas tipo /games, /mods, etc. muestran su sección
@@ -11,19 +11,26 @@ const sectionKey = computed(() => route.params.section || route.path.replace('/'
 
 // Configuración visual de cada sección
 const sectionMeta = {
-  games:          { label: 'Games',          eyebrow: 'Portfolio',      accent: '#00e5ff' },
-  translations:   { label: 'Translations',   eyebrow: 'Portfolio',      accent: '#ff3cac' },
-  mods:           { label: 'Mods',           eyebrow: 'Portfolio',      accent: '#7b2fff' },
-  collaborations: { label: 'Collaborations', eyebrow: 'Portfolio',      accent: '#00ff9d' },
-  tools:          { label: 'Tools',          eyebrow: 'Portfolio',      accent: '#ffb800' },
-  about:          { label: 'About Me',       eyebrow: 'Personal',       accent: '#ff6b6b' },
+  games: { label: 'Games', eyebrow: 'Portfolio', accent: '#00e5ff' },
+  translations: { label: 'Translations', eyebrow: 'Portfolio', accent: '#ff3cac' },
+  mods: { label: 'Mods', eyebrow: 'Portfolio', accent: '#7b2fff' },
+  collaborations: { label: 'Collaborations', eyebrow: 'Portfolio', accent: '#00ff9d' },
+  tools: { label: 'Tools', eyebrow: 'Portfolio', accent: '#ffb800' },
+  about: { label: 'About Me', eyebrow: 'Personal', accent: '#ff6b6b' },
 }
 
 // Colores de tint por posición (para variedad visual entre cards)
 const tintColors = [
-  '#ff6600','#0040ff','#aa00ff','#00aa44',
-  '#00aaff','#ffcc00','#ff0066','#00cccc',
-  '#ff3300','#8800ff',
+  '#ff6600',
+  '#0040ff',
+  '#aa00ff',
+  '#00aa44',
+  '#00aaff',
+  '#ffcc00',
+  '#ff0066',
+  '#00cccc',
+  '#ff3300',
+  '#8800ff',
 ]
 
 // ─── DATOS NORMALIZADOS ───────────────────────────────────────────
@@ -38,7 +45,7 @@ const sections = computed(() => {
   if (key === 'games' && !Array.isArray(raw)) {
     return Object.entries(raw).map(([platform, items]) => ({
       platform: platform.toUpperCase(),
-      items
+      items,
     }))
   }
 
@@ -46,11 +53,18 @@ const sections = computed(() => {
   return [{ platform: null, items: Array.isArray(raw) ? raw : [] }]
 })
 
-const meta = computed(() => sectionMeta[sectionKey.value] || { label: sectionKey.value, eyebrow: 'Portfolio', accent: '#00e5ff' })
+const meta = computed(
+  () =>
+    sectionMeta[sectionKey.value] || {
+      label: sectionKey.value,
+      eyebrow: 'Portfolio',
+      accent: '#00e5ff',
+    },
+)
 
 function navigateTo(item) {
   const key = sectionKey.value
-  const platform = sections.value.find(s => s.items.includes(item))?.platform?.toLowerCase()
+  const platform = sections.value.find((s) => s.items.includes(item))?.platform?.toLowerCase()
   if (key === 'games' && platform) {
     router.push(`/games/${platform}/${item.id}`)
   } else {
@@ -67,9 +81,9 @@ const featuredItems = computed(() => {
   const mods = sectionsData.mods || []
   const translations = sectionsData.translations || []
   return [
-    ...pcGames.slice(0, 3).map(i => ({ ...i, _section: 'games', _platform: 'pc' })),
-    ...mods.slice(0, 2).map(i => ({ ...i, _section: 'mods' })),
-    ...translations.slice(0, 1).map(i => ({ ...i, _section: 'translations' })),
+    ...pcGames.slice(0, 3).map((i) => ({ ...i, _section: 'games', _platform: 'pc' })),
+    ...mods.slice(0, 2).map((i) => ({ ...i, _section: 'mods' })),
+    ...translations.slice(0, 1).map((i) => ({ ...i, _section: 'translations' })),
   ]
 })
 
@@ -82,11 +96,31 @@ function navigateHome(item) {
 }
 
 const navSections = [
-  { key: 'games',          label: 'Games',          accent: '#00e5ff', count: () => Object.values(sectionsData.games || {}).flat().length },
-  { key: 'translations',   label: 'Translations',   accent: '#ff3cac', count: () => (sectionsData.translations || []).length },
-  { key: 'mods',           label: 'Mods',           accent: '#7b2fff', count: () => (sectionsData.mods || []).length },
-  { key: 'collaborations', label: 'Collaborations', accent: '#00ff9d', count: () => (sectionsData.collaborations || []).length },
-  { key: 'tools',          label: 'Tools',          accent: '#ffb800', count: () => (sectionsData.tools || []).length },
+  {
+    key: 'games',
+    label: 'Games',
+    accent: '#00e5ff',
+    count: () => Object.values(sectionsData.games || {}).flat().length,
+  },
+  {
+    key: 'translations',
+    label: 'Translations',
+    accent: '#ff3cac',
+    count: () => (sectionsData.translations || []).length,
+  },
+  { key: 'mods', label: 'Mods', accent: '#7b2fff', count: () => (sectionsData.mods || []).length },
+  {
+    key: 'collaborations',
+    label: 'Collaborations',
+    accent: '#00ff9d',
+    count: () => (sectionsData.collaborations || []).length,
+  },
+  {
+    key: 'tools',
+    label: 'Tools',
+    accent: '#ffb800',
+    count: () => (sectionsData.tools || []).length,
+  },
 ]
 </script>
 
@@ -103,7 +137,7 @@ const navSections = [
     <!-- Secciones de navegación rápida -->
     <div class="home-nav-grid">
       <router-link
-        v-for="(sec, i) in navSections"
+        v-for="sec in navSections"
         :key="sec.key"
         :to="`/${sec.key}`"
         class="home-nav-card"
@@ -152,11 +186,7 @@ const navSections = [
       <div class="section-divider"></div>
     </header>
 
-    <section
-      v-for="group in sections"
-      :key="group.platform || 'main'"
-      class="platform-section"
-    >
+    <section v-for="group in sections" :key="group.platform || 'main'" class="platform-section">
       <div v-if="group.platform" class="platform-label">
         <h2>{{ group.platform }}</h2>
       </div>
@@ -174,7 +204,10 @@ const navSections = [
             :style="item.images?.[0] ? `background-image: url('${item.images[0]}')` : ''"
             :class="!item.images?.[0] ? `thumb-fallback-${i % 9}` : ''"
           ></div>
-          <div class="game-card__tint" :style="{ background: tintColors[i % tintColors.length] }"></div>
+          <div
+            class="game-card__tint"
+            :style="{ background: tintColors[i % tintColors.length] }"
+          ></div>
           <div class="game-card__gradient"></div>
           <div class="game-card__content">
             <h3 class="game-card__title">{{ item.name }}</h3>
@@ -188,7 +221,8 @@ const navSections = [
                 rel="noopener"
                 class="btn btn-ghost"
                 @click.stop
-              >Descargar</a>
+                >Descargar</a
+              >
             </div>
           </div>
         </div>
@@ -234,7 +268,9 @@ const navSections = [
   font-size: 1rem;
 }
 
-.dim { color: rgba(240,240,248,0.15); }
+.dim {
+  color: rgba(240, 240, 248, 0.15);
+}
 
 .section-divider {
   width: 100%;
@@ -263,7 +299,9 @@ const navSections = [
   transition: background 0.2s;
   border-right: 1px solid var(--border);
 }
-.home-nav-card:hover { background: var(--surface2); }
+.home-nav-card:hover {
+  background: var(--surface2);
+}
 .home-nav-count {
   font-family: var(--font-display);
   font-size: 2rem;
@@ -284,12 +322,19 @@ const navSections = [
   margin-top: auto;
   opacity: 0;
   transform: translateX(-4px);
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
-.home-nav-card:hover .home-nav-arrow { opacity: 1; transform: translateX(0); }
+.home-nav-card:hover .home-nav-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 /* ─── PLATFORM SECTION ─── */
-.platform-section { margin-bottom: 5rem; }
+.platform-section {
+  margin-bottom: 5rem;
+}
 
 .platform-label {
   display: flex;
@@ -298,7 +343,7 @@ const navSections = [
   margin-bottom: 1.5px;
 }
 .platform-label h2 {
-  font-size: 1.00rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -334,7 +379,9 @@ const navSections = [
   background-size: cover;
   background-position: center;
   filter: brightness(0.75) saturate(0.8);
-  transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), filter 0.55s ease;
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.55s ease;
 }
 .game-card:hover .game-card__thumb {
   transform: scale(1.06);
@@ -342,15 +389,33 @@ const navSections = [
 }
 
 /* Fallback paletas de color para cuando no hay imagen */
-.thumb-fallback-0 { background: linear-gradient(135deg, #1a0a00, #7a3a10); }
-.thumb-fallback-1 { background: linear-gradient(135deg, #030518, #1e2d8a); }
-.thumb-fallback-2 { background: linear-gradient(135deg, #1a0025, #a020f0); }
-.thumb-fallback-3 { background: linear-gradient(135deg, #001a0a, #00703d); }
-.thumb-fallback-4 { background: linear-gradient(135deg, #001533, #0066cc); }
-.thumb-fallback-5 { background: linear-gradient(135deg, #1a1a00, #888800); }
-.thumb-fallback-6 { background: linear-gradient(135deg, #33001a, #cc0066); }
-.thumb-fallback-7 { background: linear-gradient(135deg, #001a33, #0080cc); }
-.thumb-fallback-8 { background: linear-gradient(135deg, #0a0a0a, #444);    }
+.thumb-fallback-0 {
+  background: linear-gradient(135deg, #1a0a00, #7a3a10);
+}
+.thumb-fallback-1 {
+  background: linear-gradient(135deg, #030518, #1e2d8a);
+}
+.thumb-fallback-2 {
+  background: linear-gradient(135deg, #1a0025, #a020f0);
+}
+.thumb-fallback-3 {
+  background: linear-gradient(135deg, #001a0a, #00703d);
+}
+.thumb-fallback-4 {
+  background: linear-gradient(135deg, #001533, #0066cc);
+}
+.thumb-fallback-5 {
+  background: linear-gradient(135deg, #1a1a00, #888800);
+}
+.thumb-fallback-6 {
+  background: linear-gradient(135deg, #33001a, #cc0066);
+}
+.thumb-fallback-7 {
+  background: linear-gradient(135deg, #001a33, #0080cc);
+}
+.thumb-fallback-8 {
+  background: linear-gradient(135deg, #0a0a0a, #444);
+}
 
 .game-card__tint {
   position: absolute;
@@ -359,12 +424,19 @@ const navSections = [
   mix-blend-mode: color;
   transition: opacity 0.45s ease;
 }
-.game-card:hover .game-card__tint { opacity: 0.25; }
+.game-card:hover .game-card__tint {
+  opacity: 0.25;
+}
 
 .game-card__gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,10,15,0.97) 0%, rgba(10,10,15,0.45) 50%, transparent 75%);
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 15, 0.97) 0%,
+    rgba(10, 10, 15, 0.45) 50%,
+    transparent 75%
+  );
 }
 
 .game-card__content {
@@ -383,12 +455,12 @@ const navSections = [
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 0.25rem 0.6rem;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--accent);
   border-radius: 2px;
   margin-bottom: 0.5rem;
   width: fit-content;
-  background: rgba(0,229,255,0.06);
+  background: rgba(0, 229, 255, 0.06);
 }
 
 .game-card__title {
@@ -401,7 +473,9 @@ const navSections = [
   transform: translateY(4px);
   transition: transform 0.25s ease;
 }
-.game-card:hover .game-card__title { transform: translateY(0); }
+.game-card:hover .game-card__title {
+  transform: translateY(0);
+}
 
 .game-card__desc {
   font-size: 0.8rem;
@@ -410,13 +484,18 @@ const navSections = [
   max-width: 42ch;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.3s 0.04s ease, transform 0.3s 0.04s ease;
+  transition:
+    opacity 0.3s 0.04s ease,
+    transform 0.3s 0.04s ease;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.game-card:hover .game-card__desc { opacity: 1; transform: translateY(0); }
+.game-card:hover .game-card__desc {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .game-card__actions {
   display: flex;
@@ -424,9 +503,14 @@ const navSections = [
   margin-top: 0.9rem;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.3s 0.08s ease, transform 0.3s 0.08s ease;
+  transition:
+    opacity 0.3s 0.08s ease,
+    transform 0.3s 0.08s ease;
 }
-.game-card:hover .game-card__actions { opacity: 1; transform: translateY(0); }
+.game-card:hover .game-card__actions {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ─── BOTONES ─── */
 .btn {
@@ -445,19 +529,32 @@ const navSections = [
   border: none;
   transition: all 0.2s ease;
 }
-.btn-primary { background: var(--accent); color: #000; }
-.btn-primary:hover { background: #fff; }
-.btn-ghost {
-  background: rgba(255,255,255,0.07);
-  color: var(--text);
-  border: 1px solid rgba(255,255,255,0.12);
+.btn-primary {
+  background: var(--accent);
+  color: #000;
 }
-.btn-ghost:hover { background: rgba(255,255,255,0.13); }
+.btn-primary:hover {
+  background: #fff;
+}
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .portfolio-page { padding: 2.5rem 1.25rem 4rem; }
-  .game-grid { grid-template-columns: 1fr; }
-  .home-nav-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-page {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
