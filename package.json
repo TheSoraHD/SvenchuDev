@@ -11,7 +11,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.5.17"
+    "lucide-react": "^0.525.0",
+    "react": "^19.1.0",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1",
+    "vue-sidebar-menu": "^5.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
