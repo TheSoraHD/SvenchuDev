@@ -9,6 +9,14 @@
     <title>Svenchu</title>
   </head>
   <body>
+    <script>
+      // Restore the path from the query param
+      const params = new URLSearchParams(window.location.search);
+      const path = params.get('p');
+      if (path) {
+        window.history.replaceState(null, '', path);
+      }
+    </script>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
