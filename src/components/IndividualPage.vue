@@ -138,6 +138,7 @@ const formatDate = (dateString) => {
             >
               Download Now
             </a>
+            <p v-else-if="!pageData.downloadUrl" class="download-pending">Not Available</p>
             <p v-else class="download-pending">Coming Soon</p>
           </div>
 

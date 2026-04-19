@@ -12,8 +12,8 @@ const sectionKey = computed(() => route.params.section || route.path.replace('/'
 // Configuración visual de cada sección
 const sectionMeta = {
   games: { label: 'Games', eyebrow: 'Portfolio', accent: '#00e5ff' },
-  translations: { label: 'Translations', eyebrow: 'Portfolio', accent: '#ff3cac' },
   mods: { label: 'Mods', eyebrow: 'Portfolio', accent: '#7b2fff' },
+  translations: { label: 'Translations', eyebrow: 'Portfolio', accent: '#ff3cac' },
   collaborations: { label: 'Collaborations', eyebrow: 'Portfolio', accent: '#00ff9d' },
   tools: { label: 'Tools', eyebrow: 'Portfolio', accent: '#ffb800' },
   about: { label: 'About Me', eyebrow: 'Personal', accent: '#ff6b6b' },
@@ -102,13 +102,13 @@ const navSections = [
     accent: '#00e5ff',
     count: () => Object.values(sectionsData.games || {}).flat().length,
   },
+  { key: 'mods', label: 'Mods', accent: '#7b2fff', count: () => (sectionsData.mods || []).length },
   {
     key: 'translations',
     label: 'Translations',
     accent: '#ff3cac',
     count: () => (sectionsData.translations || []).length,
   },
-  { key: 'mods', label: 'Mods', accent: '#7b2fff', count: () => (sectionsData.mods || []).length },
   {
     key: 'collaborations',
     label: 'Collaborations',
@@ -130,7 +130,7 @@ const navSections = [
     <header class="page-header">
       <span class="eyebrow">Game Developer</span>
       <h1 class="page-title">SVENCHU</h1>
-      <p class="page-subtitle">Games, mods, translations and tools.</p>
+      <p class="page-subtitle">From retro homebrew to Unreal Engine 5.<br>15 years of shipped projects across C/C++, Unity and Unreal engines, and a relentless drive to create experiences that stay with you.</p>
       <div class="section-divider"></div>
     </header>
 
@@ -170,7 +170,7 @@ const navSections = [
             <h3 class="game-card__title">{{ item.name }}</h3>
             <p class="game-card__desc">{{ item.description }}</p>
             <div class="game-card__actions">
-              <button class="btn btn-primary">Ver detalles</button>
+              <button class="btn btn-primary">More details</button>
             </div>
           </div>
         </div>

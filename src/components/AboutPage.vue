@@ -1,7 +1,4 @@
 <script setup>
-// AboutPage.vue
-// Replace /public/images/about/photo.jpg with your actual photo.
-// Text data is inline here — edit it directly.
 </script>
 
 <template>
@@ -54,6 +51,15 @@
 
     <div class="divider"></div>
 
+    <section class="about-section stats-row">
+      <div v-for="stat in stats" :key="stat.label" class="stat-card">
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <section class="about-section">
       <h2 class="section-title">Timeline</h2>
       <ol class="timeline">
@@ -65,15 +71,6 @@
           </div>
         </li>
       </ol>
-    </section>
-
-    <div class="divider"></div>
-
-    <section class="about-section stats-row">
-      <div v-for="stat in stats" :key="stat.label" class="stat-card">
-        <span class="stat-value">{{ stat.value }}</span>
-        <span class="stat-label">{{ stat.label }}</span>
-      </div>
     </section>
   </div>
 </template>
@@ -102,69 +99,68 @@ export default {
           desc: 'Sony Vegas · Davince Resolve · Focused mainly on Kingdom Hearts content, with humorous skits',
         },
       ],
+      stats: [
+        { value: '10+', label: 'Published Projects' },
+        { value: '10+', label: 'Years of GameDev Experience' },
+        { value: '4K', label: 'Subscribers on YouTube' },
+        { value: '1M', label: 'Views on YouTube' },
+      ],
       timeline: [
         {
           year: '2011',
-          title: 'AvalancheDS ~ PongDS',
-          desc: 'A port of the flash game Avalanche for the Nintendo DS.<br>TO-DO',
+          title: 'AvalancheDS & PongDS',
+          desc: 'First Nintendo DS homebrews: an attempt to port the Flash game Avalanche, and a classic Pong game featuring local multiplayer on the same device.',
         },
         {
           year: '2012',
           title: 'ChessCount',
-          desc: 'A chess clock homebrew made for the Nintendo DS.',
+          desc: 'A chess clock homebrew made for the Nintendo DS, with customizable time settings and an intuitive interface.',
         },
         {
           year: '2014',
           title: 'Delusion',
-          desc: 'Original horror Tech demo in UDK (Unreal Engine 3).',
+          desc: 'A psychological horror game built in Unreal Engine 3 as a school project, with all 3D assets created from scratch.',
         },
         {
           year: '2016',
-          title: 'Kingdom Hearts Birth By Sleep Final Mix (PSP) - Spanish Translation',
-          desc: 'Spanish translation for KH:BBSFM, including menus, dialogues, and in-game text.',
+          title: 'Sanic: The Zombie Game & BBS Final Mix Spanish Translation',
+          desc: 'A zombie shooter built with a custom C++/OpenGL 2D engine, alongside the first major translation project: a full Spanish patch for Kingdom Hearts Birth by Sleep Final Mix (PSP).',
         },
         {
           year: '2017',
           title: "Magical Pop'n GBA",
-          desc: 'TO-DO',
+          desc: "A homebrew action-platformer for the Game Boy Advance, inspired by the original Magical Pop'n for SNES.",
         },
         {
           year: '2019',
-          title: 'Contra2D ~ Bizarre Skies',
-          desc: "Classic action game Contra remade in C++/OpenGL. <br> Rolling Sky clone game, with JoJo's Bizarre Adventures theme.",
+          title: 'Contra2D & Bizarre Skies 3D',
+          desc: 'A 2D reimagining of the classic Contra built with a custom C++/OpenGL engine, and a Rolling Sky clone with a JoJo\'s Bizarre Adventure theme made with Unreal Engine 4.',
         },
         {
           year: '2021',
-          title: 'Kingdom Hearts 2: Spanish Mix ~ Corruption (Z-Jam 2021)',
-          desc: 'Restored Castilian Spanish dubbing for Kingdom Hearts 2 Final Mix (PC).<br>Slender-style horror in Unreal Engine.',
+          title: 'Corruption & KH2 Spanish Mix',
+          desc: 'A Slender-style horror game made for Z-Jam 2021 in collaboration with Keytotruth, plus the release of KH2 Spanish Mix — a full Castilian Spanish voice mod for Kingdom Hearts 2.',
         },
         {
           year: '2022',
-          title:
-            "Xemnas Deleted Quotes ~ Sephiroth's Absent Silhouette<br>HCAReplace ~ Crisis Core Reunion: OG Dub",
-          desc: "Cool community Kingdom Hearts 2 Final Mix PS2 mods ported to the PC version.<br>Restoration of the original Crisis Core's PSP dub in Reunion's version.",
+          title: 'KH2/KHBBS Mods, Crisis Core Voices & HCAreplace',
+          desc: "Multiple releases: Sephiroth's Absent Silhouette and Xemnas Deleted Quotes mods for KH2, the BBS Free Camera patch for PPSSPP, restoration of Crisis Core's original PSP voices, and HCAreplace — a tool to replace HCA audio in game files.",
         },
         {
           year: '2023',
           title: 'Flamboyant',
-          desc: 'Bullet hell 3D minigame in Unity.',
+          desc: 'A vibrant bullet-hell 3D minigame built in Unity in four days for a UPC FIB advanced course, featuring color-changing shooting mechanics.',
         },
         {
-          year: '2025',
-          title: 'Realms Engine',
-          desc: 'Development of custom tools for the community.',
+          year: '2024',
+          title: 'KH2 Spanish Mix v1.3',
+          desc: 'Final bug-fix update for KH2 Spanish Mix, polishing compatibility and voice coverage across the game.',
         },
         {
           year: '2026',
           title: 'Kingdom Hearts: Tears',
-          desc: 'Fan project in Unreal Engine 5.',
+          desc: 'An ambitious fan-made reimagining of Day 357 from Kingdom Hearts 358/2 Days, built in Unreal Engine 5 with lots of optional content.',
         },
-      ],
-      stats: [
-        { value: '10+', label: 'Published Projects' },
-        { value: '10+', label: 'Years of Experience' },
-        { value: '2', label: 'Full Translations' },
-        { value: '1', label: 'Custom Engine' },
       ],
     }
   },
@@ -189,8 +185,8 @@ export default {
 
 .hero-photo-wrap {
   position: relative;
-  width: 220px;
-  height: 300px;
+  width: 250px;
+  height: 500px;
   border-radius: 4px;
   overflow: hidden;
   flex-shrink: 0;
@@ -258,7 +254,7 @@ export default {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.75;
-  max-width: 55ch;
+  max-width: 100ch;
   white-space: pre-line;
 }
 
@@ -284,7 +280,7 @@ export default {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1px;
   border: 1px solid var(--border);
 }

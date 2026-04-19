@@ -13,9 +13,9 @@ export default {
         <router-link to="/" class="nav-logo">SVEN<span>CHU</span></router-link>
         <ul class="nav-links">
           <li><router-link to="/games">Games</router-link></li>
-          <li><router-link to="/translations">Translations</router-link></li>
           <li><router-link to="/mods">Mods</router-link></li>
-          <li><router-link to="/collaborations">Collaborations</router-link></li>
+          <li><router-link to="/translations">Translations</router-link></li>
+          <li><router-link to="/collaborations">Collabs</router-link></li>
           <li><router-link to="/tools">Tools</router-link></li>
           <li><router-link to="/about">About</router-link></li>
           <li><router-link to="/contact">Contact</router-link></li>
@@ -28,6 +28,9 @@ export default {
     </main>
 
     <footer class="app-footer">
+      <a href="https://twitter.com/Svenchu64" target="_blank" rel="noopener">Twitter/X</a>
+      <a href="https://youtube.com/@TheSoraHD" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/TheSoraHD" target="_blank" rel="noopener">GitHub</a>
       <p>&copy; 2026 — Svenchu</p>
     </footer>
   </div>

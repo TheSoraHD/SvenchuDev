@@ -1,4 +1,5 @@
-<script setup></script>
+<script setup>
+</script>
 
 <template>
   <div class="contact-page">
@@ -68,11 +69,10 @@ export default {
   data() {
     return {
       socials: [
-        // Fill the hrefs with your real URLs. Remove the ones you don't use.
-        { label: 'GitHub', icon: '🐙', handle: '@svenchu', url: 'https://github.com/' },
-        { label: 'YouTube', icon: '▶', handle: '@svenchu', url: 'https://youtube.com/' },
-        { label: 'Twitter/X', icon: '✦', handle: '@svenchu', url: 'https://x.com/' },
-        { label: 'Discord', icon: '💬', handle: 'svenchu', url: 'https://discord.com/' },
+        { label: 'YouTube', icon: '▶', handle: '@TheSoraHD', url: 'https://youtube.com/TheSoraHD' },
+        { label: 'Twitter/X', icon: '✦', handle: '@Svenchu64', url: 'https://x.com/Svenchu64' },
+        { label: 'GitHub', icon: '🐙', handle: '@TheSoraHD', url: 'https://github.com/TheSoraHD' },
+        { label: 'Discord', icon: '💬', handle: 'svenchu', url: 'https://discordapp.com/users/svenchu' },
       ],
       projectTypes: [
         'Indie game collaborations',
