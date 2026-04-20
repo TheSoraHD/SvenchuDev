@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="contact-page">
@@ -69,10 +68,20 @@ export default {
   data() {
     return {
       socials: [
-        { label: 'YouTube', icon: '▶', handle: '@TheSoraHD', url: 'https://youtube.com/TheSoraHD' },
+        {
+          label: 'YouTube',
+          icon: '▶',
+          handle: '@TheSoraHD',
+          url: 'https://youtube.com/TheSoraHD',
+        },
         { label: 'Twitter/X', icon: '✦', handle: '@Svenchu64', url: 'https://x.com/Svenchu64' },
         { label: 'GitHub', icon: '🐙', handle: '@TheSoraHD', url: 'https://github.com/TheSoraHD' },
-        { label: 'Discord', icon: '💬', handle: 'svenchu', url: 'https://discordapp.com/users/svenchu' },
+        {
+          label: 'Discord',
+          icon: '💬',
+          handle: 'svenchu',
+          url: 'https://discordapp.com/users/svenchu',
+        },
       ],
       projectTypes: [
         'Indie game collaborations',
@@ -92,7 +101,7 @@ export default {
 .contact-page {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem 2.5rem 6rem;
+  padding: 4rem 0 6rem;
 }
 
 .page-header {
@@ -321,7 +330,7 @@ export default {
 
 @media (max-width: 768px) {
   .contact-page {
-    padding: 2.5rem 1.25rem 4rem;
+    padding: 2.5rem 0 4rem;
   }
   .contact-grid {
     grid-template-columns: 1fr;

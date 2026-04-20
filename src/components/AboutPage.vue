@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="about-page">
@@ -134,7 +133,7 @@ export default {
         {
           year: '2019',
           title: 'Contra2D & Bizarre Skies 3D',
-          desc: 'A 2D reimagining of the classic Contra built with a custom C++/OpenGL engine, and a Rolling Sky clone with a JoJo\'s Bizarre Adventure theme made with Unreal Engine 4.',
+          desc: "A 2D reimagining of the classic Contra built with a custom C++/OpenGL engine, and a Rolling Sky clone with a JoJo's Bizarre Adventure theme made with Unreal Engine 4.",
         },
         {
           year: '2021',
@@ -170,9 +169,7 @@ export default {
 <style scoped>
 /* Styles remain unchanged as they contain no language-specific text */
 .about-page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 2.5rem 6rem;
+  padding: 4rem 0 6rem;
 }
 
 .about-hero {
@@ -406,7 +403,7 @@ export default {
 
 @media (max-width: 768px) {
   .about-page {
-    padding: 2.5rem 1.25rem 4rem;
+    padding: 2.5rem 0 4rem;
   }
   .about-hero {
     grid-template-columns: 1fr;

@@ -2,7 +2,7 @@
 export default {
   data() {
     return { menuOpen: false }
-  }
+  },
 }
 </script>
 
@@ -20,7 +20,21 @@ export default {
           <li><router-link to="/about">About</router-link></li>
           <li><router-link to="/contact">Contact</router-link></li>
         </ul>
+
+        <button class="nav-hamburger" @click="menuOpen = !menuOpen" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
+
+      <div class="nav-mobile" :class="{ open: menuOpen }">
+        <router-link to="/games" @click="menuOpen = false">Games</router-link>
+        <router-link to="/mods" @click="menuOpen = false">Mods</router-link>
+        <router-link to="/translations" @click="menuOpen = false">Translations</router-link>
+        <router-link to="/collaborations" @click="menuOpen = false">Collabs</router-link>
+        <router-link to="/tools" @click="menuOpen = false">Tools</router-link>
+        <router-link to="/about" @click="menuOpen = false">About</router-link>
+        <router-link to="/contact" @click="menuOpen = false">Contact</router-link>
+      </div>
     </header>
 
     <main class="main-content">
@@ -39,21 +53,29 @@ export default {
 <style>
 /* ─── TOKENS ─── */
 :root {
-  --bg:       #0a0a0f;
-  --surface:  #111118;
+  --bg: #0a0a0f;
+  --surface: #111118;
   --surface2: #16161f;
-  --border:   rgba(255,255,255,0.07);
-  --accent:   #ffae00;
-  --text:     #f0f0f8;
-  --muted:    rgba(240,240,248,0.45);
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #ffae00;
+  --text: #f0f0f8;
+  --muted: rgba(240, 240, 248, 0.45);
   --font-display: 'Orbitron', monospace;
-  --font-body:    'DM Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
 /* ─── RESET ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--font-body);
@@ -71,8 +93,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
   z-index: 0;
@@ -91,7 +113,7 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10,10,15,0.88);
+  background: rgba(10, 10, 15, 0.88);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
@@ -116,7 +138,9 @@ body::before {
   text-decoration: none;
   flex-shrink: 0;
 }
-.nav-logo span { color: var(--accent); }
+.nav-logo span {
+  color: var(--accent);
+}
 
 .nav-links {
   display: flex;
@@ -134,10 +158,17 @@ body::before {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: 4px;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
-.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-.nav-links a.router-link-active { color: var(--accent); }
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+.nav-links a.router-link-active {
+  color: var(--accent);
+}
 
 /* Hamburger — oculto en desktop */
 .nav-hamburger {
@@ -167,7 +198,9 @@ body::before {
   border-top: 1px solid var(--border);
   gap: 0.25rem;
 }
-.nav-mobile.open { display: flex; }
+.nav-mobile.open {
+  display: flex;
+}
 .nav-mobile a {
   padding: 0.6rem 0.5rem;
   color: var(--muted);
@@ -179,13 +212,20 @@ body::before {
   border-radius: 4px;
   transition: color 0.2s;
 }
-.nav-mobile a:hover, .nav-mobile a.router-link-active { color: var(--accent); }
+.nav-mobile a:hover,
+.nav-mobile a.router-link-active {
+  color: var(--accent);
+}
 
 /* ─── CONTENIDO ─── */
 .main-content {
   flex: 1;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
 }
 
 /* ─── FOOTER ─── */
@@ -193,20 +233,34 @@ body::before {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1.25rem;
   color: var(--muted);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
 }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
 }
 
 @media (max-width: 600px) {
-  .navbar { padding: 0 1.25rem; }
+  .navbar {
+    padding: 0 1.25rem;
+  }
+  .main-content {
+    padding: 0 1.25rem;
+  }
 }
 </style>

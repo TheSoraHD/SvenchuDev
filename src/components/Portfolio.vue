@@ -130,7 +130,11 @@ const navSections = [
     <header class="page-header">
       <span class="eyebrow">Game Developer</span>
       <h1 class="page-title">SVENCHU</h1>
-      <p class="page-subtitle">From retro homebrew to Unreal Engine 5.<br>15 years of shipped projects across C/C++, Unity and Unreal engines, and a relentless drive to create experiences that stay with you.</p>
+      <p class="page-subtitle">
+        From retro homebrew to Unreal Engine 5.<br />
+        15 years of shipped projects across C/C++, Unity and Unreal engines, and a relentless drive
+        to create experiences that stay with you.
+      </p>
       <div class="section-divider"></div>
     </header>
 
@@ -210,10 +214,21 @@ const navSections = [
           ></div>
           <div class="game-card__gradient"></div>
           <div class="game-card__content">
+            <span
+              class="game-card__tag"
+              :style="{
+                color: meta.accent,
+                borderColor: meta.accent + '55',
+                background: meta.accent + '12',
+              }"
+              >{{ sectionKey }}</span
+            >
             <h3 class="game-card__title">{{ item.name }}</h3>
             <p class="game-card__desc">{{ item.description }}</p>
             <div class="game-card__actions">
-              <button class="btn btn-primary">Ver detalles</button>
+              <button class="btn btn-primary" :style="{ background: meta.accent }">
+                More details
+              </button>
               <a
                 v-if="item.downloadUrl && item.downloadUrl !== 'TO-DO'"
                 :href="item.downloadUrl"
@@ -221,7 +236,7 @@ const navSections = [
                 rel="noopener"
                 class="btn btn-ghost"
                 @click.stop
-                >Descargar</a
+                >Download</a
               >
             </div>
           </div>
@@ -233,9 +248,7 @@ const navSections = [
 
 <style scoped>
 .portfolio-page {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 4rem 2.5rem 6rem;
+  padding: 4rem 0 6rem;
 }
 
 /* ─── HEADER ─── */
@@ -283,7 +296,7 @@ const navSections = [
 /* ─── HOME NAV GRID ─── */
 .home-nav-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   gap: 1px;
   margin-bottom: 4rem;
   border: 1px solid var(--border);
@@ -431,21 +444,24 @@ const navSections = [
 .game-card__gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 10, 15, 0.97) 0%,
-    rgba(10, 10, 15, 0.45) 50%,
-    transparent 75%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10, 10, 15, 0.85) 0%,
+      rgba(10, 10, 15, 0.4) 40%,
+      transparent 65%
+    ),
+    linear-gradient(to top, rgba(10, 10, 15, 0.75) 0%, transparent 30%);
 }
 
 .game-card__content {
   position: absolute;
   inset: 0;
   padding: 1.5rem;
+  padding-top: 3.5rem; /* clear the absolutely-positioned tag */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .game-card__tag {
@@ -458,9 +474,12 @@ const navSections = [
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--accent);
   border-radius: 2px;
-  margin-bottom: 0.5rem;
   width: fit-content;
   background: rgba(0, 229, 255, 0.06);
+  /* Pin to top-left so it never shifts with title height */
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
 }
 
 .game-card__title {
@@ -500,7 +519,8 @@ const navSections = [
 .game-card__actions {
   display: flex;
   gap: 0.6rem;
-  margin-top: 0.9rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
   opacity: 0;
   transform: translateY(8px);
   transition:
@@ -548,11 +568,92 @@ const navSections = [
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .portfolio-page {
-    padding: 2.5rem 1.25rem 4rem;
+    padding: 2.5rem 0 4rem;
   }
+
+  /* Switch to 2-column grid on mobile */
   .game-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
   }
+
+  /* Split layout: image on top, content below */
+  .game-card {
+    aspect-ratio: unset;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-card__thumb {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+    filter: brightness(0.85) saturate(0.9);
+    transition: filter 0.3s ease;
+  }
+
+  /* Disable zoom-darken on tap */
+  .game-card:hover .game-card__thumb {
+    transform: none;
+    filter: brightness(0.85) saturate(0.9);
+  }
+
+  /* Hide overlay layers — not needed in split layout */
+  .game-card__gradient,
+  .game-card__tint {
+    display: none;
+  }
+
+  /* Content sits below the image, in a solid surface panel */
+  .game-card__content {
+    position: relative;
+    inset: unset;
+    background: var(--surface);
+    padding: 0.75rem 0.9rem 1rem;
+    justify-content: flex-start;
+    border-top: 1px solid var(--border);
+    flex: 1;
+  }
+
+  /* Always show desc and actions — no hover on mobile */
+  .game-card__desc,
+  .game-card__actions {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .game-card__title {
+    transform: translateY(0);
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .game-card__desc {
+    font-size: 0.72rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .game-card__tag {
+    position: relative;
+    top: unset;
+    left: unset;
+    font-size: 0.55rem;
+    padding: 0.2rem 0.45rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .game-card__actions {
+    margin-top: auto;
+    padding-top: 0.65rem;
+  }
+
+  .btn {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.8rem;
+  }
+
   .home-nav-grid {
     grid-template-columns: repeat(2, 1fr);
   }
