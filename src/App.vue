@@ -126,7 +126,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 6rem;
 }
 
 .nav-logo {

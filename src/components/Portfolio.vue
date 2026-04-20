@@ -229,15 +229,6 @@ const navSections = [
               <button class="btn btn-primary" :style="{ background: meta.accent }">
                 More details
               </button>
-              <a
-                v-if="item.downloadUrl && item.downloadUrl !== 'TO-DO'"
-                :href="item.downloadUrl"
-                target="_blank"
-                rel="noopener"
-                class="btn btn-ghost"
-                @click.stop
-                >Download</a
-              >
             </div>
           </div>
         </div>
@@ -248,7 +239,7 @@ const navSections = [
 
 <style scoped>
 .portfolio-page {
-  padding: 4rem 0 6rem;
+  padding: 4rem 0 0;
 }
 
 /* ─── HEADER ─── */
