@@ -4,28 +4,30 @@ import { useRoute, useRouter } from 'vue-router'
 import MediaCarousel from './MediaCarousel.vue'
 import { sectionsData } from '../data/sectionsData.js'
 
-const route  = useRoute()
+const route = useRoute()
 const router = useRouter()
 
-const category    = computed(() => route.params.category)
+const category = computed(() => route.params.category)
 const subcategory = computed(() => route.params.subcategory)
-const itemId      = computed(() => route.params.itemId)
+const itemId = computed(() => route.params.itemId)
 
 const pageData = computed(() => {
   const section = sectionsData[category.value]
   if (!section) return null
   let item
   if (subcategory.value && section[subcategory.value]) {
-    item = section[subcategory.value].find(i => String(i.id) === String(itemId.value))
+    item = section[subcategory.value].find((i) => String(i.id) === String(itemId.value))
   } else if (Array.isArray(section)) {
-    item = section.find(i => String(i.id) === String(itemId.value))
+    item = section.find((i) => String(i.id) === String(itemId.value))
   }
   return item || null
 })
 
 const hasDownloadInfo = computed(() => !!pageData.value?.downloadInfo)
 
-function goBack() { router.back() }
+function goBack() {
+  router.back()
+}
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -35,7 +37,6 @@ const formatDate = (dateString) => {
 
 <template>
   <div class="individual-page">
-
     <!-- 404 -->
     <div v-if="!pageData" class="not-found">
       <h1>404</h1>
@@ -58,15 +59,13 @@ const formatDate = (dateString) => {
       <!-- Hero title -->
       <header class="hero">
         <h1 class="hero-title">{{ pageData.name }}</h1>
-        <p class="hero-desc" v-html="pageData.description"></p>
+        <p class="hero-desc" v-html="pageData.shortDescription"></p>
       </header>
 
       <!-- Grid principal -->
       <div class="content-grid">
-
         <!-- Columna izquierda -->
         <div class="col-main">
-
           <!-- Galería -->
           <section class="content-block">
             <h2 class="block-title">Gallery</h2>
@@ -75,9 +74,21 @@ const formatDate = (dateString) => {
               :youtube-videos="pageData.youtubeVideos || []"
               :item-id="pageData.id"
             />
-            <p v-if="!pageData.images?.length && !pageData.youtubeVideos?.length" class="empty-state">
-              Sin media disponible.
+            <p
+              v-if="!pageData.images?.length && !pageData.youtubeVideos?.length"
+              class="empty-state"
+            >
+              No media available.
             </p>
+          </section>
+
+          <!-- Description  -->
+          <section v-if="pageData.features?.length" class="content-block">
+            <h2 class="block-title">Description</h2>
+            <div
+              class="description [&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6"
+              v-html="pageData.description"
+            ></div>
           </section>
 
           <!-- Features -->
@@ -142,7 +153,10 @@ const formatDate = (dateString) => {
             <p v-else class="download-pending">Coming Soon</p>
           </div>
 
-          <div v-if="hasDownloadInfo && pageData.downloadInfo.installation?.length" class="sidebar-card">
+          <div
+            v-if="hasDownloadInfo && pageData.downloadInfo.installation?.length"
+            class="sidebar-card"
+          >
             <h3 class="sidebar-card-title">Installation</h3>
             <ol class="install-steps">
               <li v-for="step in pageData.downloadInfo.installation" :key="step">{{ step }}</li>
@@ -199,13 +213,23 @@ const formatDate = (dateString) => {
   align-items: center;
   justify-content: center;
 }
-.breadcrumb-back:hover { background: var(--surface2); }
-.breadcrumb-sep { color: var(--border); }
-.breadcrumb-cat { color: var(--muted); }
-.breadcrumb-current { color: var(--accent); }
+.breadcrumb-back:hover {
+  background: var(--surface2);
+}
+.breadcrumb-sep {
+  color: var(--border);
+}
+.breadcrumb-cat {
+  color: var(--muted);
+}
+.breadcrumb-current {
+  color: var(--accent);
+}
 
 /* ─── HERO ─── */
-.hero { margin-bottom: 3rem; }
+.hero {
+  margin-bottom: 3rem;
+}
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4vw, 3rem);
@@ -401,7 +425,9 @@ const formatDate = (dateString) => {
   border-radius: 2px;
   transition: background 0.2s;
 }
-.btn-download:hover { background: #fff; }
+.btn-download:hover {
+  background: #fff;
+}
 
 .download-pending {
   text-align: center;
@@ -422,7 +448,9 @@ const formatDate = (dateString) => {
   cursor: pointer;
   transition: background 0.2s;
 }
-.btn-back:hover { background: var(--surface2); }
+.btn-back:hover {
+  background: var(--surface2);
+}
 
 .install-steps {
   padding-left: 1.25rem;
@@ -438,11 +466,19 @@ const formatDate = (dateString) => {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .content-grid { grid-template-columns: 1fr; }
-  .col-sidebar { position: static; }
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  .col-sidebar {
+    position: static;
+  }
 }
 @media (max-width: 600px) {
-  .individual-page { padding: 2rem 1.25rem 4rem; }
-  .hero-title { font-size: 1.8rem; }
+  .individual-page {
+    padding: 2rem 1.25rem 4rem;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
 }
 </style>
