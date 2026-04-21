@@ -130,7 +130,10 @@ const navSections = [
     <header class="page-header">
       <span class="eyebrow">Game Developer</span>
       <h1 class="page-title">SVENCHU</h1>
-      <p class="page-subtitle">From retro homebrew to Unreal Engine 5.<br>15 years of shipped projects across C/C++, Unity and Unreal engines, and a relentless drive to create experiences that stay with you.</p>
+      <p class="page-subtitle">
+        From retro homebrew to Unreal Engine 5.<br />15 years of shipped projects across C/C++,
+        Unity and Unreal engines, and a relentless drive to create experiences that stay with you.
+      </p>
       <div class="section-divider"></div>
     </header>
 
@@ -168,7 +171,7 @@ const navSections = [
           <div class="game-card__content">
             <span class="game-card__tag">{{ item._section }}</span>
             <h3 class="game-card__title">{{ item.name }}</h3>
-            <p class="game-card__desc">{{ item.description }}</p>
+            <p class="game-card__desc">{{ item.shortDescription }}</p>
             <div class="game-card__actions">
               <button class="btn btn-primary">More details</button>
             </div>
@@ -211,9 +214,9 @@ const navSections = [
           <div class="game-card__gradient"></div>
           <div class="game-card__content">
             <h3 class="game-card__title">{{ item.name }}</h3>
-            <p class="game-card__desc">{{ item.description }}</p>
+            <p class="game-card__desc">{{ item.shortDescription }}</p>
             <div class="game-card__actions">
-              <button class="btn btn-primary">Ver detalles</button>
+              <button class="btn btn-primary">More details</button>
               <a
                 v-if="item.downloadUrl && item.downloadUrl !== 'TO-DO'"
                 :href="item.downloadUrl"
@@ -221,7 +224,7 @@ const navSections = [
                 rel="noopener"
                 class="btn btn-ghost"
                 @click.stop
-                >Descargar</a
+                >Download</a
               >
             </div>
           </div>
