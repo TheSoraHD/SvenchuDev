@@ -59,7 +59,7 @@ const formatDate = (dateString) => {
       <!-- Hero title -->
       <header class="hero">
         <h1 class="hero-title">{{ pageData.name }}</h1>
-        <p class="hero-desc" v-html="pageData.description"></p>
+        <p class="hero-desc" v-html="pageData.shortDescription"></p>
       </header>
 
       <!-- Grid principal -->
@@ -78,8 +78,14 @@ const formatDate = (dateString) => {
               v-if="!pageData.images?.length && !pageData.youtubeVideos?.length"
               class="empty-state"
             >
-              Sin media disponible.
+              No media available.
             </p>
+          </section>
+
+          <!-- Description -->
+          <section v-if="pageData.description" class="content-block">
+            <h2 class="block-title">Description</h2>
+            <div class="description" v-html="pageData.description"></div>
           </section>
 
           <!-- Features -->
@@ -281,6 +287,64 @@ const formatDate = (dateString) => {
   color: var(--muted);
   font-size: 0.85rem;
   font-style: italic;
+}
+
+/* ─── DESCRIPTION ─── */
+
+.description :deep(ul) {
+  margin: 1rem 0 1.5rem 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1.5px solid var(--border);
+  padding-left: 1.25rem;
+}
+
+.description :deep(ul li) {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1.5rem;
+}
+
+.description :deep(ul li)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.description :deep(ol) {
+  margin: 1rem 0 1.5rem 0;
+  padding-left: 1.5rem;
+  counter-reset: item;
+  list-style: none;
+}
+
+.description :deep(ol li) {
+  counter-increment: item;
+  padding: 0.35rem 0 0.35rem 0.5rem;
+}
+
+.description :deep(ol li)::before {
+  content: counter(item) '.';
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 0.6rem;
+}
+
+.description :deep() {
+  color: var(--muted);
+}
+
+.description :deep(p) {
+  margin-bottom: 1.25rem;
+}
+
+.description :deep(p:last-child) {
+  margin-bottom: 0;
 }
 
 /* ─── FEATURES ─── */
