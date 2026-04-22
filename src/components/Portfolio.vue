@@ -33,6 +33,11 @@ const tintColors = [
   '#8800ff',
 ]
 
+const platformNames = {
+  GBA: 'Game Boy Advance (GBA)',
+  NDS: 'Nintendo DS (NDS)',
+}
+
 // ─── DATOS NORMALIZADOS ───────────────────────────────────────────
 // Devuelve siempre un array plano de { item, platform? }
 const sections = computed(() => {
@@ -191,7 +196,7 @@ const navSections = [
 
     <section v-for="group in sections" :key="group.platform || 'main'" class="platform-section">
       <div v-if="group.platform" class="platform-label">
-        <h2>{{ group.platform }}</h2>
+        <h2>{{ platformNames[group.platform] ?? group.platform }}</h2>
       </div>
 
       <div class="game-grid">
