@@ -41,7 +41,7 @@ const formatDate = (dateString) => {
     <div v-if="!pageData" class="not-found">
       <h1>404</h1>
       <p>Page not found.</p>
-      <button class="btn-back" @click="goBack">← Volver</button>
+      <button class="btn-back" @click="goBack">← Back</button>
     </div>
 
     <template v-else>
