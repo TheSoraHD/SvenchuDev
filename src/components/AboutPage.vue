@@ -107,8 +107,8 @@ export default {
       timeline: [
         {
           year: '2011',
-          title: 'AvalancheDS & PongDS',
-          desc: 'First Nintendo DS homebrews: an attempt to port the Flash game Avalanche, and a classic Pong game featuring local multiplayer on the same device.',
+          title: 'AvalancheDS, PongDS & Space Invaders DS',
+          desc: 'First Nintendo DS homebrews: an attempt to port the Flash game Avalanche, a classic Pong game featuring local multiplayer on the same device, and an unfinished attempt at recreating Space Invaders.',
         },
         {
           year: '2012',
@@ -142,18 +142,23 @@ export default {
         },
         {
           year: '2022',
-          title: 'KH2/KHBBS Mods, Crisis Core Voices & HCAreplace',
-          desc: "Multiple releases: Sephiroth's Absent Silhouette and Xemnas Deleted Quotes mods for KH2, the BBS Free Camera patch for PPSSPP, restoration of Crisis Core's original PSP voices, and HCAreplace — a tool to replace HCA audio in game files.",
+          title: 'KH2/KHBBS Mods, Crisis Core Voices, HCAreplace, Remorse & KH Re:Fined',
+          desc: "Multiple releases: Sephiroth's Absent Silhouette and Xemnas Deleted Quotes mods for KH2, the BBS Free Camera patch for PPSSPP, restoration of Crisis Core's original PSP voices, HCAreplace — a tool to replace HCA audio in game files — pre-launch testing for Remorse: The List, and the start of ongoing Spanish translation contributions to KH Re:Fined.",
         },
         {
           year: '2023',
-          title: 'Flamboyant',
-          desc: 'A vibrant bullet-hell 3D minigame built in Unity in four days for a UPC FIB advanced course, featuring color-changing shooting mechanics.',
+          title: 'Flamboyant & Drakengard 3 Spanish Translation',
+          desc: 'A vibrant bullet-hell 3D minigame built in Unity in four days for a UPC FIB advanced course, plus the start of an ongoing collaborative Spanish translation of Drakengard 3 for PS3.',
         },
         {
           year: '2024',
-          title: 'KH2 Spanish Mix v1.3',
-          desc: 'Final bug-fix update for KH2 Spanish Mix, polishing compatibility and voice coverage across the game.',
+          title: 'KH2 Spanish Mix v1.3, KH2 Randomizer & Clueless Crew',
+          desc: 'Final bug-fix update for KH2 Spanish Mix, a contributed fix for the Spanish version of the KH2 Randomizer, and pre-launch betatesting for the co-op horror game Clueless Crew.',
+        },
+        {
+          year: '2025',
+          title: 'Brainrot Royale',
+          desc: 'Pre-launch betatesting for Brainrot Royale, a chaotic 16-player battle royale built around Italian Brainrot meme characters, developed by Keytotruth and 13th Vessel.',
         },
         {
           year: '2026',

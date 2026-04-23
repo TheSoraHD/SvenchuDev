@@ -277,19 +277,17 @@ export const sectionsData = {
           '/images/games/spaceinvadersds-3.jpg',
         ],
         // youtubeVideos: [],
-        description: '',
-        features: [''],
-        downloadInfo: {
-          version: '1.0.0',
-          size: '???',
-          requirements: 'NDS Flashcart / Emulator',
-          installation: ['Play the ROM'],
-        },
+        description:
+          "<p>Made in August 2011, Space Invaders DS was the next step in a deliberate effort to incrementally tackle more complex projects on the Nintendo DS using PALib. Fresh off the success of PongDS, the ambition was to recreate the classic arcade game — with plans to introduce new enemy types beyond the originals.</p><p>Neither goal was reached. The new enemies never made it in, and the game never reached a playable state. It was a reminder that complexity has a way of humbling you just when you think you've found your footing — a lesson ChessCount would answer a few months later.</p>",
+        features: [],
         changelog: [
           {
             version: '1.0.0',
-            date: '???',
-            changes: ['Official release'],
+            date: '2011/08/23',
+            changes: [
+              'Non-functional ROM.',
+              'If you would like it to be properly made, please let me know!',
+            ],
           },
         ],
       },
@@ -350,6 +348,8 @@ export const sectionsData = {
       downloadUrl: 'https://tommadness.github.io/KH2Randomizer/setup/Panacea-ModLoader/',
       images: ['/images/collabs/kh2-rando-1.jpg'],
       // youtubeVideos: [''],
+      description:
+        "<p>In July 2024, I contributed bug fixes and translation corrections to the <em>Kingdom Hearts II</em> Randomizer — a community tool that shuffles various game elements to create a unique experience on each run.</p><p>Spanish players on Steam and Epic were encountering untranslated strings and, more critically, a crash that occurred exclusively in the Spanish version when levelling up and receiving a new Drive Form level. After reaching out via the project's Discord, I spent three days tracking down the root cause — an overflow in the level-up text rendering — fixing it, translating the remaining untranslated elements, and testing the changes. The fix was submitted as a pull request to the main repository, followed by continuity adjustments requested by the project owner.</p>",
     },
     {
       id: 'kh-refined',
@@ -359,33 +359,38 @@ export const sectionsData = {
       downloadUrl: 'https://github.com/KH-ReFined/KH-ReFined',
       images: ['/images/collabs/kh-refined-1.jpg'],
       youtubeVideos: ['au0rhFks090'],
+      description:
+        "<p>Since 2022, I have been part of the translation team for <em>Kingdom Hearts Re:Fined</em> — a community project that enhances the classic PC ports of the <em>Kingdom Hearts</em> series with quality-of-life improvements and bug fixes — contributing Spanish translations across games and features as they were implemented, totalling around 500 lines.</p><p>As a senior translator within the project's Discord, my role extended beyond direct translation work to reviewing and correcting contributions from other team members. Additionally, the creator of Re:Fined reached out to integrate my own mods, <em>Kingdom Hearts II Spanish Mix</em> and <em>Sephiroth's Absent Silhouette</em>, bringing its full Spanish dub and refightable secret boss into the project officially.</p>",
     },
     {
       id: 'brainrot-royale',
       name: 'Brainrot Royale',
-      shortDescription:
-        'Betatested the game in order to optimize it for ultrawide monitors and Steam Deck, including compatibility, performance and networking improvements.',
+      shortDescription: 'Commercial game betatesting.',
       downloadUrl: 'https://store.steampowered.com/app/878000/Brainrot_Royale/',
       images: ['/images/collabs/brainrot-royale-1.jpg'],
       youtubeVideos: ['z1-tFbFqXwo'],
+      description:
+        '<p>Invited by the developers — close friends of mine — I participated in three closed beta sessions for <em>Brainrot Royale</em> ahead of its Early Access launch in July 2025. The game is a chaotic 16-player battle royale built around Italian Brainrot meme characters, developed by Keytotruth (Truthkey) and 13th Vessel (ligero_miguel).</p><p>My focus during testing was on platform compatibility and technical performance: verifying the experience on ultrawide monitors and Steam Deck, identifying issues that fed into compatibility, performance, and networking improvements carried out by the development team before release.</p>',
     },
     {
       id: 'clueless-crew',
       name: 'Clueless Crew',
-      shortDescription:
-        'Betatested the game in order to optimize it for ultrawide monitors and Steam Deck, including compatibility, performance and networking improvements.',
+      shortDescription: 'Commercial game betatesting.',
       downloadUrl: 'https://store.steampowered.com/app/3252400/Clueless_Crew/',
       images: ['/images/collabs/clueless-crew-1.jpg'],
       youtubeVideos: ['vdptQDM8PLA'],
+      description:
+        '<p>Invited by Keytotruth — one of the developers — I participated in a couple of closed beta sessions for <em>Clueless Crew</em> ahead of its Early Access launch in December 2024. The game is an online co-op survival horror experience developed by Ashkandi and Keytotruth (Truthkey), where teams scavenge eerie abandoned locations for loot while racing against the clock and avoiding hostile threats.</p><p>My focus was on platform compatibility and technical performance: verifying the experience on ultrawide monitors and Steam Deck, and feeding back issues that informed compatibility, performance, and networking improvements carried out by the development team before release.</p>',
     },
     {
       id: 'remorse',
       name: 'Remorse: The List',
-      shortDescription:
-        'Betatested the game in order to optimize it for ultrawide monitors and Steam Deck, including compatibility and performance improvements.',
+      shortDescription: 'Commercial game betatesting.',
       downloadUrl: 'https://store.steampowered.com/app/867960/Remorse_The_List/',
       images: ['/images/collabs/remorse-1.jpg'],
       youtubeVideos: ['LXTDrL71A4s'],
+      description:
+        '<p>Invited by Keytotruth, I performed full pre-launch testing for <em>Remorse: The List</em>, a single-player survival horror game developed by Ashkandi and Keytotruth (Truthkey) — set in the eerie Hungarian town of Hidegpuszta — published by Feardemic and released in April 2022.</p><p>The nature of the game made this testing particularly demanding: its heavy use of UI widgets and puzzle elements meant that compatibility across a wide range of aspect ratios and control schemes was critical, not incidental. Thorough testing across those combinations led to numerous improvements before launch — including ultrawide monitor support, which the game now lists as a feature on its Steam page.</p>',
     },
   ],
   translations: [
@@ -401,7 +406,8 @@ export const sectionsData = {
         '/images/translations/khbbsfmspanish-3.jpg',
       ],
       youtubeVideos: ['9zZ1bo90yYI'],
-      description: '',
+      description:
+        "<p>Released in August 2016, this is the first and only Spanish translation of <em>Kingdom Hearts: Birth by Sleep Final Mix</em> for PSP — bringing the Japanese-exclusive version of the game to Spanish-speaking players for the first time on the platform, and to this day the only way to experience its multiplayer mode and Final Mix extras in Spanish.</p><p>The project took half a year and built upon Keytotruth's existing English translation as a base, which had already introduced Latin alphabet support into the game's files. The technical work involved image re-encoding to the PSP's required format, hex-level editing to replace text without exceeding the original file sizes — as expanding them would break the game — and adapting subtitle files extracted from the European PS3 version of the original <em>Birth by Sleep</em> to fit the Final Mix release. BBS Modding Station was used to assist with the bulk of text changes.</p><p>The patch was covered by Spanish gaming community outlets including Last Virtual Gate, and has been widely distributed across fan communities. It prompted several full playthroughs from Spanish-speaking content creators, and remains an active reference for fans of the series seeking the complete Final Mix experience in their language.</p>",
       features: [
         'Almost complete translation of all dialogues',
         'Translated menus and interfaces',
@@ -437,7 +443,8 @@ export const sectionsData = {
         '/images/translations/drakengard3-3.jpg',
         '/images/translations/drakengard3-4.jpg',
       ],
-      description: '',
+      description:
+        "<p>An ongoing collaborative Spanish translation of <em>Drakengard 3</em> for PS3 (RPCS3), developed together with ByToxX. Work began in March 2023, covering text, textures, and video assets across a title known for its dark, layered narrative — where each New Game Plus playthrough reveals a different timeline, and the full picture only emerges after completing all endings.</p><p>The technical scope was considerable. Square Enix's undocumented .XXX file format had no complete tooling available, requiring hex editing and custom investigation to extract and reinsert text reliably. Beyond text, the work extended to DDS texture editing for in-game images, Bink video replacement for localised video assets, and widget editing for elements such as the loading screen — all coordinated through a shared Google Sheets pipeline tracking per-file progress across the team.</p><p>To date, the first two chapters of the game are fully playable in Spanish with minimal errors, representing approximately two hours of the experience.</p>",
       features: [
         'Translation faithful to the USA localization.',
         'Support for latest version and DLCs.',
@@ -453,12 +460,13 @@ export const sectionsData = {
   mods: [
     {
       id: 'kh2-spanish-mix',
-      name: 'KINGDOM HEARTS 2: Spanish Mix - Voices in Castilian',
+      name: 'KINGDOM HEARTS 2: Spanish Mix',
       shortDescription: 'Mod that includes Castilian Spanish voices for Kingdom Hearts 2.',
       downloadUrl: 'https://www.nexusmods.com/kingdomhearts2finalmix/mods/31',
       images: ['/images/mods/kh2spanishmix-1.jpg'],
       youtubeVideos: ['q1P7gPPuFH0'],
-      description: '',
+      description:
+        '<p>Released in June 2021 after two months of development, <em>Spanish Mix - Voces en Castellano</em> is a mod for <em>Kingdom Hearts II Final Mix</em> (PC) that restores the original Spanish PlayStation 2 dub — bringing back the iconic Castilian voices, including Adolfo Moreno (the voice of Ash Ketchum in Pokémon) as Sora and Jorge Saudinós (the voice of Roronoa Zoro in One Piece) as Riku, to the definitive version of the game.</p><p>The mod covers over 6,000 in-game dialogue audio files, all pre-rendered cutscenes, more than 2,000 combat voice lines for both playable characters and bosses — including those added exclusively in the Final Mix version — Gummi Mission voices, and fully remixed Atlantica songs rebuilt from the original PS2 vocal tracks. The entire subtitle track was also rewritten to match the restored voices and correct spelling errors present in the original release.</p><p>The mod has accumulated over 10,000 downloads on NexusMods alone, with the page reaching 70,000 visits — figures that do not account for additional mirrors or the OpenKH installation method. It has been covered by Spanish gaming outlets including 3DJuegos and Meristation, featured by Spanish-language content creators, and its existence was referenced in <em>El despertar del corazón</em>, a book dedicated to the Kingdom Hearts series.</p>',
       features: [
         'Full dubbing in Castilian Spanish',
         'Resubbed cutscenes to go along with the Spanish voices',
@@ -522,7 +530,8 @@ export const sectionsData = {
         '/images/mods/sephirothas-3.jpg',
       ],
       // youtubeVideos: [],
-      description: '',
+      description:
+        "<p>Released in March 2022, <em>Sephiroth Absent Silhouette</em> is an enhanced PC port of Crazycatz00's original PS2 mod for <em>Kingdom Hearts II Final Mix</em>, built over one week into a stable release.</p><p>The mod allows players to refight Sephiroth as many times as they wish via his Absent Silhouette in The Dark Depths, complete with two cutscenes bookending the battle and a reward for defeating him — without affecting main story progression or his associated side quest. New additions over the original include HD textures and full multilanguage support across all five languages of the Global version: English, Spanish, French, Italian, and German.</p><p>The mod accumulated 6,000 downloads and 40,000 total views on NexusMods alone, not counting mirrors or the OpenKH installation method, and earned 200+ endorsements. It was later integrated into Topaz's <em>KH Re:Fined</em> as part of its official suite of enhancements.</p>",
       features: [
         'Refightable Sephiroth boss fight',
         'Enhanced graphics and effects',
@@ -559,7 +568,8 @@ export const sectionsData = {
       downloadUrl: 'https://www.nexusmods.com/kingdomhearts2finalmix/mods/96',
       images: ['/images/mods/xemnasquotes-1.jpg'],
       youtubeVideos: ['cBhjAdvNwUg'],
-      // description: '',
+      description:
+        "<p>Released for <em>Kingdom Hearts II Final Mix</em> (PC), <em>Xemnas Deleted Quotes</em> is a direct port of 13th Vessel's original PS2 mod, built in a single day. It restores unused voice lines recorded by Square Enix for two cut boss encounters involving Xemnas Armor 2 — audio that has sat buried in the game's files since the original release, never heard in-game.</p><p>Notably, Square Enix recorded these lines in every language, meaning the restored quotes will play in whichever dub is currently installed — including the Spanish Mix, Japanese, French, and German dub mods. The mod is compatible with any other mod that does not alter Xemnas Armor 2's AI, and a known audio skipping bug inherited from the PS3 HD version remains beyond the scope of the mod to fix.</p><p>It accumulated 2,000 downloads and 20,000 page views on NexusMods alone, earning 50+ endorsements.</p>",
       features: [],
       downloadInfo: {
         version: '1.0',
@@ -581,11 +591,12 @@ export const sectionsData = {
     },
     {
       id: 'crisis-core-voices',
-      name: "Restore Crisis Core's PSP Original Voices",
+      name: 'Crisis Core Reunion: PSP Original Voices',
       shortDescription: 'Restores the original PSP voices in Crisis Core Reunion.',
       downloadUrl: 'https://www.nexusmods.com/crisiscoreff7reunion/mods/15',
       images: ['/images/mods/crisiscore-1.jpg'],
-      description: '',
+      description:
+        "<p>Released on 25th December 2022 — less than two weeks after the game's launch — <em>Restore Crisis Core's PSP Original Voices</em> brings back the original PSP cast to <em>Crisis Core: Final Fantasy VII Reunion</em> on PC, replacing the recast voices with performances from Rick Gomez (Zack Fair), Steve Burton (Cloud), George Newbern (Sephiroth), Andrea Bowen (Aerith), and Oliver Quinn (Genesis), among others.</p><p>The project took roughly a month in total, with the bulk of the time spent extracting and preparing assets from the PSP version ahead of the game's launch. The technical obstacles were considerable: the game was not designed to be easily modded, as is common with Unreal Engine 4 titles, and initial work was done using the Switch version before a specific Steam launch parameter was discovered that enabled mod loading. Beyond that, the new compressed .ucas/.utoc file format had no available tooling, and all audio was encapsulated within .awb/.uasset files in HCA format. To work around this, I wrote a custom tool to replace the game's dialogue lines by converting WAV audio to HCA at the highest possible quality — covering 99% of in-game cutscene voices. Combat voice replacement remained blocked pending a solution for the .ucas/.utoc format.</p><p>The mod became my most downloaded to date, accumulating over 6,200 downloads and 100,000 page views on NexusMods alone, not counting mirrors, and was covered by Siliconera, WCCFTech, The Gamer, and Noisy Pixel, as well as numerous content creators. The initial release was later superseded when other community members — using my tool and assets with permission — extended coverage to combat voices and addressed remaining bugs, completing the classic experience for fans.</p>",
       features: [
         '99% in-game cutscenes voices that existed previously in the PSP version!',
         'Compatible only with the latest version of the game.',
@@ -621,12 +632,12 @@ export const sectionsData = {
     {
       id: 'bbsfm-analog',
       name: "Birth By Sleep Final Mix's Free Camera (Emulator)",
-      shortDescription:
-        'Adds support for a second analog stick in PPSSPP emulator. Original work by TheOfficialFloW, who made the original patch for Adrenaline (PSP emulator on PSVita).',
+      shortDescription: 'Adds support for a second analog stick in PPSSPP emulator.',
       downloadUrl: 'https://mega.nz/file/idV0SD5b#lZ15ozM282sgokA66Aq8TwlKRGIZHvEGlQUcLHZ0W-4',
       images: ['/images/mods/bbsfm-camera-1.jpg'],
       // youtubeVideos: [],
-      // description: '',
+      description:
+        "<p>A plugin for the PPSSPP emulator (v1.11+) that adds free camera support via the second analog stick to <em>Kingdom Hearts: Birth By Sleep Final Mix</em> — a feature the game natively supports on PSVita through TheOfficialFloW's original Adrenaline patch, but unavailable on general emulation.</p><p>Porting the patch required a day of investigation into PPSSPP's plugin system. The process involved stripping out the HEN and kernel functions from the original that PPSSPP does not support due to its different internal architecture, then building an .ini configuration file and compiling a PRX plugin using the PSPSDK, relying only on the subset of functions accessible to games themselves — direct RAM access, game-callable functions, and similar. The result loads cleanly into the emulator without further modification.</p><p>The plugin was subsequently incorporated into Keytotruth's SuperBosses mod for <em>KHBBSFM</em> after sharing the work with him.</p>",
       features: [],
       downloadInfo: {
         version: '1.0',
@@ -654,7 +665,8 @@ export const sectionsData = {
         'Tool to replace HCA audio within .awb/.uasset files. Created to restore the original English dub in Crisis Core Reunion.',
       downloadUrl: 'https://github.com/TheSoraHD/HCAreplace/',
       images: ['/images/mods/crisiscore-1.jpg'],
-      description: '',
+      description:
+        "<p>Written in C++ and released in December 2022, HCAReplace is a command-line tool for replacing HCA audio tracks inside .awb/.uasset files — the compressed audio containers used by <em>Crisis Core: Final Fantasy VII Reunion</em> and other Unreal Engine titles.</p><p>The tool was built out of necessity during the development of the PSP voice restoration mod, where no existing tooling could handle the game's audio format. It leverages VGAudio for WAV-to-HCA encoding, and handles the binary patching required to swap audio tracks in-place within the container files at maximum quality.</p><p>It was subsequently adopted by other modders in the <em>Crisis Core Reunion</em> community as the foundation for further voice restoration work, and is credited in several mods that built upon it.</p>",
       features: [
         'Convert .wav files to HCA format',
         'Replace HCA audio in .awb/.uasset files',
