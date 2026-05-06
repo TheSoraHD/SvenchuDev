@@ -328,7 +328,7 @@ export default {
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .contact-page {
     padding: 2.5rem 0 4rem;
   }

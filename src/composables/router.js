@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Portfolio from '@/components/Portfolio.vue'
+import PortfolioPage from '@/components/PortfolioPage.vue'
 import IndividualPage from '@/components/IndividualPage.vue'
 import AboutPage from '@/components/AboutPage.vue'
 import ContactPage from '@/components/ContactPage.vue'
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Portfolio,
+    component: PortfolioPage,
   },
   {
     path: '/about',
@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/:section(games|translations|mods|collaborations|tools)',
     name: 'Section',
-    component: Portfolio,
+    component: PortfolioPage,
     props: true,
   },
   {

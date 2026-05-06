@@ -1,8 +1,11 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useLanguage } from '@/composables/useLanguage'
 import MediaCarousel from './MediaCarousel.vue'
 import { sectionsData } from '../data/sectionsData.js'
+
+const { t } = useLanguage()
 
 const route = useRoute()
 const router = useRouter()
@@ -53,13 +56,13 @@ const formatDate = (dateString) => {
         <span v-if="subcategory" class="breadcrumb-sep">/</span>
         <span v-if="subcategory" class="breadcrumb-cat">{{ subcategory }}</span>
         <span class="breadcrumb-sep">/</span>
-        <span class="breadcrumb-current">{{ pageData.name }}</span>
+        <span class="breadcrumb-current">{{ t(pageData.name) }}</span>
       </nav>
 
       <!-- Hero title -->
       <header class="hero">
-        <h1 class="hero-title">{{ pageData.name }}</h1>
-        <p class="hero-desc" v-html="pageData.shortDescription"></p>
+        <h1 class="hero-title">{{ t(pageData.name) }}</h1>
+        <p class="hero-desc" v-html="t(pageData.shortDescription)"></p>
       </header>
 
       <!-- Grid principal -->
@@ -85,7 +88,7 @@ const formatDate = (dateString) => {
           <!-- Description -->
           <section v-if="pageData.description" class="content-block">
             <h2 class="block-title">Description</h2>
-            <div class="description" v-html="pageData.description"></div>
+            <div class="description" v-html="t(pageData.description)"></div>
           </section>
 
           <!-- Features -->
@@ -524,8 +527,6 @@ const formatDate = (dateString) => {
   .col-sidebar {
     position: static;
   }
-}
-@media (max-width: 600px) {
   .individual-page {
     padding: 2rem 0 4rem;
   }

@@ -1,8 +1,20 @@
+<script setup>
+import { ref } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
+
+const menuOpen = ref(false)
+const { locale, setLocale } = useLanguage()
+
+function toggleLocale() {
+  setLocale(locale.value === 'en' ? 'es' : 'en')
+}
+</script>
+
 <script>
 export default {
   data() {
     return { menuOpen: false }
-  }
+  },
 }
 </script>
 
@@ -11,29 +23,124 @@ export default {
     <header class="app-header">
       <nav class="navbar">
         <router-link to="/" class="nav-logo">SVEN<span>CHU</span></router-link>
-        <ul class="nav-links">
-          <li><router-link to="/games">Games</router-link></li>
-          <li><router-link to="/mods">Mods</router-link></li>
-          <li><router-link to="/translations">Translations</router-link></li>
-          <li><router-link to="/collaborations">Collabs</router-link></li>
-          <li><router-link to="/tools">Tools</router-link></li>
-          <li><router-link to="/about">About</router-link></li>
-          <li><router-link to="/contact">Contact</router-link></li>
-        </ul>
+        <div class="nav-actions">
+          <ul class="nav-links">
+            <li>
+              <router-link to="/games">{{ locale === 'en' ? 'Games' : 'Juegos' }}</router-link>
+            </li>
+            <li><router-link to="/mods">Mods</router-link></li>
+            <li>
+              <router-link to="/translations">{{
+                locale === 'en' ? 'Translations' : 'Traducciones'
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/collaborations">{{
+                locale === 'en' ? 'Collabs' : 'Colabs'
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/tools">{{
+                locale === 'en' ? 'Tools' : 'Herramientas'
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/about">{{ locale === 'en' ? 'About' : 'Acerca de' }}</router-link>
+            </li>
+            <li>
+              <router-link to="/contact">{{
+                locale === 'en' ? 'Contact' : 'Contacto'
+              }}</router-link>
+            </li>
+          </ul>
+          <button
+            class="lang-toggle"
+            @click="toggleLocale"
+            :title="locale === 'en' ? 'Cambiar a Español' : 'Switch to English'"
+          >
+            <!-- Muestra la bandera del idioma AL QUE vas a cambiar -->
+            <svg
+              v-if="locale === 'en'"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 60 40"
+              width="28"
+              height="19"
+              aria-label="Cambiar a español"
+            >
+              <!-- Bandera de España -->
+              <rect width="60" height="40" fill="#c60b1e" />
+              <rect y="10" width="60" height="20" fill="#ffc400" />
+              <!-- Escudo simplificado -->
+              <rect
+                x="22"
+                y="13"
+                width="7"
+                height="14"
+                rx="1"
+                fill="#c60b1e"
+                stroke="#888"
+                stroke-width="0.5"
+              />
+              <rect x="22" y="13" width="3.5" height="14" fill="#c60b1e" />
+              <rect x="25.5" y="13" width="3.5" height="14" fill="#ffc400" opacity="0.6" />
+              <rect x="22" y="13" width="7" height="5" rx="1" fill="#ffc400" opacity="0.5" />
+            </svg>
 
-        <button class="nav-hamburger" @click="menuOpen = !menuOpen" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 60 40"
+              width="28"
+              height="19"
+              aria-label="Switch to English"
+            >
+              <!-- Union Jack -->
+              <rect width="60" height="40" fill="#012169" />
+              <!-- Aspas blancas (X) -->
+              <line x1="0" y1="0" x2="60" y2="40" stroke="white" stroke-width="8" />
+              <line x1="60" y1="0" x2="0" y2="40" stroke="white" stroke-width="8" />
+              <!-- Cruz roja diagonal (borde blanco) -->
+              <line x1="0" y1="0" x2="60" y2="40" stroke="#C8102E" stroke-width="4" />
+              <line x1="60" y1="0" x2="0" y2="40" stroke="#C8102E" stroke-width="4" />
+              <!-- Cruz central blanca -->
+              <rect x="24" y="0" width="12" height="40" fill="white" />
+              <rect x="0" y="14" width="60" height="12" fill="white" />
+              <!-- Cruz central roja -->
+              <rect x="26" y="0" width="8" height="40" fill="#C8102E" />
+              <rect x="0" y="16" width="60" height="8" fill="#C8102E" />
+            </svg>
+          </button>
+
+          <button class="nav-hamburger" @click="menuOpen = !menuOpen" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </nav>
 
       <div class="nav-mobile" :class="{ open: menuOpen }">
-        <router-link to="/games" @click="menuOpen = false">Games</router-link>
-        <router-link to="/mods" @click="menuOpen = false">Mods</router-link>
-        <router-link to="/translations" @click="menuOpen = false">Translations</router-link>
-        <router-link to="/collaborations" @click="menuOpen = false">Collabs</router-link>
-        <router-link to="/tools" @click="menuOpen = false">Tools</router-link>
-        <router-link to="/about" @click="menuOpen = false">About</router-link>
-        <router-link to="/contact" @click="menuOpen = false">Contact</router-link>
+        <li>
+          <router-link to="/games">{{ locale === 'en' ? 'Games' : 'Juegos' }}</router-link>
+        </li>
+        <li><router-link to="/mods">Mods</router-link></li>
+        <li>
+          <router-link to="/translations">{{
+            locale === 'en' ? 'Translations' : 'Traducciones'
+          }}</router-link>
+        </li>
+        <li>
+          <router-link to="/collaborations">{{
+            locale === 'en' ? 'Collaborations' : 'Colaboraciones'
+          }}</router-link>
+        </li>
+        <li>
+          <router-link to="/tools">{{ locale === 'en' ? 'Tools' : 'Herramientas' }}</router-link>
+        </li>
+        <li>
+          <router-link to="/about">{{ locale === 'en' ? 'About' : 'Acerca de' }}</router-link>
+        </li>
+        <li>
+          <router-link to="/contact">{{ locale === 'en' ? 'Contact' : 'Contacto' }}</router-link>
+        </li>
       </div>
     </header>
 
@@ -126,7 +233,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6rem;
+  gap: 1rem;
 }
 
 .nav-logo {
@@ -145,11 +252,10 @@ body::before {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 0.15rem;
 }
 
 .nav-links a {
-  display: block;
+  display: inline flow-root;
   padding: 0.4rem 0.9rem;
   color: var(--muted);
   text-decoration: none;
@@ -198,9 +304,6 @@ body::before {
   border-top: 1px solid var(--border);
   gap: 0.25rem;
 }
-.nav-mobile.open {
-  display: flex;
-}
 .nav-mobile a {
   padding: 0.6rem 0.5rem;
   color: var(--muted);
@@ -245,6 +348,30 @@ body::before {
   gap: 0.75rem 1.5rem;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.lang-toggle:hover {
+  opacity: 1;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .nav-links {
@@ -253,9 +380,9 @@ body::before {
   .nav-hamburger {
     display: flex;
   }
-}
-
-@media (max-width: 600px) {
+  .nav-mobile.open {
+    display: flex;
+  }
   .navbar {
     padding: 0 1.25rem;
   }

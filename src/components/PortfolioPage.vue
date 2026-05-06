@@ -1,10 +1,13 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useLanguage } from '@/composables/useLanguage'
 import { sectionsData } from '../data/sectionsData.js'
 
 const route = useRoute()
 const router = useRouter()
+
+const { t } = useLanguage()
 
 // La ruta raíz / muestra una home; rutas tipo /games, /mods, etc. muestran su sección
 const sectionKey = computed(() => route.params.section || route.path.replace('/', '') || null)
@@ -61,7 +64,7 @@ const sections = computed(() => {
 const meta = computed(
   () =>
     sectionMeta[sectionKey.value] || {
-      label: sectionKey.value,
+      label: t(sectionKey.value),
       eyebrow: 'Portfolio',
       accent: '#00e5ff',
     },
@@ -175,8 +178,8 @@ const navSections = [
 
           <div class="game-card__content">
             <span class="game-card__tag">{{ item._section }}</span>
-            <h3 class="game-card__title">{{ item.name }}</h3>
-            <p class="game-card__desc">{{ item.shortDescription }}</p>
+            <h3 class="game-card__title">{{ t(item.name) }}</h3>
+            <p class="game-card__desc">{{ t(item.shortDescription) }}</p>
             <div class="game-card__actions">
               <button class="btn btn-primary">More details</button>
             </div>
@@ -227,8 +230,8 @@ const navSections = [
               }"
               >{{ sectionKey }}</span
             >
-            <h3 class="game-card__title">{{ item.name }}</h3>
-            <p class="game-card__desc">{{ item.shortDescription }}</p>
+            <h3 class="game-card__title">{{ t(item.name) }}</h3>
+            <p class="game-card__desc">{{ t(item.shortDescription) }}</p>
             <div class="game-card__actions">
               <button class="btn btn-primary" :style="{ background: meta.accent }">
                 More details
@@ -561,7 +564,7 @@ const navSections = [
 }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .portfolio-page {
     padding: 2.5rem 0 4rem;
   }
