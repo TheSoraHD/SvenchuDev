@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { useLanguage } from '@/composables/useLanguage'
+import { hero, skills, stats, timeline } from '@/data/aboutData.js'
+
+const { t } = useLanguage()
+</script>
 
 <template>
   <div class="about-page">
@@ -6,6 +11,7 @@
       <div class="hero-photo-wrap">
         <img
           src="/images/about/photo.jpg"
+          loading="lazy"
           alt="Svenchu's Photo"
           class="hero-photo"
           @error="(e) => (e.target.style.display = 'none')"
@@ -16,33 +22,23 @@
       </div>
 
       <div class="hero-text">
-        <span class="eyebrow">About me</span>
+        <span class="eyebrow">{{ t(hero.eyebrow) }}</span>
         <h1 class="hero-name">SVEN WALLIN</h1>
-        <p class="hero-tagline">Game Developer · Modder · Translator · Video Editor</p>
-        <p class="hero-bio">
-          Bachelor's Degree in Computer Engineering with a specialisation in Computing (FIB UPC -
-          2024).<br /><br />
-          Ever since I was a child, I have wondered how video games could work using only 0s and 1s.
-          This simple question inspired me to spend years learning how to code and then start
-          developing video games, mods and translations out of pure passion. I also shared my
-          knowledge and passion on YouTube. I specialise in Unreal Engine 5 and have solid
-          experience in the IT sector, having managed teams of university scholars.<br /><br />
-          Outside of work, I enjoy playing video games of all genres and eras, playing chess and
-          spending time with my wife and our dog, Roxas.
-        </p>
+        <p class="hero-tagline">{{ t(hero.tagline) }}</p>
+        <p class="hero-bio" v-html="t(hero.bio).replace(/\n\n/g, '<br><br>')"></p>
       </div>
     </section>
 
     <div class="divider"></div>
 
     <section class="about-section">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title">{{ t({ en: 'Skills', es: 'Habilidades' }) }}</h2>
       <div class="skills-grid">
         <div class="skill-card" v-for="skill in skills" :key="skill.label">
           <span class="skill-icon">{{ skill.icon }}</span>
           <div>
-            <p class="skill-label">{{ skill.label }}</p>
-            <p class="skill-desc">{{ skill.desc }}</p>
+            <p class="skill-label">{{ t(skill.label) }}</p>
+            <p class="skill-desc">{{ t(skill.desc) }}</p>
           </div>
         </div>
       </div>
@@ -52,21 +48,21 @@
 
     <section class="about-section stats-row">
       <div v-for="stat in stats" :key="stat.label" class="stat-card">
-        <span class="stat-value">{{ stat.value }}</span>
-        <span class="stat-label">{{ stat.label }}</span>
+        <span class="stat-value">{{ t(stat.value) }}</span>
+        <span class="stat-label">{{ t(stat.label) }}</span>
       </div>
     </section>
 
     <div class="divider"></div>
 
     <section class="about-section">
-      <h2 class="section-title">Timeline</h2>
+      <h2 class="section-title">{{ t({ en: 'Timeline', es: 'Cronología' }) }}</h2>
       <ol class="timeline">
         <li v-for="(event, i) in timeline" :key="i" class="timeline-item">
           <span class="timeline-year">{{ event.year }}</span>
           <div class="timeline-body">
-            <p class="timeline-title" v-html="event.title"></p>
-            <p class="timeline-desc" v-html="event.desc"></p>
+            <p class="timeline-title">{{ t(event.title) }}</p>
+            <p class="timeline-desc">{{ t(event.desc) }}</p>
           </div>
         </li>
       </ol>
@@ -74,105 +70,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      skills: [
-        {
-          icon: '🎮',
-          label: 'Game Dev',
-          desc: 'Unreal Engine 5 · Unity · C/C++ · OpenGL · Learning Vulkan · Console homebrew enthusiastic',
-        },
-        {
-          icon: '🌍',
-          label: 'Translation',
-          desc: 'EN -> ES Localization · ROM Editing · Learning Japanese ',
-        },
-        { icon: '🔧', label: 'Modding', desc: 'OpenKH · Custom Tools' },
-        { icon: '💻', label: 'IT', desc: '10 Years of Professional Experience in the Sector' },
-        { icon: '🎲', label: '3D', desc: '3DS Max · Blender · Photoshop · Substance Painter' },
-        {
-          icon: '🎬',
-          label: 'Youtube',
-          desc: 'Sony Vegas · Davince Resolve · Focused mainly on Kingdom Hearts content, with humorous skits',
-        },
-      ],
-      stats: [
-        { value: '10+', label: 'Published Projects' },
-        { value: '10+', label: 'Years of GameDev Experience' },
-        { value: '4K', label: 'Subscribers on YouTube' },
-        { value: '1M', label: 'Views on YouTube' },
-      ],
-      timeline: [
-        {
-          year: '2011',
-          title: 'AvalancheDS, PongDS & Space Invaders DS',
-          desc: 'First Nintendo DS homebrews: an attempt to port the Flash game Avalanche, a classic Pong game featuring local multiplayer on the same device, and an unfinished attempt at recreating Space Invaders.',
-        },
-        {
-          year: '2012',
-          title: 'ChessCount',
-          desc: 'A chess clock homebrew made for the Nintendo DS, with customizable time settings and an intuitive interface.',
-        },
-        {
-          year: '2014',
-          title: 'Delusion',
-          desc: 'A psychological horror game built in Unreal Engine 3 as a school project, with all 3D assets created from scratch.',
-        },
-        {
-          year: '2016',
-          title: 'Sanic: The Zombie Game & BBS Final Mix Spanish Translation',
-          desc: 'A zombie shooter built with a custom C++/OpenGL 2D engine, alongside the first major translation project: a full Spanish patch for Kingdom Hearts Birth by Sleep Final Mix (PSP).',
-        },
-        {
-          year: '2017',
-          title: "Magical Pop'n GBA",
-          desc: "A homebrew action-platformer for the Game Boy Advance, inspired by the original Magical Pop'n for SNES.",
-        },
-        {
-          year: '2019',
-          title: 'Contra2D & Bizarre Skies 3D',
-          desc: "A 2D reimagining of the classic Contra built with a custom C++/OpenGL engine, and a Rolling Sky clone with a JoJo's Bizarre Adventure theme made with Unreal Engine 4.",
-        },
-        {
-          year: '2021',
-          title: 'Corruption & KH2 Spanish Mix',
-          desc: 'A Slender-style horror game made for Z-Jam 2021 in collaboration with Keytotruth, plus the release of KH2 Spanish Mix — a full Castilian Spanish voice mod for Kingdom Hearts 2.',
-        },
-        {
-          year: '2022',
-          title: 'KH2/KHBBS Mods, Crisis Core Voices, HCAreplace, Remorse & KH Re:Fined',
-          desc: "Multiple releases: Sephiroth's Absent Silhouette and Xemnas Deleted Quotes mods for KH2, the BBS Free Camera patch for PPSSPP, restoration of Crisis Core's original PSP voices, HCAreplace — a tool to replace HCA audio in game files — pre-launch testing for Remorse: The List, and the start of ongoing Spanish translation contributions to KH Re:Fined.",
-        },
-        {
-          year: '2023',
-          title: 'Flamboyant & Drakengard 3 Spanish Translation',
-          desc: 'A vibrant bullet-hell 3D minigame built in Unity in four days for a UPC FIB advanced course, plus the start of an ongoing collaborative Spanish translation of Drakengard 3 for PS3.',
-        },
-        {
-          year: '2024',
-          title: 'KH2 Spanish Mix v1.3, KH2 Randomizer & Clueless Crew',
-          desc: 'Final bug-fix update for KH2 Spanish Mix, a contributed fix for the Spanish version of the KH2 Randomizer, and pre-launch betatesting for the co-op horror game Clueless Crew.',
-        },
-        {
-          year: '2025',
-          title: 'Brainrot Royale',
-          desc: 'Pre-launch betatesting for Brainrot Royale, a chaotic 16-player battle royale built around Italian Brainrot meme characters, developed by Keytotruth and 13th Vessel.',
-        },
-        {
-          year: '2026',
-          title: 'Kingdom Hearts: Tears',
-          desc: 'An ambitious fan-made reimagining of Day 357 from Kingdom Hearts 358/2 Days, built in Unreal Engine 5 with lots of optional content.',
-        },
-      ],
-    }
-  },
-}
-</script>
-
 <style scoped>
-/* Styles remain unchanged as they contain no language-specific text */
 .about-page {
   padding: 4rem 0 6rem;
 }

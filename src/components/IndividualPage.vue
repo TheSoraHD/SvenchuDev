@@ -71,7 +71,7 @@ const formatDate = (dateString) => {
         <div class="col-main">
           <!-- Galería -->
           <section class="content-block">
-            <h2 class="block-title">Gallery</h2>
+            <h2 class="block-title">{{ t({ en: 'Gallery', es: 'Galería' }) }}</h2>
             <MediaCarousel
               :images="pageData.images || []"
               :youtube-videos="pageData.youtubeVideos || []"
@@ -87,7 +87,7 @@ const formatDate = (dateString) => {
 
           <!-- Description -->
           <section v-if="pageData.description" class="content-block">
-            <h2 class="block-title">Description</h2>
+            <h2 class="block-title">{{ t({ en: 'Description', es: 'Descripción' }) }}</h2>
             <div class="description" v-html="t(pageData.description)"></div>
           </section>
 
@@ -103,7 +103,7 @@ const formatDate = (dateString) => {
 
           <!-- Changelog -->
           <section v-if="pageData.changelog?.length" class="content-block">
-            <h2 class="block-title">Change Log</h2>
+            <h2 class="block-title">{{ t({ en: 'Change Log', es: 'Historial de cambios' }) }}</h2>
             <div class="changelog">
               <div v-for="v in pageData.changelog" :key="v.version" class="changelog-item">
                 <div class="changelog-header">
@@ -121,20 +121,20 @@ const formatDate = (dateString) => {
         <!-- Sidebar derecho -->
         <aside class="col-sidebar">
           <div class="sidebar-card">
-            <h3 class="sidebar-card-title">Download</h3>
+            <h3 class="sidebar-card-title">{{ t({ en: 'Download', es: 'Descargar' }) }}</h3>
 
             <template v-if="hasDownloadInfo">
               <div class="download-meta">
                 <div class="meta-row">
-                  <span class="meta-label">Version</span>
+                  <span class="meta-label">{{ t({ en: 'Version', es: 'Versión' }) }}</span>
                   <span class="meta-value">{{ pageData.downloadInfo.version }}</span>
                 </div>
                 <div class="meta-row">
-                  <span class="meta-label">Size</span>
+                  <span class="meta-label">{{ t({ en: 'Size', es: 'Tamaño' }) }}</span>
                   <span class="meta-value">{{ pageData.downloadInfo.size }}</span>
                 </div>
                 <div class="meta-row">
-                  <span class="meta-label">Requirements</span>
+                  <span class="meta-label">{{ t({ en: 'Requirements', es: 'Requisitos' }) }}</span>
                   <span class="meta-value">{{ pageData.downloadInfo.requirements }}</span>
                 </div>
               </div>
@@ -147,17 +147,21 @@ const formatDate = (dateString) => {
               rel="noopener"
               class="btn-download"
             >
-              Download Now
+              {{ t({ en: 'Download Now', es: 'Descargar ahora' }) }}
             </a>
-            <p v-else-if="!pageData.downloadUrl" class="download-pending">Not Available</p>
-            <p v-else class="download-pending">Coming Soon</p>
+            <p v-else-if="!pageData.downloadUrl" class="download-pending">
+              {{ t({ en: 'Not Available', es: 'No disponible' }) }}
+            </p>
+            <p v-else class="download-pending">
+              {{ t({ en: 'Coming Soon', es: 'Próximamente' }) }}
+            </p>
           </div>
 
           <div
             v-if="hasDownloadInfo && pageData.downloadInfo.installation?.length"
             class="sidebar-card"
           >
-            <h3 class="sidebar-card-title">Installation</h3>
+            <h3 class="sidebar-card-title">{{ t({ en: 'Installation', es: 'Instalación' }) }}</h3>
             <ol class="install-steps">
               <li v-for="step in pageData.downloadInfo.installation" :key="step">{{ step }}</li>
             </ol>

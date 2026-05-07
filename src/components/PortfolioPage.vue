@@ -14,12 +14,20 @@ const sectionKey = computed(() => route.params.section || route.path.replace('/'
 
 // Configuración visual de cada sección
 const sectionMeta = {
-  games: { label: 'Games', eyebrow: 'Portfolio', accent: '#00e5ff' },
-  mods: { label: 'Mods', eyebrow: 'Portfolio', accent: '#7b2fff' },
-  translations: { label: 'Translations', eyebrow: 'Portfolio', accent: '#ff3cac' },
-  collaborations: { label: 'Collaborations', eyebrow: 'Portfolio', accent: '#00ff9d' },
-  tools: { label: 'Tools', eyebrow: 'Portfolio', accent: '#ffb800' },
-  about: { label: 'About Me', eyebrow: 'Personal', accent: '#ff6b6b' },
+  games: { label: { en: 'Games', es: 'Juegos' }, eyebrow: 'Portfolio', accent: '#00e5ff' },
+  mods: { label: { en: 'Mods', es: 'Mods' }, eyebrow: 'Portfolio', accent: '#7b2fff' },
+  translations: {
+    label: { en: 'Translations', es: 'Traducciones' },
+    eyebrow: 'Portfolio',
+    accent: '#ff3cac',
+  },
+  collaborations: {
+    label: { en: 'Collaborations', es: 'Colaboraciones' },
+    eyebrow: 'Portfolio',
+    accent: '#00ff9d',
+  },
+  tools: { label: { en: 'Tools', es: 'Herramientas' }, eyebrow: 'Portfolio', accent: '#ffb800' },
+  about: { label: { en: 'About Me', es: 'Acerca de' }, eyebrow: 'Personal', accent: '#ff6b6b' },
 }
 
 // Colores de tint por posición (para variedad visual entre cards)
@@ -64,7 +72,7 @@ const sections = computed(() => {
 const meta = computed(
   () =>
     sectionMeta[sectionKey.value] || {
-      label: t(sectionKey.value),
+      label: sectionKey.value,
       eyebrow: 'Portfolio',
       accent: '#00e5ff',
     },
@@ -193,7 +201,7 @@ const navSections = [
   <div v-else class="portfolio-page">
     <header class="page-header" :style="{ '--accent': meta.accent }">
       <span class="eyebrow">{{ meta.eyebrow }}</span>
-      <h1 class="page-title">{{ meta.label.toUpperCase() }}</h1>
+      <h1 class="page-title">{{ t(meta.label).toUpperCase() }}</h1>
       <div class="section-divider"></div>
     </header>
 
@@ -228,7 +236,7 @@ const navSections = [
                 borderColor: meta.accent + '55',
                 background: meta.accent + '12',
               }"
-              >{{ sectionKey }}</span
+              >{{ t(meta.label) }}</span
             >
             <h3 class="game-card__title">{{ t(item.name) }}</h3>
             <p class="game-card__desc">{{ t(item.shortDescription) }}</p>
