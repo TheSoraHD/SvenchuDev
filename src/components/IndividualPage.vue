@@ -5,7 +5,7 @@ import { useLanguage } from '@/composables/useLanguage'
 import MediaCarousel from './MediaCarousel.vue'
 import { sectionsData } from '../data/sectionsData.js'
 
-const { t } = useLanguage()
+const { locale, t } = useLanguage()
 
 const route = useRoute()
 const router = useRouter()
@@ -32,9 +32,12 @@ function goBack() {
   router.back()
 }
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
+function formatDate(dateStr) {
+  return new Date(dateStr).toLocaleDateString(locale.value === 'es' ? 'es-ES' : 'en-GB', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
 </script>
 
@@ -43,8 +46,8 @@ const formatDate = (dateString) => {
     <!-- 404 -->
     <div v-if="!pageData" class="not-found">
       <h1>404</h1>
-      <p>Page not found.</p>
-      <button class="btn-back" @click="goBack">← Back</button>
+      <p>{{ t({ en: 'Page not found.', es: 'Página no encontrada.' }) }}</p>
+      <button class="btn-back" @click="goBack">← {{ t({ en: 'Back', es: 'Atrás' }) }}</button>
     </div>
 
     <template v-else>
@@ -52,7 +55,7 @@ const formatDate = (dateString) => {
       <nav class="breadcrumb">
         <button class="breadcrumb-back" @click="goBack">←</button>
         <span class="breadcrumb-sep">/</span>
-        <span class="breadcrumb-cat">{{ category }}</span>
+        <span class="breadcrumb-cat">{{ t(category) }}</span>
         <span v-if="subcategory" class="breadcrumb-sep">/</span>
         <span v-if="subcategory" class="breadcrumb-cat">{{ subcategory }}</span>
         <span class="breadcrumb-sep">/</span>
@@ -93,10 +96,10 @@ const formatDate = (dateString) => {
 
           <!-- Features -->
           <section v-if="pageData.features?.length" class="content-block">
-            <h2 class="block-title">Features</h2>
+            <h2 class="block-title">{{ t({ en: 'Features', es: 'Características' }) }}</h2>
             <ul class="features-list">
-              <li v-for="feat in pageData.features" :key="feat">
-                <span class="feat-check">✓</span>{{ feat }}
+              <li v-for="feat in pageData.features" :key="feat.en ?? feat">
+                <span class="feat-check">✓</span>{{ t(feat) }}
               </li>
             </ul>
           </section>
@@ -111,7 +114,7 @@ const formatDate = (dateString) => {
                   <span class="version-date">{{ formatDate(v.date) }}</span>
                 </div>
                 <ul class="changelog-changes">
-                  <li v-for="c in v.changes" :key="c">{{ c }}</li>
+                  <li v-for="c in v.changes" :key="c.en ?? c">{{ t(c) }}</li>
                 </ul>
               </div>
             </div>
@@ -163,7 +166,7 @@ const formatDate = (dateString) => {
           >
             <h3 class="sidebar-card-title">{{ t({ en: 'Installation', es: 'Instalación' }) }}</h3>
             <ol class="install-steps">
-              <li v-for="step in pageData.downloadInfo.installation" :key="step">{{ step }}</li>
+              <li v-for="step in pageData.downloadInfo.installation" :key="step">{{ t(step) }}</li>
             </ol>
           </div>
         </aside>

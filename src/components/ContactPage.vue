@@ -1,17 +1,24 @@
-<script setup></script>
+<script setup>
+import { useLanguage } from '@/composables/useLanguage'
+const { t } = useLanguage()
+</script>
 
 <template>
   <div class="contact-page">
     <header class="page-header">
-      <h1 class="page-title">CONTACT</h1>
+      <h1 class="page-title">{{ t({ en: 'CONTACT', es: 'CONTACTO' }) }}</h1>
       <div class="section-divider"></div>
     </header>
 
     <div class="contact-grid">
       <div class="col-main">
         <p class="contact-intro">
-          Do you have an idea, a collaboration, or just want to say hi? Write to me directly via
-          email. I usually respond in less than 48 hours.
+          {{
+            t({
+              en: 'Do you have an idea, a collaboration, or just want to say hi? Write to me directly via email.',
+              es: '¿Tienes alguna idea, quieres proponer una colaboración o simplemente quieres saludarme? Escríbeme directamente por correo electrónico.',
+            })
+          }}
         </p>
 
         <a href="mailto:contact@svenchu.dev" class="email-block">
@@ -21,7 +28,9 @@
         </a>
 
         <div class="socials">
-          <h2 class="socials-title">You can also find me on</h2>
+          <h2 class="socials-title">
+            {{ t({ en: 'You can also find me on:', es: 'También puedes encontrarme en:' }) }}
+          </h2>
           <div class="socials-grid">
             <a
               v-for="social in socials"
@@ -44,19 +53,29 @@
 
       <aside class="col-sidebar">
         <div class="info-card">
-          <h3 class="info-card-title">Types of Projects</h3>
+          <h3 class="info-card-title">
+            {{ t({ en: 'Types of Projects', es: 'Tipos de proyectos:' }) }}
+          </h3>
           <ul class="info-list">
             <li v-for="item in projectTypes" :key="item">
-              <span class="list-dot"></span>{{ item }}
+              <span class="list-dot"></span>{{ t(item) }}
             </li>
           </ul>
         </div>
 
         <div class="info-card">
-          <h3 class="info-card-title">Response Time</h3>
-          <p class="info-text">
-            I generally respond within <strong>24–48 hours</strong> on business days.
-          </p>
+          <h3 class="info-card-title">
+            {{ t({ en: 'Response Time', es: 'Tiempo de respuesta' }) }}
+          </h3>
+          <p
+            class="info-text"
+            v-html="
+              t({
+                en: 'I generally respond within <strong>24–48 hours</strong> on business days.',
+                es: 'Normalmente respondo en <strong>24–48 horas</strong> en días laborables.',
+              })
+            "
+          ></p>
         </div>
       </aside>
     </div>
@@ -84,12 +103,11 @@ export default {
         },
       ],
       projectTypes: [
-        'Indie game collaborations',
-        'Beta testing and feedback',
-        'Modding consultancy',
-        'Localization and translation',
-        'Video game fan projects',
-        'Tool development',
+        { en: 'Indie game collaborations', es: 'Colaboraciones en videojuegos independientes' },
+        { en: 'Beta testing and feedback', es: 'Pruebas beta y retroalimentación' },
+        { en: 'Modding consultancy', es: 'Asesoramiento en modding' },
+        { en: 'Localization and translation', es: 'Localización y traducción' },
+        { en: 'Tool development', es: 'Desarrollo de herramientas' },
       ],
     }
   },
@@ -323,7 +341,7 @@ export default {
   line-height: 1.65;
 }
 
-.info-text strong {
+.info-text :deep(strong) {
   color: var(--text);
   font-weight: 500;
 }

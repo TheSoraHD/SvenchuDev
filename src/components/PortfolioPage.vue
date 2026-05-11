@@ -97,43 +97,54 @@ const featuredItems = computed(() => {
   const mods = sectionsData.mods || []
   const translations = sectionsData.translations || []
   return [
-    ...pcGames.slice(0, 3).map((i) => ({ ...i, _section: 'games', _platform: 'pc' })),
-    ...mods.slice(0, 2).map((i) => ({ ...i, _section: 'mods' })),
-    ...translations.slice(0, 1).map((i) => ({ ...i, _section: 'translations' })),
+    ...pcGames.slice(0, 3).map((i) => ({
+      ...i,
+      _sectionKey: 'games',
+      _section: { en: 'Games', es: 'Juegos' },
+      _platform: 'pc',
+    })),
+    ...mods
+      .slice(0, 2)
+      .map((i) => ({ ...i, _sectionKey: 'mods', _section: { en: 'Mods', es: 'Mods' } })),
+    ...translations.slice(0, 1).map((i) => ({
+      ...i,
+      _sectionKey: 'translations',
+      _section: { en: 'Translations', es: 'Traducciones' },
+    })),
   ]
 })
 
 function navigateHome(item) {
-  if (item._section === 'games' && item._platform) {
+  if (item._sectionKey === 'games' && item._platform) {
     router.push(`/games/${item._platform}/${item.id}`)
   } else {
-    router.push(`/${item._section}/${item.id}`)
+    router.push(`/${item._sectionKey}/${item.id}`)
   }
 }
 
 const navSections = [
   {
     key: 'games',
-    label: 'Games',
+    label: { en: 'Games', es: 'Juegos' },
     accent: '#00e5ff',
     count: () => Object.values(sectionsData.games || {}).flat().length,
   },
   { key: 'mods', label: 'Mods', accent: '#7b2fff', count: () => (sectionsData.mods || []).length },
   {
     key: 'translations',
-    label: 'Translations',
+    label: { en: 'Translations', es: 'Traducciones' },
     accent: '#ff3cac',
     count: () => (sectionsData.translations || []).length,
   },
   {
     key: 'collaborations',
-    label: 'Collaborations',
+    label: { en: 'Collaborations', es: 'Colaboraciones' },
     accent: '#00ff9d',
     count: () => (sectionsData.collaborations || []).length,
   },
   {
     key: 'tools',
-    label: 'Tools',
+    label: { en: 'Tools', es: 'Herramientas' },
     accent: '#ffb800',
     count: () => (sectionsData.tools || []).length,
   },
@@ -144,12 +155,19 @@ const navSections = [
   <!-- ─── HOME ─────────────────────────────────────────── -->
   <div v-if="isHome" class="portfolio-page">
     <header class="page-header">
-      <span class="eyebrow">Game Developer</span>
+      <span class="eyebrow">{{
+        t({ en: 'Game Developer', es: 'Desarrollador de videojuegos' })
+      }}</span>
       <h1 class="page-title">SVENCHU</h1>
-      <p class="page-subtitle">
-        From retro homebrew to Unreal Engine 5.<br />15 years of shipped projects across C/C++,
-        Unity and Unreal engines, and a relentless drive to create experiences that stay with you.
-      </p>
+      <p
+        class="page-subtitle"
+        v-html="
+          t({
+            en: 'From retro homebrew to Unreal Engine 5.<br>15 years of shipped projects across C/C++, Unity and Unreal engines, and a relentless drive to create experiences that stay with you.',
+            es: 'Desde el homebrew retro hasta Unreal Engine 5.<br>15 años de proyectos publicados en C/C++, Unity y Unreal, y un impulso constante por crear experiencias que dejan huella.',
+          })
+        "
+      ></p>
       <div class="section-divider"></div>
     </header>
 
@@ -163,14 +181,16 @@ const navSections = [
         :style="{ '--card-accent': sec.accent }"
       >
         <span class="home-nav-count">{{ sec.count() }}</span>
-        <span class="home-nav-label">{{ sec.label }}</span>
+        <span class="home-nav-label">{{ t(sec.label) }}</span>
         <span class="home-nav-arrow">→</span>
       </router-link>
     </div>
 
     <!-- Featured grid -->
     <section class="platform-section">
-      <div class="platform-label"><h2>Featured</h2></div>
+      <div class="platform-label">
+        <h2>{{ t({ en: 'Featured', es: 'Destacado' }) }}</h2>
+      </div>
       <div class="game-grid">
         <div
           v-for="(item, i) in featuredItems"
@@ -185,11 +205,13 @@ const navSections = [
           ></div>
 
           <div class="game-card__content">
-            <span class="game-card__tag">{{ item._section }}</span>
+            <span class="game-card__tag">{{ t(item._section) }}</span>
             <h3 class="game-card__title">{{ t(item.name) }}</h3>
             <p class="game-card__desc">{{ t(item.shortDescription) }}</p>
             <div class="game-card__actions">
-              <button class="btn btn-primary">More details</button>
+              <button class="btn btn-primary">
+                {{ t({ en: 'More details', es: 'Más detalles' }) }}
+              </button>
             </div>
           </div>
         </div>
@@ -242,7 +264,7 @@ const navSections = [
             <p class="game-card__desc">{{ t(item.shortDescription) }}</p>
             <div class="game-card__actions">
               <button class="btn btn-primary" :style="{ background: meta.accent }">
-                More details
+                {{ t({ en: 'More details', es: 'Más detalles' }) }}
               </button>
             </div>
           </div>
