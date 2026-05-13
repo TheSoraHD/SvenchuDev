@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
     // Solo usa devtools en desarrollo
-    process.env.NODE_ENV === 'development' ? vueDevTools() : undefined
+    process.env.NODE_ENV === 'development' ? vueDevTools() : undefined,
   ].filter(Boolean),
   base: '/', // Para dominio personalizado
   build: {
@@ -17,15 +17,15 @@ export default defineConfig({
     sourcemap: false, // Reduce tamaño del build
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['vue']
-        }
-      }
-    }
+        manualChunks(id) {
+          if (id.includes('vue')) return 'vue'
+        },
+      },
+    },
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })
