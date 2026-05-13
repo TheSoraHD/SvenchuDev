@@ -158,55 +158,6 @@ export default {
 </template>
 
 <style>
-/* ─── TOKENS ─── */
-:root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --surface2: #16161f;
-  --border: rgba(255, 255, 255, 0.07);
-  --accent: #ffae00;
-  --text: #f0f0f8;
-  --muted: rgba(240, 240, 248, 0.45);
-  --font-display: 'Orbitron', monospace;
-  --font-body: 'DM Sans', sans-serif;
-}
-
-/* ─── RESET ─── */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* Cuadrícula de fondo sutil */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
-
 #app {
   min-height: 100vh;
   display: flex;
